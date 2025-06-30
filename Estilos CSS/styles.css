@@ -26,16 +26,17 @@ p {
   margin-bottom: 1.5rem;
 }
 
+
 aside {
   position: fixed;
-  /* top: 0;
+  /* top: 0; este es un comentario para testear las ramas de github
   left: 0;
   bottom: 0; */
   inset: 0 auto 0 0;
   padding: 1rem;
   /* width: 80px; */
   width: var(--sb-width);
-  background-image: linear-gradient(#90c3fd, #297c5a, #bb85a0);
+  background-image: linear-gradient(#90c3fd, #bb85a0);
   transition: width 0.5s ease-in-out;
 }
 

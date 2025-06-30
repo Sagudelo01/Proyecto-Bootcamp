@@ -3,6 +3,8 @@
  * https://youtu.be/fIR3isyFV8s
  */
 
+
+// Este apartado es para la funcionalidad del slide.
 const resizeBtn = document.querySelector("[data-resize-btn]");
 
 resizeBtn.addEventListener("click", function (e) {

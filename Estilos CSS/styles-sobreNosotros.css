@@ -7,11 +7,14 @@
 
 body {
     --sb-width: 5rem;
-    font-family: system-ui, sans-serif;
+    font-family: sans-serif;
     font-size: 16px;
     line-height: 1.7;
     color: #333;
-    background-color: #fff;
+    /* background-color: #fff; */
+    background-image: url(https://images.unsplash.com/photo-1699462516277-7294d37e5cc3?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+    /* background-image: linear-gradient(135deg, #2196f3 0%, #43e97b 100%); */
+    color: #fff;
 }
 
 body.sb-expanded {
@@ -19,7 +22,7 @@ body.sb-expanded {
 }
 
 h1 {
-    font-size: 1.5rem;
+    font-size: 1.5rem;x
     font-weight: bold;
 }
 
@@ -37,8 +40,13 @@ aside {
     padding: 1rem;
     /* width: 80px; */
     width: var(--sb-width);
-    background-image: linear-gradient(#90c3fd, #bb85a0);
+    /* background-image: linear-gradient(#90c3fd, #bb85a0); */
     transition: width 0.5s ease-in-out;
+    background: rgba(255, 255, 255, .3);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    border: 1.5px solid rgba(209, 213, 219, 0.3);
+    
 }
 
 nav {
@@ -66,6 +74,7 @@ nav a {
     font-size: 1.25rem;
     line-height: 1;
     color: #fff;
+    font-weight: bold;
     text-decoration: none;
     border-radius: 0.375rem;
     transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
@@ -75,7 +84,7 @@ nav a.active,
 nav a:hover,
 nav a:focus-visible {
     outline: none;
-    color: #b366fc;
+    color: #3f41e9;
     background-color: #fff;
 }
 
@@ -111,10 +120,11 @@ main {
 }
 
 .placeholder {
-    display: grid;
+    display: flex;
     grid-template-columns: repeat(3, 1fr);
     gap: 0.625rem;
     min-height: 600px;
+    flex-wrap: wrap;
 }
 
 /* .placeholder > div {
@@ -125,7 +135,8 @@ main {
 
 /* Codigo Daniel cartas presentacion */
 .card {
-    background: #6ca;
+    /* background: #fff; */
+    color: #fff;
     text-align: center;
     width: 300px;
     margin: auto;
@@ -134,15 +145,21 @@ main {
     box-shadow: 0 0 30px #0006;
     border-radius: 8px;
     transition: 0.2s;
+    background: rgba(255, 255, 255, .3);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    border: 1.5px solid rgba(209, 213, 219, 0.3);
 }
 
-.blue-card {
-    background: #09f;
+.card-titulo {
+    background: rgba(255, 255, 255, .3);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    border: 1.5px solid rgba(209, 213, 219, 0.3);
+    border-radius: 8px;
+    padding: 10px ;
 }
 
-.red-card {
-    background: #f43;
-}
 .card_title {
     font-size: 22px;
     margin: 0;

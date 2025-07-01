@@ -8,6 +8,12 @@
 
     <!-- Boxicons CDN -->
     <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"/>
+
+    <!-- Development version -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+    <!-- Production version -->
+    <script src="https://unpkg.com/lucide@latest"></script>
   </head>
 
   <body>
@@ -34,7 +40,7 @@
           </li>
           <li>
             <a href="/Proyecto-Bootcamp/hojas HTML/Dashboard.html">
-              <img src="/Proyecto-Bootcamp/icons/chart-spline.png">
+              <i data-lucide="chart-area"></i>
               <span>Dashboard</span>
             </a>
           </li>
@@ -51,8 +57,8 @@
             </a>
           </li>
           <li>
-            <a class="active">
-              <i class="bx bx-contact-book"></i>
+            <a href="/Proyecto-Bootcamp/hojas HTML/Sobre nosotros.html">
+              <i data-lucide="user"></i>
               <span>Sobre Nosotros</span>
             </a>
           </li>
@@ -103,6 +109,9 @@
       </div>
     </main>
     <script src="/Proyecto-Bootcamp/Javascript/script.js"></script>
+    <script>
+    lucide.createIcons();
+    </script>
     <!--Cambio posicion del head al body-->
   </body>
 </html>

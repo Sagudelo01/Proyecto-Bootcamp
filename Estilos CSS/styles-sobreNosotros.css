@@ -65,7 +65,7 @@ nav li:last-child {
     margin-top: auto;
 }
 
-nav a {
+nav a{
     display: flex;
     align-items: center;
     gap: 0.625rem;
@@ -85,6 +85,15 @@ nav a:focus-visible {
     outline: none;
     color: #3f41e9;
     background-color: #fff;
+    }
+
+
+
+nav a i,
+nav a svg {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
 }
 
 nav a span {

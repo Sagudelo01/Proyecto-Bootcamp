@@ -1,97 +1,181 @@
 <!DOCTYPE html>
-<html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Nombre de la pagina</title>
-    <link rel="stylesheet" href="/Proyecto-Bootcamp/Estilos CSS/styles.css" />
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoDatos</title>
+  <link rel="stylesheet" href="../Estilos CSS/styles_inicio.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
+  <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configuración de Tailwind para usar la fuente Inter -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+  <header>
+    <a href="#" class="logo">EcoDatos</a>
+    <div class="menu-toggle" onclick="toggleMenu();">
+      <i class="fas fa-bars"></i> </div>
+    <ul class="navigation"> <li><a href="#">Inicio</a></li>
+      <li><a href="#">Historia</a></li>
+      <li><a href="#">Dasboard</a></li>
+      <li><a href="#">Calculadora</a></li>
+      <li><a href="#">Sobre el Proyecto</a></li>
+      <li><a href="../hojas HTML/Sobre nosotros.html">Nosotros</a></li>
+    </ul>
+  </header>
+  <section class="banner">
+    <h1>La Energia Geotermica</h1>
+  </section>
+  <section class="content">
+    <div class="div_p">
+      <p>La geotermia es una energía renovable e inagotable que se obtiene al aprovechar el calor del interior de la Tierra, almacenado en rocas, suelos y aguas subterráneas.</p>
 
-    <!-- Boxicons CDN -->
-    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"/>
-  </head>
+      <p>Este recurso energético está presente en cualquier geografía, pero solo se puede aprovechar en localizaciones con unas condiciones físicas concretas. En las ubicaciones más favorables se manifiesta de forma natural, algunos de los ejemplos de energía geotérmica son: las fuentes termales, géiseres o volcanes.</p>
 
-  <body>
-    <aside>
-      <nav>
-        <ul>
-          <li>
-            <a href="/Proyecto-Bootcamp/hojas HTML/Inicio.html" class="active">
-              <i class="bx bx-home"></i>
-              <span>Inicio</span>
-            </a>
-          </li>
-          <li>
-            <a href="/Proyecto-Bootcamp/hojas HTML/historia.html">
-              <i class="bx bx-grid-alt"></i>
-              <span>Historicos</span>
-            </a>
-          </li>
-          <li>
-            <a href="estimacion.html">
-              <i class="bx bx-pie-chart-alt"></i>
-              <span>Estimacion</span>
-            </a>
-          </li>
-          <li>
-            <a href="/Proyecto-Bootcamp/hojas HTML/Dashboard.html">
-              <img src="/Proyecto-Bootcamp/icons/chart-spline.png">
-              <span>Dashboard</span>
-            </a>
-          </li>
-          <li>
-            <a href="/Proyecto-Bootcamp/hojas HTML/Sobre el proyecto.html">
-              <i class="bx bx-book-bookmark"></i>
-              <span>Sobre el Proyecto</span>
-            </a>
-          </li>
-          <li>
-            <a href="/Proyecto-Bootcamp/hojas HTML/Calculadora.html">
-              <i class="bx bx-calculator"></i>
-              <span>Calculadora</span>
-            </a>
-          </li>
-          <li>
-            <a href="/Proyecto-Bootcamp/hojas HTML/Sobre nosotros.html">
-              <img src="/Proyecto-Bootcamp/icons/user-search.png"></i>
-              <span>Sobre Nosotros</span>
-            </a>
-          </li>
-          <li>
-            <a href="#" data-resize-btn> 
-              <i class="bx bx-chevrons-right"></i>
-              <span>Collapse</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </aside>
+      <p>Esta fuente de energía primaria renovable es una pieza clave en la senda hacia la descarbonización, ya que puede cubrir una parte importante de la demanda de climatización y electricidad de nuestros edificios e industrias. Para que nos hagamos una idea, una planta geotérmica de unos 10 MW es capaz de producir anualmente la energía que necesitan más de 23.000 viviendas y su uso evitaría la emisión de unas 57.000 toneladas de CO2 cada año.</p>
 
-     <!-- TODO EDITABLE ES EN EL MAIN -->
-    <main>
-      <h1>Energia Solar</h1> 
-      <p>
-        La energía solar es la energía que se obtiene del sol, ya sea en forma de luz o calor, y se puede utilizar para generar electricidad o calentar agua. Es una fuente de energía renovable e inagotable, lo que la convierte en una alternativa sostenible a los combustibles fósiles
+      <h2>¿Cómo se obtiene y cómo funciona la energía geotérmica?</h2>
+
+      <p>La tierra está formada por diferentes estratos o capas rocosas desde el centro hasta el exterior. Su núcleo es una masa sólida e incandescente compuesta de minerales, gases y rocas fundidas. Cuando el agua de la lluvia se filtra a través de la corteza terrestre, forma mantos, corrientes de aguas profundas y acuíferos confinados. Estos, al entrar en contacto con las altas temperaturas del subsuelo dan lugar a un reservorio geotérmico formado por agua y vapor a elevadas temperaturas.</p>
       </p>
 
-      <div class="placeholder">
-        <div class="ph-1">
-          <h2>Seccion 1</h2>
-          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quis, minus rem a ipsum quia officia necessitatibus quidem cupiditate nostrum modi in culpa maxime nobis vitae porro pariatur nam neque obcaecati?</p>
-        </div>
-        <div class="ph-2">
-          <h2>Seccion 2</h2>
-          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quis, minus rem a ipsum quia officia necessitatibus quidem cupiditate nostrum modi in culpa maxime nobis vitae porro pariatur nam neque obcaecati?</p>
-        </div>
-        <div class="ph-3">
-          <h2>Seccion 1</h2>
-          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quis, minus rem a ipsum quia officia necessitatibus quidem cupiditate nostrum modi in culpa maxime nobis vitae porro pariatur nam neque obcaecati?</p>
-        </div>
-        <div class="ph-4"></div>
-        <div class="ph-5"></div>
-        <div class="ph-6"></div>
+      <p>A continuación, vamos a ver cómo se obtiene este preciado recurso natural: </p>
+
+      <img src="../img/img1.jpg">
+      <h3>Perforación:</h3>
+      <p>Con el fin de acceder a esa fuente de agua caliente del subsuelo, es necesario localizar y perforar la zona adecuada. Estas perforaciones suelen tener entre 10 y 15 centímetros de diámetro y su profundidad depende de las condiciones físicas y geológicas de la zona.</p>
+
+      <img src="../img/img2.jpg">
+      <h3>Extracción:</h3>
+      <p>A continuación se introducen sondas geotérmicas en forma de tuberías. Estas contienen agua o líquido anticongelante que al descender a las zonas más profundas se calienta y vuelve a subir accionando una bomba donde se produce el intercambio de calor.</p>
+
+      <img src="../img/img3.jpg">
+      <h3>Producción:</h3>
+      <p>Para transformar la energía calorífica en electricidad es necesario instalar sobre el yacimiento una planta geotérmica que recoja el fluido natural (agua y vapor) y los transforme en energía cinética, mediante el uso de una turbina. Generalmente, el agua y el vapor se separan.</p>
+
+      <p>El vapor generado en todo este proceso se conduce a través de una red de tuberías para producir energía térmica o eléctrica. Por su parte, el agua se puede utilizar de forma directa como agua sanitaria o calefacción para la vivienda. Tras su uso, vuelve a canalizarse hacia el subsuelo. Gracias a las últimas tecnologías, el fluido circula en todo momento por un circuito cerrado, sin emisión alguna de gases a la atmósfera, y, cuando se enfría, se devuelve al subsuelo convertido en agua donde capta de nuevo el calor. </p>
+
+    </div>
+    <div class = "content_noticias">
+      <div class="card_noticias">
         
+        <div style='text-align:center;position:relative;font-size:0;'>
+        <img style='object-fit:cover;width:100%' alt='Resumen del mercado de energía geotérmica' src='https://s3.mordorintelligence.com/geothermal-energy-market/1700569697165_geothermal-energy-market_Market_Summary.webp?embed=true'>
+        <a target='_blank' href='https://www.mordorintelligence.com/es/industry-reports/geothermal-energy-market'>
+        <div style='position:absolute;bottom:0px;right:0px;color:white;background: rgba(0,0,0, 0.5);padding: 4px 6px;font-family:Arial;font-size:0.7rem;'>
+          Image Source
+        </div>
+        </a>
+        </div>
+        
+        <p class="p_noticias">
+          Se espera que el tamaño del mercado de energía geotérmica en términos de base instalada crezca de 15,68 gigavatios en 2024 a 17,91 gigavatios en 2029, a una tasa compuesta anual del 2,69% durante el período previsto (2024-2029).<br> Source:<a target='_blank' href="https://www.mordorintelligence.com/es/industry-reports/geothermal-energy-market">https://www.mordorintelligence.com/es/industry-reports/geothermal-energy-market</a> 
+        </p>
+
+        <div style='text-align:center;position:relative;font-size:0;'>
+        <img style='object-fit:cover;width:100%' alt='Colombia Solar Energy Market Summary' src='https://s3.mordorintelligence.com/colombia-solar-energy-market/colombia-solar-energy-market-size-image-1735450991063.webp?embed=true'>
+        <a target='_blank' href='https://www.mordorintelligence.com/industry-reports/colombia-solar-energy-market'>
+        <div style='position:absolute;bottom:0px;right:0px;color:white;background: rgba(0,0,0, 0.5);padding: 4px 6px;font-family:Arial;font-size:0.7rem;'>
+        Image Source
+        </div>
+        </a>
+        </div>
+        <p class="p_noticias">
+          El tamaño del mercado de energía solar en Colombia, en términos de capacidad instalada, se espera que crezca de 2,28 gigavatios en 2025 a 19,80 gigavatios para 2030, con una tasa de crecimiento anual compuesta (CAGR) del 54,07% durante el período de pronóstico (2025-2030).<br>Source: <a target='_blank' href="https://www.mordorintelligence.com/industry-reports/colombia-solar-energy-market">https://www.mordorintelligence.com/industry-reports/colombia-solar-energy-market</a>
+        </p>
       </div>
-    </main>
-    <script src="/Proyecto-Bootcamp/Javascript/script.js"></script>
-    <!--Cambio posicion del head al body-->
-  </body>
+    </div>
+  </section>
+
+  <script type="text/javascript" src="../Javascript/scriptInicio.js"></script>
+    <!-- Site footer -->
+    <footer class="bg-black text-white py-10 px-4 sm:px-6 lg:px-8 font-inter rounded-t-lg">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+            <!-- Sección de Logo y Descripción -->
+            <div class="footer-section flex flex-col items-center md:items-start text-center md:text-left">
+                <a href="#" class="mb-4">
+                    <!-- Placeholder para el logo. Considera usar un SVG para mejor escalabilidad. -->
+                    <img src="https://placehold.co/120x40/fff/000?text=EcoDatos" alt="Logo de la Empresa" class="h-10 rounded-md">
+                </a>
+                <p class="text-sm text-white-400 leading-relaxed max-w-xs">
+                    Ofrecemos soluciones informacion actualizada y estadisticas en tiempo real.
+                </p>
+            </div>
+
+            <!-- Sección de Enlaces Rápidos -->
+            <div class="footer-section text-center md:text-left">
+                <h3 class="text-lg font-semibold text-yellow-400 mb-4">Enlaces Rápidos</h3>
+                <ul class="space-y-2">
+                    <li><a href="#inicio" class="text-white-300 hover:text-blue-300 transition duration-300 ease-in-out rounded-md">Inicio</a></li>
+                    <li><a href="#servicios" class="text-gray-300 hover:text-blue-300 transition duration-300 ease-in-out rounded-md">Historia</a></li>
+                    <li><a href="#portafolio" class="text-gray-300 hover:text-blue-300 transition duration-300 ease-in-out rounded-md">Dashboard</a></li>
+                    <li><a href="#blog" class="text-gray-300 hover:text-blue-300 transition duration-300 ease-in-out rounded-md">Calculadora</a></li>
+                    <li><a href="#sobre el proyecto" class="text-gray-300 hover:text-blue-300 transition duration-300 ease-in-out rounded-md">Sobre el Proyecto</a></li>
+                    <li><a href="/Proyecto-Bootcamp/hojas HTML/Sobre nosotros.html" class="text-gray-300 hover:text-blue-300 transition duration-300 ease-in-out rounded-md">Nosotros</a></li>
+                </ul>
+            </div>
+
+            <!-- Sección de Contacto -->
+            <div class="footer-section text-center md:text-left">
+                <h3 class="text-lg font-semibold text-yellow-400 mb-4">Contáctanos</h3>
+                <ul class="space-y-2 text-gray-300">
+                    <li class="flex items-center justify-center md:justify-start">
+                        <!-- Icono de ubicación (placeholder) -->
+                        <span class="mr-2">&#x1F4CD;</span>
+                        1600 Amphitheatre Pkwy, Mountain View, CA 94043, Estados Unidos
+                    </li>
+                    <li class="flex items-center justify-center md:justify-start">
+                        <!-- Icono de email (placeholder) -->
+                        <span class="mr-2">&#x2709;&#xFE0F;</span>
+                        <a href="mailto:info@tudominio.com" class="hover:text-blue-300 transition duration-300 ease-in-out rounded-md">info@ecodatos.com</a>
+                    </li>
+                    <li class="flex items-center justify-center md:justify-start">
+                        <!-- Icono de teléfono (placeholder) -->
+                        <span class="mr-2">&#x260E;&#xFE0F;</span>
+                        <a href="tel:+1234567890" class="hover:text-blue-300 transition duration-300 ease-in-out rounded-md">+123 456 7890</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Sección de Redes Sociales -->
+            <div class="footer-section text-center md:text-left">
+                <h3 class="text-lg font-semibold text-yellow-400 mb-4">Síguenos</h3>
+                <div class="flex justify-center md:justify-start space-x-4">
+                    <!-- Iconos de redes sociales (placeholders) -->
+                    <a href="#" target="_blank" aria-label="Facebook" class="text-gray-300 hover:text-blue-300 transition duration-300 ease-in-out transform hover:scale-110">
+                        <img src="../img/facebook.png" alt="Facebook" class="rounded-full">
+                    </a>
+                    <a href="#" target="_blank" aria-label="Twitter" class="text-gray-300 hover:text-blue-300 transition duration-300 ease-in-out transform hover:scale-110">
+                        <img src="../img/logotipo-de-twitter.png" alt="Twitter" >
+                    </a>
+                    <a href="#" target="_blank" aria-label="Instagram" class="text-gray-300 hover:text-blue-300 transition duration-300 ease-in-out transform hover:scale-110">
+                        <img src="../img/instagram.png" alt="Instagram" class="rounded-full">
+                    </a>
+                    <a href="#" target="_blank" aria-label="LinkedIn" class="text-gray-300 hover:text-blue-300 transition duration-300 ease-in-out transform hover:scale-110">
+                        <img src="../img/linkedin.png" alt="LinkedIn" class="rounded-full">
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Sección de Copyright -->
+        <div class="border-t border-gray-700 mt-10 pt-6 text-center text-gray-500 text-sm">
+            <p>&copy; 2025 EcoDatos. Todos los derechos reservados.</p>
+            <p class="mt-2">Diseñado con &#x2764;&#xFE0F; por Los Jimmy Neutron</p>
+        </div>
+    </footer>
+</body>
 </html>

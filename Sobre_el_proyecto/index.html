@@ -1,32 +1,61 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <title>EcoDatos</title>
-    <link rel="stylesheet" href="../Estilos CSS/stylesNew.css">
-    <link rel="stylesheet" href="../Estilos CSS/style_sobreProyecto.css">
-    <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto Final de Programación - Universidad Libre de Pereira</title>
+    <!-- Carga de Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+    <!-- Configuración de la fuente Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6; 
+            color: #374151; 
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+        .section-title {
+            font-size: 2.25rem; 
+            font-weight: 700; 
+            color: #1f2937; 
+            margin-bottom: 1.5rem; 
+            text-align: center;
+        }
+        .card {
+            background-color: #ffffff;
+            border-radius: 0.75rem; 
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); 
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        .list-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 0.75rem;
+        }
+        .list-item svg {
+            flex-shrink: 0;
+            margin-right: 0.5rem;
+            color: #10b981; 
+        }
+    </style>
+</head>
+<body class="antialiased">
 
-   
-  </head>
-  
-    <header class="sticky">
-        <a href="#" class="logo">EcoDatos</a>
-        <div class="menu-toggle" onclick="toggleMenu();">
-            <i class="fas fa-bars"></i> </div>
-        <ul class="navigation">
-            <li><a href="../hojas HTML/Inicio.html">Inicio</a></li>
-            <li><a href="./historia.html">Historia</a></li>
-            <li><a href="../hojas HTML/dashboard.html">Dashboard</a></li>
-            <li><a href="../hojas HTML/calculadora.html">Calculadora</a></li>
-            <li><a href="#">Sobre el Proyecto</a></li>
-            <li><a href="../hojas HTML/Sobre nosotros.html">Nosotros</a></li>
-        </ul>
+    <header class="bg-gradient-to-r from-emerald-500 to-teal-600 text-white py-8 shadow-md rounded-b-xl">
+        <div class="container text-center">
+            <h1 class="text-5xl font-extrabold mb-2">Universidad Libre de Pereira</h1>
+            <p class="text-xl font-light">Proyecto Final de Programación</p>
+            <p class="text-lg mt-4">Presentado por: Santiago Andrés Agudelo, Steven Velasquez, Daniel Quesada, Emerson Gómez Velásquez, Linda Nikol Ramirez.</p>
+            <p class="text-md mt-2">Julio 31 de 2025</p>
+        </div>
     </header>
 
-  <body>
     <main class="container py-8">
 
         <section class="mb-12">
@@ -41,7 +70,9 @@
                 <p class="text-lg leading-relaxed">
                     Este proyecto surge como una iniciativa orientada a potenciar el pensamiento computacional de los jóvenes, brindándoles herramientas prácticas para resolver problemas reales mediante la programación. Además, se enmarca en un propósito aún más amplio: contribuir al desarrollo sostenible del país mediante el enfoque en energías limpias y tecnologías amigables con el medio ambiente. A través de esta experiencia formativa, se busca que los campistas no solo adquieran habilidades técnicas, sino que también se conviertan en agentes de cambio comprometidos con un futuro más equitativo, innovador y sostenible.
                 </p>
-                
+                <div class="mt-8 flex justify-center">
+                    <img src="http://googleusercontent.com/file_content/0" alt="Imagen de Introducción al Proyecto" class="rounded-lg shadow-md max-w-full h-auto md:max-w-xl">
+                </div>
             </div>
         </section>
 
@@ -67,7 +98,7 @@
                 <h3 class="text-2xl font-semibold mb-4 text-gray-800">3. Requerimientos Atendidos</h3>
                 <p class="mb-2 text-lg leading-relaxed font-semibold">Nivel 1</p>
                 <p class="mb-4 text-lg leading-relaxed">
-                    Se creó una página descriptiva centrada en una fuente de energía renovable, como la energía geotérmica, el desarrollo de la página fue hecho con Vanilla y utilizando Tailwind para algunos estilos. La estructura visual se desarrolló con HTML y CSS, para la estructura de la página web, CSS para darle estilo, y HTML y JAVASCRIPT para darle funcionalidad. Con usos de Frameworks, lo que garantiza una presentación clara y visualmente atractiva.
+                    Se creó una página descriptiva centrada en una fuente de energía renovable, como la energía geotérmica, el desarrollo de la página fue hecho con Vanilla y sin utilizar ningún framework. La estructura visual se desarrolló con HTML y CSS, para la estructura de la página web, CSS para darle estilo, y HTML y JAVASCRIPT para darle funcionalidad. Con usos de Frameworks, lo que garantiza una presentación clara y visualmente atractiva.
                 </p>
                 <p class="mb-2 text-lg leading-relaxed font-semibold">Nivel 2</p>
                 <p class="mb-4 text-lg leading-relaxed">
@@ -110,7 +141,9 @@
                     <li>Fuentes de consulta y apoyo técnico</li>
                     <li>Repositorios de referencia en github.com</li>
                 </ul>
-                
+                <div class="mt-8 flex justify-center">
+                    <img src="http://googleusercontent.com/file_content/1" alt="Imagen del Desarrollo del Proyecto" class="rounded-lg shadow-md max-w-full h-auto md:max-w-xl">
+                </div>
             </div>
         </section>
 
@@ -160,85 +193,13 @@
         </section>
 
     </main>
-    <footer class="bg-black text-white py-10 px-4 sm:px-6 lg:px-8 font-inter ">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
 
-            <!-- Sección de Logo y Descripción -->
-            <div class="footer-section flex flex-col items-center md:items-start text-center md:text-left">
-                <a href="#" class="mb-4">
-                    <!-- Placeholder para el logo. Considera usar un SVG para mejor escalabilidad. -->
-                    <img src="https://placehold.co/120x40/fff/000?text=EcoDatos" alt="Logo de la Empresa" class="h-10 rounded-md">
-                </a>
-                <p class="text-sm text-white-400 leading-relaxed max-w-xs">
-                    Ofrecemos soluciones informacion actualizada y estadisticas en tiempo real.
-                </p>
-            </div>
-
-            <!-- Sección de Enlaces Rápidos -->
-            <div class="footer-section text-center md:text-left">
-                <h3 class="text-lg font-semibold text-yellow-400 mb-4">Enlaces Rápidos</h3>
-                <ul class="space-y-2">
-                    <li><a href="/Proyecto-Bootcamp/hojas HTML/Inicio.html" class="text-white-300 hover:text-blue-300 transition duration-300 ease-in-out rounded-md">Inicio</a></li>
-                    <li><a href="#servicios" class="text-gray-300 hover:text-blue-300 transition duration-300 ease-in-out rounded-md">Historia</a></li>
-                    <li><a href="#portafolio" class="text-gray-300 hover:text-blue-300 transition duration-300 ease-in-out rounded-md">Dashboard</a></li>
-                    <li><a href="#blog" class="text-gray-300 hover:text-blue-300 transition duration-300 ease-in-out rounded-md">Calculadora</a></li>
-                    <li><a href="#sobre el proyecto" class="text-gray-300 hover:text-blue-300 transition duration-300 ease-in-out rounded-md">Sobre el Proyecto</a></li>
-                    <li><a href="#nosotros" class="text-gray-300 hover:text-blue-300 transition duration-300 ease-in-out rounded-md">Nosotros</a></li>
-                </ul>
-            </div>
-
-            <!-- Sección de Contacto -->
-            <div class="footer-section text-center md:text-left">
-                <h3 class="text-lg font-semibold text-yellow-400 mb-4">Contáctanos</h3>
-                <ul class="space-y-2 text-gray-300">
-                    <li class="flex items-center justify-center md:justify-start">
-                        <!-- Icono de ubicación (placeholder) -->
-                        <span class="mr-2">&#x1F4CD;</span>
-                        1600 Amphitheatre Pkwy, Mountain View, CA 94043, Estados Unidos
-                    </li>
-                    <li class="flex items-center justify-center md:justify-start">
-                        <!-- Icono de email (placeholder) -->
-                        <span class="mr-2">&#x2709;&#xFE0F;</span>
-                        <a href="mailto:info@tudominio.com" class="hover:text-blue-300 transition duration-300 ease-in-out rounded-md">info@ecodatos.com</a>
-                    </li>
-                    <li class="flex items-center justify-center md:justify-start">
-                        <!-- Icono de teléfono (placeholder) -->
-                        <span class="mr-2">&#x260E;&#xFE0F;</span>
-                        <a href="tel:+1234567890" class="hover:text-blue-300 transition duration-300 ease-in-out rounded-md">+123 456 7890</a>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Sección de Redes Sociales -->
-            <div class="footer-section text-center md:text-left">
-                <h3 class="text-lg font-semibold text-yellow-400 mb-4">Síguenos</h3>
-                <div class="flex justify-center md:justify-start space-x-4">
-                    <!-- Iconos de redes sociales (placeholders) -->
-                    <a href="#" target="_blank" aria-label="Facebook" class="text-gray-300 hover:text-blue-300 transition duration-300 ease-in-out transform hover:scale-110">
-                        <img src="../img/facebook.png" alt="Facebook" class="rounded-full">
-                    </a>
-                    <a href="#" target="_blank" aria-label="Twitter" class="text-gray-300 hover:text-blue-300 transition duration-300 ease-in-out transform hover:scale-110">
-                        <img src="../img/logotipo-de-twitter.png" alt="Twitter" >
-                    </a>
-                    <a href="#" target="_blank" aria-label="Instagram" class="text-gray-300 hover:text-blue-300 transition duration-300 ease-in-out transform hover:scale-110">
-                        <img src="../img/instagram.png" alt="Instagram" class="rounded-full">
-                    </a>
-                    <a href="#" target="_blank" aria-label="LinkedIn" class="text-gray-300 hover:text-blue-300 transition duration-300 ease-in-out transform hover:scale-110">
-                        <img src="../img/linkedin.png" alt="LinkedIn" class="rounded-full">
-                    </a>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- Sección de Copyright -->
-        <div class="border-t border-gray-700 mt-10 pt-6 text-center text-gray-500 text-sm">
-            <p>&copy; 2025 EcoDatos. Todos los derechos reservados.</p>
-            <p class="mt-2">Diseñado con &#x2764;&#xFE0F; por Los Jimmy Neutron</p>
+    
+    <footer class="bg-gray-800 text-white py-6 text-center rounded-t-xl">
+        <div class="container">
+            <p>&copy; 2025 Universidad Libre de Pereira. Todos los derechos reservados.</p>
         </div>
     </footer>
-    <script type="text/javascript" src="../Javascript/scriptNew.js"></script>
-    <script src="/Proyecto-Bootcamp/Javascript/script.js"></script>
-    <!--Cambio posicion del head al body-->
-  </body>
+
+</body>
 </html>

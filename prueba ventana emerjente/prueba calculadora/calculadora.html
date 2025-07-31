@@ -5,9 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../Estilos CSS/style_tabla.css ">
     <link rel="stylesheet" href="../Estilos CSS/stylesNew.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="/Proyecto-Bootcamp/prueba ventana emerjente/style.css">
-    <!-- <link rel="stylesheet" href="../prueba calculadora/style.css"> -->
+    <link rel="stylesheet" href="../prueba calculadora/style.css">
     <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Configuración de Tailwind para usar la fuente Inter -->
@@ -30,10 +28,10 @@
         <div class="menu-toggle" onclick="toggleMenu();">
             <i class="fas fa-bars"></i> </div>
         <ul class="navigation"> <li><a href="../hojas HTML/Inicio.html">Inicio</a></li>
-            <li><a href="../hojas HTML/historia.html">Historia</a></li>
+            <li><a href="#">Historia</a></li>
             <li><a href="../hojas HTML/dashboard.html">Dashboard</a></li>
-            <li><a href="../hojas HTML/calculadora.html">Calculadora</a></li>
-            <li><a href="../hojas HTML/Sobre el proyecto.html">Sobre el Proyecto</a></li>
+            <li><a href="#">Calculadora</a></li>
+            <li><a href="#">Sobre el Proyecto</a></li>
             <li><a href="../hojas HTML/Sobre nosotros.html">Nosotros</a></li>
         </ul>
     </header>
@@ -55,8 +53,7 @@
             </div>
 
             <div class="file-selection">
-                <button id="abrirModalBtn">Calculadora de Energía Renovable</button>
-                <!-- <a class="link_calculadora" href="#link_calculadora">Calculadora consumo Elétrico</a> -->
+                <a class="link_calculadora" href="#link_calculadora">Calculadora consumo Elétrico</a>
                 <p>Select Data File:</p>
                 <div class="file-option" data-file="../prueba 1 tabla/wind-generation.csv">Wind Generation</div>
                 <div class="file-option" data-file="../prueba 1 tabla/modern-renewable-prod.csv">Modern Renewable Production</div>
@@ -68,55 +65,48 @@
         </div>
 
         <!-- Seccion calculadora -->
-        <div id="miModal" class="modal">
+        <div class="contenedor_calculadora">
+            <div class="container">
+                <h1 id="link_calculadora">Estimación de Energía Renovable en tu Consumo Eléctrico</h1>
+                <p>Esta herramienta estima la proporción de tu consumo eléctrico que, en teoría, proviene de fuentes renovables, basándose en la mezcla energética de la entidad y año seleccionados.</p>
+                <p class="warning"><strong>Nota:</strong> Este cálculo asume que tu consumo eléctrico es representativo de la mezcla energética general de la entidad seleccionada para ese año. No considera la fuente específica de tu electricidad o si tienes instalaciones de energía renovable en tu propio hogar.</p>
 
-        <div class="modal-contenido">
-            <span class="cerrar">&times;</span>
-            <div class="contenedor_calculadora">
-                <div class="container">
-                    <h1 id="link_calculadora">Estimación de Energía Renovable en tu Consumo Eléctrico</h1>
-                    <p>Esta herramienta estima la proporción de tu consumo eléctrico que, en teoría, proviene de fuentes renovables, basándose en la mezcla energética de la entidad y año seleccionados.</p>
-                    <p class="warning"><strong>Nota:</strong> Este cálculo asume que tu consumo eléctrico es representativo de la mezcla energética general de la entidad seleccionada para ese año. No considera la fuente específica de tu electricidad o si tienes instalaciones de energía renovable en tu propio hogar.</p>
-
-                    <form id="estimationForm">
-                        <div class="form-group">
-                            <label for="consumption">Tu Consumo Eléctrico Total (kWh/año):</label>
-                            <input type="number" id="consumption" name="consumption" min="0" step="any" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="entitySelect">Selecciona una Entidad/País:</label>
-                            <select id="entitySelect" required>
-                                <option value="">Cargando entidades...</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="yearSelect">Selecciona un Año:</label>
-                            <select id="yearSelect" required>
-                                <option value="">Selecciona una entidad primero...</option>
-                            </select>
-                        </div>
-
-                        <button type="submit">Calcular Proporción</button>
-                    </form>
-
-                    <div id="results" class="results-container">
-                        <h2>Resultados de la Estimación</h2>
-                        <p id="selectedConsumption">Consumo Ingresado: </p>
-                        <p id="selectedEntityYear">Entidad y Año Seleccionados: </p>
-                        <p id="renewableSharePercentage">Porcentaje de Energía Renovable en la Entidad: </p>
-                        <p id="userRenewableConsumption">Tu Consumo Estimado de Energía Renovable: </p>
+                <form id="estimationForm">
+                    <div class="form-group">
+                        <label for="consumption">Tu Consumo Eléctrico Total (kWh/año):</label>
+                        <input type="number" id="consumption" name="consumption" min="0" step="any" required>
                     </div>
+
+                    <div class="form-group">
+                        <label for="entitySelect">Selecciona una Entidad/País:</label>
+                        <select id="entitySelect" required>
+                            <option value="">Cargando entidades...</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="yearSelect">Selecciona un Año:</label>
+                        <select id="yearSelect" required>
+                            <option value="">Selecciona una entidad primero...</option>
+                        </select>
+                    </div>
+
+                    <button type="submit">Calcular Proporción</button>
+                </form>
+
+                <div id="results" class="results-container">
+                    <h2>Resultados de la Estimación</h2>
+                    <p id="selectedConsumption">Consumo Ingresado: </p>
+                    <p id="selectedEntityYear">Entidad y Año Seleccionados: </p>
+                    <p id="renewableSharePercentage">Porcentaje de Energía Renovable en la Entidad: </p>
+                    <p id="userRenewableConsumption">Tu Consumo Estimado de Energía Renovable: </p>
                 </div>
             </div>
         </div>
-
     </div>
 
-    </div>
-    </div>
 
+    <!-- Seccion pien de pagina -->
     <footer class="bg-black text-white py-10 px-4 sm:px-6 lg:px-8 font-inter">
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <!-- Sección de Logo y Descripción -->
@@ -198,6 +188,5 @@
     <script type="text/javascript" src="../Javascript/scriptNew.js"></script>
     <script src="../Javascript/tablas.js"></script>
     <script src="../prueba calculadora/script.js"></script>
-    <script src="/Proyecto-Bootcamp/prueba ventana emerjente/script_ventana.js"></script>
 </body>
 </html>

@@ -2,85 +2,252 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <title>Nombre de la pagina</title>
-    <link rel="stylesheet" href="/Proyecto-Bootcamp/Estilos CSS/styles.css" />
+    <title>EcoDatos</title>
+    <link rel="stylesheet" href="../Estilos CSS/style_historia.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> 
+    <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Boxicons CDN -->
-    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"/>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
   </head>
 
   <body>
-    <aside>
-      <nav>
-        <ul>
-          <li>
-            <a href="/Proyecto-Bootcamp/hojas HTML/Inicio.html">
-              <i class="bx bx-home"></i>
-              <span>Inicio</span>
-            </a>
-          </li>
-          <li>
-            <a href="/Proyecto-Bootcamp/hojas HTML/historia.html" class="active">
-              <i class="bx bx-grid-alt"></i>
-              <span>Historicos</span>
-            </a>
-          </li>
-          <li>
-            <a href="estimacion.html">
-              <i class="bx bx-pie-chart-alt"></i>
-              <span>Estimacion</span>
-            </a>
-          </li>
-          <li>
-            <a href="/Proyecto-Bootcamp/hojas HTML/Dashboard.html">
-              <img src="/Proyecto-Bootcamp/icons/chart-spline.png">
-              <span>Dashboard</span>
-            </a>
-          </li>
-          <li>
-            <a href="/Proyecto-Bootcamp/hojas HTML/Sobre el proyecto.html">
-              <i class="bx bx-book-bookmark"></i>
-              <span>Sobre el Proyecto</span>
-            </a>
-          </li>
-          <li>
-            <a href="/Proyecto-Bootcamp/hojas HTML/Sobre nosotros.html">
-              <img src="/Proyecto-Bootcamp/icons/user-search.png"></i>
-              <span>Sobre Nosotros</span>
-            </a>
-          </li>
-          <li>
-            <a href="#" data-resize-btn> 
-              <i class="bx bx-chevrons-right"></i>
-              <span>Collapse</span>
-            </a>
-          </li>
+    <header class="sticky">
+        <a href="#" class="logo">EcoDatos</a>
+        <div class="menu-toggle" onclick="toggleMenu();">
+            <i class="fas fa-bars"></i> </div>
+        <ul class="navigation"> 
+            <li><a href="../hojas HTML/Inicio.html">Inicio</a></li>
+            <li><a href="../hojas HTML/historia.html">Historia</a></li>
+            <li><a href="../hojas HTML/dashboard.html">Dashboard</a></li>
+            <li><a href="../hojas HTML/calculadora.html">Calculadora</a></li>
+            <li><a href="../hojas HTML/Sobre el proyecto.html">Sobre el Proyecto</a></li>
+            <li><a href="../hojas HTML/Sobre nosotros.html">Nosotros</a></li>
         </ul>
-      </nav>
-    </aside>
+    </header>
 
-      <!-- TODO EDITABLE ES EN EL MAIN -->
-    <main>
-      <h1>LA ENERGIA GEOTERMICA: qué es, cómo funciona y cuáles son sus ventajas</h1> 
-      <p>
-        La transformación del calor de la tierra en energía.
-      </p>
+    <div class="main-wrapper">
+        <nav class="navbar">
+            <h3>Navegación</h3>
+            <ul>
+                <li><a href="#usos-ancestrales">Usos Ancestrales</a></li>
+                <li><a href="#primeras-aplicaciones-comerciales">Primeras Aplicaciones Comerciales e Industriales</a></li>
+                <li>
+                    <a href="#siglo-xx-generacion-electrica">El Siglo XX: Generación Eléctrica y Expansión Global</a>
+                    <ul>
+                        <li><a href="#evolucion-tecnologias">Evolución de Tecnologías</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#siglo-xxi-avances-consolidacion">El Siglo XXI: Avances y Consolidación</a>
+                    <ul>
+                        <li><a href="#paises-lideres">Países Líderes</a></li>
+                        <li><a href="#innovaciones-futuro">Innovaciones y Futuro</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <div class="container">
+            <h1></h1>
+            <p>Aunque la explotación industrial de la energía geotérmica es un fenómeno relativamente reciente, la interacción y el aprovechamiento de sus manifestaciones por parte de la humanidad se remontan a milenios. Las civilizaciones antiguas reconocieron y utilizaron el calor terrestre para diversas necesidades cotidianas y ceremoniales.</p>
 
-      <div class="placeholder">
-        <div class="ph-1">
-          <h2>¿Qué es la energía geotérmica?</h2>
-          <p>La geotermia es una energía renovable e inagotable que se obtiene al aprovechar el calor del interior de la Tierra, almacenado en rocas, suelos y aguas subterráneas.<br>
-          <img src = "/Proyecto-Bootcamp/img/geotermia1.jpg">
-          Este recurso energético está presente en cualquier geografía, pero solo se puede aprovechar en localizaciones con unas condiciones físicas concretas. En las ubicaciones más favorables se manifiesta de forma natural, algunos de los ejemplos de energía geotérmica son: las fuentes termales, géiseres o volcanes. <br>
+            <br>
 
-          Esta fuente de energía primaria renovable es una pieza clave en la senda hacia la descarbonización, ya que puede cubrir una parte importante de la demanda de climatización y electricidad de nuestros edificios e industrias. Para que nos hagamos una idea, una planta geotérmica de unos 10 MW es capaz de producir anualmente la energía que necesitan más de 23.000 viviendas y su uso evitaría la emisión de unas 57.000 toneladas de CO2 cada año.
-          <h2>¿Cómo se obtiene y cómo funciona la energía geotérmica? </h2>
-          <p>La tierra está formada por diferentes estratos o capas rocosas desde el centro hasta el exterior. Su núcleo es una masa sólida e incandescente compuesta de minerales, gases y rocas fundidas. Cuando el agua de la lluvia se filtra a través de la corteza terrestre, forma mantos, corrientes de aguas profundas y acuíferos confinados. Estos, al entrar en contacto con las altas temperaturas del subsuelo dan lugar a un reservorio geotérmico formado por agua y vapor a elevadas temperaturas.
+            <h2 id="usos-ancestrales">Usos Ancestrales</h2>
+            <p>La evidencia arqueológica sugiere que los **nativos americanos** ya utilizaban la energía geotérmica para cocinar hace aproximadamente 10.000 años. Este uso primitivo demuestra una temprana comprensión de las propiedades térmicas de la Tierra. En el ámbito de las civilizaciones clásicas, los **griegos y los romanos** empleaban baños calentados por aguas termales, y se han documentado casos de calefacción de espacios en la ciudad de Pompeya tan temprano como en el siglo I d.C. Estas aplicaciones resaltan la comodidad y los beneficios prácticos que el calor geotérmico ofrecía a las comunidades antiguas.</p>
+            <p>En **Islandia**, una región geológicamente muy activa, el uso de la energía geotérmica se remonta a la Era Vikinga, donde se empleaba inicialmente para lavar y bañarse. Con el tiempo, sus aplicaciones se expandieron significativamente, incluyendo la calefacción de hogares, invernaderos y piscinas, así como el derretimiento de nieve y hielo en calles y aceras. Esta larga historia de adaptación y aprovechamiento ha llevado a que, en la actualidad, al menos el **90% de los hogares en Islandia se calienten con energía geotérmica**, lo que subraya la profunda integración de este recurso en la vida y la cultura islandesa.</p>
+
+            <br>
+
+            <h2 id="primeras-aplicaciones-comerciales">Primeras Aplicaciones Comerciales e Industriales</h2>
+            <p>El siglo XIX marcó el inicio de la explotación industrial de la energía geotérmica, con **Italia** a la vanguardia. En 1818, el ingeniero francés François Jacques de Larderel fue pionero en el aprovechamiento industrial al utilizar el vapor de géiseres para extraer ácido bórico del lodo volcánico en Larderello, Italia. Esta actividad, que comenzó formalmente en 1827, representa la explotación industrial más temprana de este recurso.</p>
+            <p>En **Estados Unidos**, el uso comercial de la geotermia para calefacción comenzó en 1830, cuando Asa Thompson cobró un dólar por el uso de tres baños alimentados por manantiales en Hot Springs, Arkansas. Este fue el primer uso comercial conocido de la geotermia como sistema de calefacción. Más tarde, en 1847, William Bell Elliot descubrió "The Geysers", un "valle humeante" al norte de San Francisco, un área que se convertiría en un epicentro de la generación de energía geotérmica. Hacia finales de siglo, en 1892, se estableció el primer sistema de calefacción de distrito en Boise, Idaho, impulsado por energía geotérmica, un modelo que fue replicado en Klamath Falls, Oregón, en 1900. Estos desarrollos sentaron las bases para la expansión de la geotermia más allá de los usos tradicionales.</p>
+
+            <br>
+
+            <h2 id="siglo-xx-generacion-electrica">El Siglo XX: Nacimiento de la Generación Eléctrica Geotérmica y Expansión Global</h2>
+            <p>El siglo XX fue testigo de una transformación fundamental en el aprovechamiento de la energía geotérmica, pasando de aplicaciones directas a la generación de electricidad a gran escala. Este período marcó el inicio de la industria geotérmica moderna, con hitos significativos en varios países.</p>
+
+            <h3>Hitos de la Generación Eléctrica</h3>
+            <ul>
+                <li>El punto de partida de la generación eléctrica geotérmica se sitúa en **Italia**. En 1904, el Príncipe Piero Ginori Conti inventó la primera planta de energía geotérmica en Larderello, utilizando el vapor para iluminar varias bombillas con una capacidad de <strong>10 kW</strong>. Este evento es ampliamente reconocido como el nacimiento de la industria geotérmica moderna y la primera aplicación de vapor seco para la generación de energía. Poco después, en 1913, se construyó la primera planta de energía geotérmica comercial de vapor seco también en Larderello, con una capacidad inicial de <strong>250 kW</strong>, que posteriormente se expandió para producir <strong>2750 kW</strong>, suministrando energía al sistema ferroviario italiano y a los pueblos cercanos.</li>
+                <li>En **Estados Unidos**, el Hot Lake Hotel en Oregón se destacó en 1907 al convertirse en uno de los primeros edificios en el mundo en utilizar la energía geotérmica como su fuente principal de calor. La generación eléctrica en EE. UU. comenzó con la perforación del primer pozo geotérmico exitoso en The Geysers, California, en 1922. En 1923, se construyó una planta de <strong>35 kW</strong>, generando la primera electricidad geotérmica en el continente americano. Sin embargo, el desarrollo a gran escala en The Geysers no se materializaría hasta 1960, cuando Pacific Gas and Electric (PG&E) instaló la primera planta de generación de electricidad geotérmica a gran escala en el hemisferio occidental, produciendo <strong>11 MW</strong> netos. Este complejo eventualmente se convertiría en el más grande del mundo.</li>
+                <li>La innovación continuó a nivel global. En 1948, la primera bomba de calor geotérmica comercial se puso en funcionamiento. **Nueva Zelanda** emergió como un actor clave en 1958 con la puesta en marcha de la central geotérmica de Wairakei, la segunda planta de energía geotérmica a gran escala en el mundo y pionera en la tecnología de vapor flash. En 1967, **Rusia** introdujo la primera planta de energía geotérmica de ciclo binario del mundo, un avance crucial que permitía el uso de recursos geotérmicos de menor temperatura, aumentando la eficiencia y la aplicabilidad global de la geotermia.</li>
+                <li>La década de 1970 fue un período de gran cambio, con la crisis del petróleo de 1973 impulsando una búsqueda global de fuentes de energía renovables, lo que aumentó significativamente el interés y la inversión en la geotermia. Este impulso llevó a la puesta en marcha de la primera planta de energía geotérmica comercial en **Filipinas**, en la isla de Leyte, en julio de 1977, con una capacidad de <strong>3 MW</strong>. **Indonesia** también inició su producción de energía geotérmica en 1978 en Kamojang. En Estados Unidos, 1980 vio la construcción de la primera planta flash geotérmica del país por UNOCAL en Brawley, California, generando <strong>10 MW</strong>. En 1981, Hawái comenzó a generar electricidad a partir de recursos geotérmicos, y el Departamento de Energía de EE. UU. (DOE) demostró la producción de electricidad a partir de recursos geotérmicos de temperatura moderada utilizando tecnología binaria en Raft River, Idaho. Finalmente, en 1989, la primera planta de energía geotérmica geopressurizada híbrida del mundo comenzó a operar en Pleasant Bayou, Texas, utilizando tanto el calor como el metano de un recurso geopressurizado.</li>
+            </ul>
+
+            <h3 id="evolucion-tecnologias">Evolución de las Tecnologías de Plantas Geotérmicas</h3>
+            <p>La evolución de las tecnologías de conversión de energía geotérmica ha sido fundamental para su expansión y eficiencia. Se distinguen tres tipos principales de plantas de energía geotérmica, cada una adaptada a diferentes características del recurso.</p>
+            <ul>
+                <li><strong>Plantas de vapor seco (Dry Steam):</strong> Representan la tecnología más antigua. Utilizan directamente el vapor que emerge del subsuelo para hacer girar grandes turbinas. El pionero fue Larderello en Italia en 1904, y sigue siendo el método empleado en The Geysers, California. Emiten principalmente vapor de agua y pequeñas cantidades de otros gases.</li>
+                <li><strong>Plantas de vapor flash (Flash and Double Flash Cycle):</strong> Son el tipo más común en uso hoy en día. Operan con fluidos geotérmicos a temperaturas superiores a 182°C (360°F). El fluido caliente se vaporiza rápidamente al rociarlo en un tanque a baja presión, y el vapor resultante impulsa una turbina. Se puede "flashear" nuevamente en un segundo tanque (doble flash) para extraer más energía.</li>
+                <li><strong>Plantas de ciclo binario (Binary Cycle):</strong> Cruciales para el futuro de la geotermia, están diseñadas para aprovechar agua geotérmica de temperatura moderada (generalmente por debajo de 204°C o 400°F). El calor del fluido geotérmico calienta un segundo fluido con un punto de ebullición más bajo, cuyo vapor impulsa las turbinas. Operan como un sistema de circuito cerrado, lo que significa que prácticamente no hay emisiones a la atmósfera, siendo una fuente de energía excepcionalmente limpia.</li>
+            </ul>
+            <p>La capacidad de la tecnología de ciclo binario para utilizar recursos geotérmicos de menor temperatura es un factor transformador, expandiendo el área geográfica donde se puede aprovechar la energía geotérmica y permitiendo su despliegue en muchas más ubicaciones en todo el mundo.</p>
+
+            <br>
+
+            <h2 id="siglo-xxi-avances-consolidacion">Avances y Consolidación en el Siglo XXI (2000-Presente)</h2>
+            <p>El siglo XXI ha marcado la consolidación de la energía geotérmica como una fuente de energía renovable vital, caracterizada por un crecimiento constante de la capacidad instalada y la emergencia de nuevas tecnologías y marcos políticos de apoyo.</p>
+
+            <h3>Crecimiento de la Capacidad Global (2000-2024)</h3>
+            <p>La capacidad global instalada de energía geotérmica ha experimentado un crecimiento sostenido desde el inicio del milenio. Los datos disponibles muestran una progresión clara en la capacidad instalada y la generación de electricidad geotérmica a nivel mundial:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Año</th>
+                        <th>Capacidad Global Instalada (MW)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2019</td>
+                        <td>13.824</td>
+                    </tr>
+                    <tr>
+                        <td>2020</td>
+                        <td>14.157</td>
+                    </tr>
+                    <tr>
+                        <td>2021</td>
+                        <td>14.432</td>
+                    </tr>
+                    <tr>
+                        <td>2022</td>
+                        <td>14.652</td>
+                    </tr>
+                    <tr>
+                        <td>2023</td>
+                        <td>14.845</td>
+                    </tr>
+                    <tr>
+                        <td>2024</td>
+                        <td>~15.245</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="note">Nota: Para los años anteriores a 2019, las fuentes de IRENA (a través de Our World in Data) indican la disponibilidad de datos de capacidad global desde 2000, aunque los valores específicos no se detallan en los fragmentos de investigación proporcionados.</p>
+            <p>Es relevante señalar que, aunque múltiples fuentes proporcionan datos de capacidad y generación para los mismos años, pueden existir pequeñas variaciones en las cifras. Esto se debe a que las organizaciones de recopilación de datos, como IRENA y REN21, consolidan información de diversas "fuentes oficiales, informes de asociaciones de la industria y otros informes y artículos de noticias". Las fechas de publicación de los informes también pueden diferir, lo que puede reflejar distintas metodologías de recopilación, momentos de corte o actualizaciones posteriores. La existencia de estas pequeñas discrepancias subraya la importancia de consultar múltiples fuentes para obtener una visión completa y de citar claramente el origen de cada dato para mantener la transparencia y la precisión en los informes técnicos.</p>
+
+            <h3 id="paises-lideres">Países Líderes y Contribuciones Recientes</h3>
+            <p>Varios países se han establecido como líderes en el desarrollo y la utilización de la energía geotérmica, impulsados por sus recursos geológicos y políticas de apoyo.</p>
+            <ul>
+                <li><strong>Estados Unidos:</strong> Mantiene la posición de líder mundial en capacidad geotérmica instalada, con aproximadamente <strong>3.676 MW</strong> (o 3,673 GW en 2020, aunque otras estimaciones recientes lo sitúan en 2.643 MW). The Geysers en California es el complejo de plantas geotérmicas más grande del mundo.</li>
+                <li><strong>Indonesia:</strong> Ocupa el segundo lugar en capacidad instalada, con <strong>2.356 MW</strong> a finales de 2022. El país posee un vasto potencial geotérmico, estimado en 28 GW, lo que representa el 40% del total mundial.</li>
+                <li><strong>Filipinas:</strong> Se sitúa como el tercer país con mayor capacidad instalada, con <strong>1.918 MW</strong> (o 1,9 GW en 2017). La energía geotérmica contribuye con aproximadamente el 17% de la electricidad del país.</li>
+                <li><strong>Turquía:</strong> Ha experimentado un rápido crecimiento, aumentando su capacidad de 18 MW en 2000 a <strong>1.691 MW</strong> en 2023.</li>
+                <li><strong>Nueva Zelanda:</strong> Se posiciona como el quinto país con <strong>1.037 MW</strong> (o 1.038 MW), y la geotermia contribuye con aproximadamente el 18% de su electricidad.</li>
+                <li><strong>México:</strong> Cuenta con <strong>962 MW</strong>.</li>
+                <li><strong>Italia:</strong> El pionero histórico, tiene <strong>944 MW</strong> de capacidad. Larderello alberga 34 plantas con una capacidad total de 800 MW.</li>
+                <li><strong>Islandia:</strong> Destaca por su alta dependencia de la geotermia, con <strong>754 MW</strong> de capacidad y una contribución de aproximadamente el 30% a su electricidad y el 90% a la calefacción. La crisis del petróleo de 1973 impulsó su desarrollo para buscar independencia energética.</li>
+            </ul>
+
+            <h3 id="innovaciones-futuro">Innovaciones y Futuro de la Geotermia</h3>
+            <p>El futuro de la energía geotérmica se perfila con importantes avances tecnológicos y un creciente interés en la inversión.</p>
+            <ul>
+                <li>Los **Sistemas Geotérmicos Mejorados (EGS)** representan una de las áreas más prometedoras, con el potencial de desbloquear vastos recursos geotérmicos que antes eran inaccesibles. Se proyecta que la capacidad de EGS de próxima generación en Estados Unidos podría aumentar a <strong>90 GW para 2050</strong>, mientras que a nivel global, se estima que esta tecnología podría alcanzar los <strong>800 GW para el mismo año</strong>.</li>
+                <li>Además de los EGS, se están explorando otras tecnologías nacientes, como los **sistemas de circuito cerrado (closed-loop)** y los **sistemas de rocas supercalientes (superhot rock systems)**, que prometen expandir aún más las posibilidades de aprovechamiento geotérmico.</li>
+                <li>La **perforación avanzada**, incluyendo técnicas como la perforación horizontal y la fracturación hidráulica, perfeccionadas en la industria del petróleo y el gas, está abriendo nuevas oportunidades para acceder a recursos geotérmicos de manera más eficiente.</li>
+                <li>Un aspecto notable es la **sinergia entre la industria geotérmica y las industrias tradicionales de combustibles fósiles**. La geotermia puede "aprovechar la experiencia y la infraestructura existentes de la industria del petróleo y el gas", creando "oportunidades significativas para los trabajadores" del sector y facilitando una transición justa.</li>
+                <li>La **recuperación de minerales** es otra área de investigación activa, con estudios sobre la extracción de minerales valiosos como el litio de las salmueras geotérmicas.</li>
+                <li>La **digitalización**, mediante el uso de inteligencia artificial (IA), aprendizaje automático y gemelos digitales, busca optimizar la operación y extender la vida útil de las plantas geotérmicas.</li>
+                <li>En cuanto a la inversión, el sector geotérmico está atrayendo un capital significativo. La inversión global en geotermia superó los <strong>47 mil millones de dólares en 2023</strong>. Se proyecta que la inversión total acumulada podría alcanzar <strong>1 billón de dólares para 2035</strong> y <strong>2,5 billones de dólares para 2050</strong>, lo que subraya el creciente reconocimiento del potencial de la geotermia en la transición energética global.</li>
+            </ul>
+        </div>
 
         
-      </div>
-    </main>
-    <script src="/Proyecto-Bootcamp/Javascript/script.js"></script>
-    <!--Cambio posicion del head al body-->
+    </div>
+
+    
+<!-- FOTEERRRRRRR -->
+    <footer class="bg-black text-white py-10 px-4 sm:px-6 lg:px-8 font-inter">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Sección de Logo y Descripción -->
+            <div class="footer-section flex flex-col items-center md:items-start text-center md:text-left">
+                <a href="#" class="mb-4">
+                    <!-- Placeholder para el logo. Considera usar un SVG para mejor escalabilidad. -->
+                    <img src="https://placehold.co/120x40/fff/000?text=EcoDatos" alt="Logo de la Empresa" class="h-10 rounded-md">
+                </a>
+                <p class="text-sm text-white-400 leading-relaxed max-w-xs">
+                    Ofrecemos soluciones informacion actualizada y estadisticas en tiempo real.
+                </p>
+            </div>
+
+            <!-- Sección de Enlaces Rápidos -->
+            <div class="footer-section text-center md:text-left">
+                <h3 class="text-lg font-semibold text-yellow-400 mb-4">Enlaces Rápidos</h3>
+                <ul class="space-y-2">
+                    <li><a href="#inicio" class="text-white-300 hover:text-blue-300 transition duration-300 ease-in-out rounded-md">Inicio</a></li>
+                    <li><a href="#servicios" class="text-gray-300 hover:text-blue-300 transition duration-300 ease-in-out rounded-md">Historia</a></li>
+                    <li><a href="#portafolio" class="text-gray-300 hover:text-blue-300 transition duration-300 ease-in-out rounded-md">Dashboard</a></li>
+                    <li><a href="#blog" class="text-gray-300 hover:text-blue-300 transition duration-300 ease-in-out rounded-md">Calculadora</a></li>
+                    <li><a href="#sobre el proyecto" class="text-gray-300 hover:text-blue-300 transition duration-300 ease-in-out rounded-md">Sobre el Proyecto</a></li>
+                    <li><a href="/Proyecto-Bootcamp/hojas HTML/Sobre nosotros.html" class="text-gray-300 hover:text-blue-300 transition duration-300 ease-in-out rounded-md">Nosotros</a></li>
+                </ul>
+            </div>
+
+            <!-- Sección de Contacto -->
+            <div class="footer-section text-center md:text-left">
+                <h3 class="text-lg font-semibold text-yellow-400 mb-4">Contáctanos</h3>
+                <ul class="space-y-2 text-gray-300">
+                    <li class="flex items-center justify-center md:justify-start">
+                        <!-- Icono de ubicación (placeholder) -->
+                        <span class="mr-2">&#x1F4CD;</span>
+                        1600 Amphitheatre Pkwy, Mountain View, CA 94043, Estados Unidos
+                    </li>
+                    <li class="flex items-center justify-center md:justify-start">
+                        <!-- Icono de email (placeholder) -->
+                        <span class="mr-2">&#x2709;&#xFE0F;</span>
+                        <a href="mailto:info@tudominio.com" class="hover:text-blue-300 transition duration-300 ease-in-out rounded-md">info@ecodatos.com</a>
+                    </li>
+                    <li class="flex items-center justify-center md:justify-start">
+                        <!-- Icono de teléfono (placeholder) -->
+                        <span class="mr-2">&#x260E;&#xFE0F;</span>
+                        <a href="tel:+1234567890" class="hover:text-blue-300 transition duration-300 ease-in-out rounded-md">+123 456 7890</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Sección de Redes Sociales -->
+            <div class="footer-section text-center md:text-left">
+                <h3 class="text-lg font-semibold text-yellow-400 mb-4">Síguenos</h3>
+                <div class="flex justify-center md:justify-start space-x-4">
+                    <!-- Iconos de redes sociales (placeholders) -->
+                    <a href="#" target="_blank" aria-label="Facebook" class="text-gray-300 hover:text-blue-300 transition duration-300 ease-in-out transform hover:scale-110">
+                        <img src="../img/facebook.png" alt="Facebook" class="rounded-full">
+                    </a>
+                    <a href="#" target="_blank" aria-label="Twitter" class="text-gray-300 hover:text-blue-300 transition duration-300 ease-in-out transform hover:scale-110">
+                        <img src="../img/logotipo-de-twitter.png" alt="Twitter" >
+                    </a>
+                    <a href="#" target="_blank" aria-label="Instagram" class="text-gray-300 hover:text-blue-300 transition duration-300 ease-in-out transform hover:scale-110">
+                        <img src="../img/instagram.png" alt="Instagram" class="rounded-full">
+                    </a>
+                    <a href="#" target="_blank" aria-label="LinkedIn" class="text-gray-300 hover:text-blue-300 transition duration-300 ease-in-out transform hover:scale-110">
+                        <img src="../img/linkedin.png" alt="LinkedIn" class="rounded-full">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección de Copyright -->
+        <div class="border-t border-gray-700 mt-10 pt-6 text-center text-gray-500 text-sm">
+            <p>&copy; 2025 EcoDatos. Todos los derechos reservados.</p>
+            <p class="mt-2">Diseñado con &#x2764;&#xFE0F; por Los Jimmy Neutron</p>
+        </div>
+    </footer>
+
+
+    <script type="text/javascript" src="../Javascript/scriptNew.js"></script>
   </body>
 </html>

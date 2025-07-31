@@ -1,91 +1,251 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Nombre de la pagina</title>
-    <link rel="stylesheet" href="/Proyecto-Bootcamp/Estilos CSS/styles.css" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoDatos</title>
+    <link rel="stylesheet" href="../Dashboard/styles.css">
+    <link rel="stylesheet" href="../Estilos CSS/stylesNew.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">  
+    <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Configuración de Tailwind para usar la fuente Inter -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+<body>
 
-    <!-- Boxicons CDN -->
-    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"/>
-  </head>
-
-  <body>
-    <aside>
-      <nav>
-        <ul>
-          <li>
-            <a href="/Proyecto-Bootcamp/hojas HTML/Inicio.html">
-              <i class="bx bx-home"></i>
-              <span>Inicio</span>
-            </a>
-          </li>
-          <li>
-            <a href="/Proyecto-Bootcamp/hojas HTML/historia.html">
-              <i class="bx bx-grid-alt"></i>
-              <span>Historicos</span>
-            </a>
-          </li>
-          <li>
-            <a href="estimacion.html">
-              <i class="bx bx-pie-chart-alt"></i>
-              <span>Estimacion</span>
-            </a>
-          </li>
-          <li>
-            <a href="/Proyecto-Bootcamp/hojas HTML/Dashboard.html" class="active">
-              <img src="/Proyecto-Bootcamp/icons/chart-spline.png">
-              <span>Dashboard</span>
-            </a>
-          </li>
-          <li>
-            <a href="/Proyecto-Bootcamp/hojas HTML/Sobre el proyecto.html">
-              <i class="bx bx-book-bookmark"></i>
-              <span>Sobre el Proyecto</span>
-            </a>
-          </li>
-          <li>
-            <a href="/Proyecto-Bootcamp/hojas HTML/Sobre nosotros.html">
-              <img src="/Proyecto-Bootcamp/icons/user-search.png"></i>
-              <span>Sobre Nosotros</span>
-            </a>
-          </li>
-          <li>
-            <a href="#" data-resize-btn> 
-              <i class="bx bx-chevrons-right"></i>
-              <span>Collapse</span>
-            </a>
-          </li>
+    <header class="sticky">
+        <a href="#" class="logo">EcoDatos</a>
+        <div class="menu-toggle" onclick="toggleMenu();">
+            <i class="fas fa-bars"></i> </div>
+        <ul class="navigation"> 
+            <li><a href="../hojas HTML/Inicio.html">Inicio</a></li>
+            <li><a href="../hojas HTML/historia.html">Historia</a></li>
+            <li><a href="../hojas HTML/dashboard.html">Dashboard</a></li>
+            <li><a href="../hojas HTML/calculadora.html">Calculadora</a></li>
+            <li><a href="../hojas HTML/Sobre el proyecto.html">Sobre el Proyecto</a></li>
+            <li><a href="../hojas HTML/Sobre nosotros.html">Nosotros</a></li>
         </ul>
-      </nav>
-    </aside>
+    </header>
 
-     <!-- TODO EDITABLE ES EN EL MAIN -->
-    <main>
-      <h1>Dashboard</h1> 
-      <p>
-        La energía solar es la energía que se obtiene del sol, ya sea en forma de luz o calor, y se puede utilizar para generar electricidad o calentar agua. Es una fuente de energía renovable e inagotable, lo que la convierte en una alternativa sostenible a los combustibles fósiles
-      </p>
+    
 
-      <div class="placeholder">
-        <div class="ph-1">
-          <h2>Seccion 1</h2>
-          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quis, minus rem a ipsum quia officia necessitatibus quidem cupiditate nostrum modi in culpa maxime nobis vitae porro pariatur nam neque obcaecati?</p>
+
+    <div id="overall-dashboard-container">
+
+        <div class="chart-section">
+            <h2>Generación de Energía Renovable (TWh)</h2>
+            <div class="chart-content-wrapper">
+                <div id="bar-chart-controls" class="controls">
+                    <h3>Filtros - Barras</h3>
+                    <div style="width: 100%; margin-bottom: 10px;">
+                        <label style="display: block; margin-bottom: 5px;">Tipos de Energía:</label>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="barToggleWind" checked>
+                            <label for="barToggleWind">Eólica</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="barToggleSolar" checked>
+                            <label for="barToggleSolar">Solar</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="barToggleBiofuel" checked>
+                            <label for="barToggleBiofuel">Biocombustibles</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="barToggleHydro" checked>
+                            <label for="barToggleHydro">Hidroeléctrica</label>
+                        </div>
+                    </div>
+                    <label for="barEntitySelect">Entidad:</label>
+                    <select id="barEntitySelect"></select>
+                    <button id="applyBarFilter">Aplicar Filtro</button>
+                </div>
+                <div id="bar-chart-canvas-container" class="chart-canvas-container">
+                    <canvas id="energyChart"></canvas>
+                </div>
+            </div>
         </div>
-        <div class="ph-2">
-          <h2>Seccion 2</h2>
-          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quis, minus rem a ipsum quia officia necessitatibus quidem cupiditate nostrum modi in culpa maxime nobis vitae porro pariatur nam neque obcaecati?</p>
+
+        <div class="chart-section">
+            <h2>Participación de Energías Renovables (%)</h2>
+            <div class="chart-content-wrapper">
+                <div id="pie-chart-controls" class="controls">
+                    <h3>Filtros - Torta</h3>
+                    <label for="pieEntitySelect">Entidad:</label>
+                    <select id="pieEntitySelect"></select>
+                    <label for="pieYearSelect">Año:</label>
+                    <select id="pieYearSelect"></select>
+                    <button id="applyPieFilter">Aplicar Filtro</button>
+                </div>
+                <div id="pie-chart-canvas-container" class="chart-canvas-container">
+                    <canvas id="pieChart"></canvas>
+                </div>
+            </div>
         </div>
-        <div class="ph-3">
-          <h2>Seccion 1</h2>
-          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quis, minus rem a ipsum quia officia necessitatibus quidem cupiditate nostrum modi in culpa maxime nobis vitae porro pariatur nam neque obcaecati?</p>
+
+        <div class="chart-section">
+            <h2>Tendencia de Capacidad Instalada (GW)</h2>
+            <div class="chart-content-wrapper">
+                <div id="line-chart-controls" class="controls">
+                    <h3>Filtros - Líneas</h3>
+                    <div style="width: 100%; margin-bottom: 10px;">
+                        <label style="display: block; margin-bottom: 5px;">Tipos de Capacidad:</label>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="lineToggleWind" checked>
+                            <label for="lineToggleWind">Eólica</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="lineToggleSolar" checked>
+                            <label for="lineToggleSolar">Solar</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="lineToggleGeothermal" checked>
+                            <label for="lineToggleGeothermal">Geotérmica</label>
+                        </div>
+                    </div>
+                    <label for="lineEntitySelect">Entidad:</label>
+                    <select id="lineEntitySelect"></select>
+                    <button id="applyLineFilter">Aplicar Filtro</button>
+                </div>
+                <div id="line-chart-canvas-container" class="chart-canvas-container">
+                    <canvas id="capacityChart"></canvas>
+                </div>
+            </div>
         </div>
-        <div class="ph-4"></div>
-        <div class="ph-5"></div>
-        <div class="ph-6"></div>
+
+        <div class="chart-section">
+            <h2>Generación Acumulada de Energías Renovables (TWh)</h2>
+            <div class="chart-content-wrapper">
+                <div id="area-chart-controls" class="controls">
+                    <h3>Filtros - Área</h3>
+                    <div style="width: 100%; margin-bottom: 10px;">
+                        <label style="display: block; margin-bottom: 5px;">Tipos de Energía:</label>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="areaToggleWind" checked>
+                            <label for="areaToggleWind">Eólica</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="areaToggleSolar" checked>
+                            <label for="areaToggleSolar">Solar</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="areaToggleBiofuel" checked>
+                            <label for="areaToggleBiofuel">Biocombustibles</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="areaToggleHydro" checked>
+                            <label for="areaToggleHydro">Hidroeléctrica</label>
+                        </div>
+                    </div>
+                    <label for="areaEntitySelect">Entidad:</label>
+                    <select id="areaEntitySelect"></select>
+                    <button id="applyAreaFilter">Aplicar Filtro</button>
+                </div>
+                <div id="area-chart-canvas-container" class="chart-canvas-container">
+                    <canvas id="stackedAreaChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    
+
         
-      </div>
-    </main>
-    <script src="/Proyecto-Bootcamp/Javascript/script.js"></script>
-    <!--Cambio posicion del head al body-->
-  </body>
+    <footer class="bg-black text-white py-10 px-4 sm:px-6 lg:px-8 font-inter">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Sección de Logo y Descripción -->
+            <div class="footer-section flex flex-col items-center md:items-start text-center md:text-left">
+                <a href="#" class="mb-4">
+                    <!-- Placeholder para el logo. Considera usar un SVG para mejor escalabilidad. -->
+                    <img src="https://placehold.co/120x40/fff/000?text=EcoDatos" alt="Logo de la Empresa" class="h-10 rounded-md">
+                </a>
+                <p class="text-sm text-white-400 leading-relaxed max-w-xs">
+                    Ofrecemos soluciones informacion actualizada y estadisticas en tiempo real.
+                </p>
+            </div>
+
+            <!-- Sección de Enlaces Rápidos -->
+            <div class="footer-section text-center md:text-left">
+                <h3 class="text-lg font-semibold text-yellow-400 mb-4">Enlaces Rápidos</h3>
+                <ul class="space-y-2">
+                    <li><a href="#inicio" class="text-white-300 hover:text-blue-300 transition duration-300 ease-in-out rounded-md">Inicio</a></li>
+                    <li><a href="#servicios" class="text-gray-300 hover:text-blue-300 transition duration-300 ease-in-out rounded-md">Historia</a></li>
+                    <li><a href="#portafolio" class="text-gray-300 hover:text-blue-300 transition duration-300 ease-in-out rounded-md">Dashboard</a></li>
+                    <li><a href="#blog" class="text-gray-300 hover:text-blue-300 transition duration-300 ease-in-out rounded-md">Calculadora</a></li>
+                    <li><a href="#sobre el proyecto" class="text-gray-300 hover:text-blue-300 transition duration-300 ease-in-out rounded-md">Sobre el Proyecto</a></li>
+                    <li><a href="/Proyecto-Bootcamp/hojas HTML/Sobre nosotros.html" class="text-gray-300 hover:text-blue-300 transition duration-300 ease-in-out rounded-md">Nosotros</a></li>
+                </ul>
+            </div>
+
+            <!-- Sección de Contacto -->
+            <div class="footer-section text-center md:text-left">
+                <h3 class="text-lg font-semibold text-yellow-400 mb-4">Contáctanos</h3>
+                <ul class="space-y-2 text-gray-300">
+                    <li class="flex items-center justify-center md:justify-start">
+                        <!-- Icono de ubicación (placeholder) -->
+                        <span class="mr-2">&#x1F4CD;</span>
+                        1600 Amphitheatre Pkwy, Mountain View, CA 94043, Estados Unidos
+                    </li>
+                    <li class="flex items-center justify-center md:justify-start">
+                        <!-- Icono de email (placeholder) -->
+                        <span class="mr-2">&#x2709;&#xFE0F;</span>
+                        <a href="mailto:info@tudominio.com" class="hover:text-blue-300 transition duration-300 ease-in-out rounded-md">info@ecodatos.com</a>
+                    </li>
+                    <li class="flex items-center justify-center md:justify-start">
+                        <!-- Icono de teléfono (placeholder) -->
+                        <span class="mr-2">&#x260E;&#xFE0F;</span>
+                        <a href="tel:+1234567890" class="hover:text-blue-300 transition duration-300 ease-in-out rounded-md">+123 456 7890</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Sección de Redes Sociales -->
+            <div class="footer-section text-center md:text-left">
+                <h3 class="text-lg font-semibold text-yellow-400 mb-4">Síguenos</h3>
+                <div class="flex justify-center md:justify-start space-x-4">
+                    <!-- Iconos de redes sociales (placeholders) -->
+                    <a href="#" target="_blank" aria-label="Facebook" class="text-gray-300 hover:text-blue-300 transition duration-300 ease-in-out transform hover:scale-110">
+                        <img src="../img/facebook.png" alt="Facebook" class="rounded-full">
+                    </a>
+                    <a href="#" target="_blank" aria-label="Twitter" class="text-gray-300 hover:text-blue-300 transition duration-300 ease-in-out transform hover:scale-110">
+                        <img src="../img/logotipo-de-twitter.png" alt="Twitter" >
+                    </a>
+                    <a href="#" target="_blank" aria-label="Instagram" class="text-gray-300 hover:text-blue-300 transition duration-300 ease-in-out transform hover:scale-110">
+                        <img src="../img/instagram.png" alt="Instagram" class="rounded-full">
+                    </a>
+                    <a href="#" target="_blank" aria-label="LinkedIn" class="text-gray-300 hover:text-blue-300 transition duration-300 ease-in-out transform hover:scale-110">
+                        <img src="../img/linkedin.png" alt="LinkedIn" class="rounded-full">
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Sección de Copyright -->
+        <div class="border-t border-gray-700 mt-10 pt-6 text-center text-gray-500 text-sm">
+            <p>&copy; 2025 EcoDatos. Todos los derechos reservados.</p>
+            <p class="mt-2">Diseñado con &#x2764;&#xFE0F; por Los Jimmy Neutron</p>
+        </div>
+    </footer>
+
+    <script type="text/javascript" src="../Javascript/scriptNew.js"></script>
+    <script src="../Dashboard/app.js"></script>
+    <script src="../Dashboard/pie_chart_app.js"></script>
+    <script src="../Dashboard/line_chart_app.js"></script>
+    <script src="../Dashboard/area_chart_app.js"></script> 
+    
+    </body>
 </html>

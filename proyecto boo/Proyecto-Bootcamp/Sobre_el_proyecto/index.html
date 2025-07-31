@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto Final de Programación - Universidad Libre de Pereira</title>
+    <!-- Carga de Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configuración de la fuente Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6; 
+            color: #374151; 
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+        .section-title {
+            font-size: 2.25rem; 
+            font-weight: 700; 
+            color: #1f2937; 
+            margin-bottom: 1.5rem; 
+            text-align: center;
+        }
+        .card {
+            background-color: #ffffff;
+            border-radius: 0.75rem; 
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); 
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        .list-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 0.75rem;
+        }
+        .list-item svg {
+            flex-shrink: 0;
+            margin-right: 0.5rem;
+            color: #10b981; 
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-gradient-to-r from-emerald-500 to-teal-600 text-white py-8 shadow-md rounded-b-xl">
+        <div class="container text-center">
+            <h1 class="text-5xl font-extrabold mb-2">Universidad Libre de Pereira</h1>
+            <p class="text-xl font-light">Proyecto Final de Programación</p>
+            <p class="text-lg mt-4">Presentado por: Santiago Andrés Agudelo, Steven Velasquez, Daniel Quesada, Emerson Gómez Velásquez, Linda Nikol Ramirez.</p>
+            <p class="text-md mt-2">Julio 31 de 2025</p>
+        </div>
+    </header>
+
+    <main class="container py-8">
+
+        <section class="mb-12">
+            <h2 class="section-title">Introducción</h2>
+            <div class="card">
+                <p class="mb-4 text-lg leading-relaxed">
+                    En la actualidad, programar representa una habilidad esencial para el desarrollo personal y el progreso social y económico de cualquier país. En Colombia, la formación en programación básica permite democratizar el conocimiento tecnológico, fortalecer el pensamiento computacional y preparar a nuevas generaciones frente a los desafíos de la cuarta revolución industrial. Este proyecto busca que los campistas adquieran habilidades de programación mientras contribuyen al desarrollo del país, enfocándose en la transición hacia energías más limpias y sostenibles.
+                </p>
+                <p class="mb-4 text-lg leading-relaxed">
+                    En un mundo cada vez más impulsado por la tecnología, la programación se ha consolidado como una competencia clave para el desarrollo personal, profesional y social. Su dominio no solo abre puertas en el ámbito laboral, sino que también empodera a los individuos para enfrentar los retos del siglo XXI con creatividad, lógica y pensamiento crítico. En el contexto colombiano, fomentar la formación en programación básica representa una oportunidad estratégica para democratizar el acceso al conocimiento tecnológico, reducir brechas educativas y sociales, y fortalecer las capacidades necesarias para afrontar la Cuarta Revolución Industrial.
+                </p>
+                <p class="text-lg leading-relaxed">
+                    Este proyecto surge como una iniciativa orientada a potenciar el pensamiento computacional de los jóvenes, brindándoles herramientas prácticas para resolver problemas reales mediante la programación. Además, se enmarca en un propósito aún más amplio: contribuir al desarrollo sostenible del país mediante el enfoque en energías limpias y tecnologías amigables con el medio ambiente. A través de esta experiencia formativa, se busca que los campistas no solo adquieran habilidades técnicas, sino que también se conviertan en agentes de cambio comprometidos con un futuro más equitativo, innovador y sostenible.
+                </p>
+                <div class="mt-8 flex justify-center">
+                    <img src="http://googleusercontent.com/file_content/0" alt="Imagen de Introducción al Proyecto" class="rounded-lg shadow-md max-w-full h-auto md:max-w-xl">
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-12">
+            <h2 class="section-title">Desarrollo del Proyecto</h2>
+            <div class="card">
+                <h3 class="text-2xl font-semibold mb-4 text-gray-800">1. Objetivo</h3>
+                <p class="mb-6 text-lg leading-relaxed">
+                    Desarrollar un aplicativo web informativo y funcional que facilite la comprensión y análisis de la transición energética justa. El portal permitirá visualizar y analizar datos históricos sobre energías renovables, promoviendo una cultura de conciencia y acción frente al uso de energías limpias.
+                </p>
+
+                <h3 class="text-2xl font-semibold mb-4 text-gray-800">2. Descripción General</h3>
+                <p class="mb-2 text-lg leading-relaxed">
+                    El proyecto consistió en la creación de una plataforma digital basada en datos globales de producción y consumo de energías renovables comprendidos entre los años 1965 y 2022. Esta herramienta permitió:
+                </p>
+                <ul class="list-disc list-inside ml-4 mb-6 text-lg leading-relaxed">
+                    <li>Informar sobre diversas fuentes de energía limpia.</li>
+                    <li>Visualizar y analizar datos históricos de forma interactiva.</li>
+                    <li>Calcular el porcentaje estimado de energía renovable en el consumo eléctrico de hogares o comunidades.</li>
+                    <li>Ofrecer dashboards comparativos y visuales que facilitaron la comprensión del avance en el uso de energías renovables.</li>
+                </ul>
+
+                <h3 class="text-2xl font-semibold mb-4 text-gray-800">3. Requerimientos Atendidos</h3>
+                <p class="mb-2 text-lg leading-relaxed font-semibold">Nivel 1</p>
+                <p class="mb-4 text-lg leading-relaxed">
+                    Se creó una página descriptiva centrada en una fuente de energía renovable, como la energía geotérmica, el desarrollo de la página fue hecho con Vanilla y sin utilizar ningún framework. La estructura visual se desarrolló con HTML y CSS, para la estructura de la página web, CSS para darle estilo, y HTML y JAVASCRIPT para darle funcionalidad. Con usos de Frameworks, lo que garantiza una presentación clara y visualmente atractiva.
+                </p>
+                <p class="mb-2 text-lg leading-relaxed font-semibold">Nivel 2</p>
+                <p class="mb-4 text-lg leading-relaxed">
+                    Se incorporó varias tablas interactivas para la visualización del conjunto completo de datos históricos sobre energías renovables. También se implementó un formulario funcional en el que los usuarios ingresaban su consumo eléctrico total, y el sistema calculará automáticamente el porcentaje estimado correspondiente al uso de energías renovables, con base en el dataset.
+                </p>
+                <p class="mb-2 text-lg leading-relaxed font-semibold">Nivel 3</p>
+                <p class="mb-6 text-lg leading-relaxed">
+                    Se desarrolló un dashboard con gráficos interactivos que incluyen:
+                </p>
+                <ul class="list-disc list-inside ml-4 mb-6 text-lg leading-relaxed">
+                    <li>Gráfico de Barras: Visualización de la producción de energía renovable por tipo (solar, eólica, hidroeléctrica, geotérmica etc.).</li>
+                    <li>Gráfico de Torta: Distribución porcentual de cada fuente en el consumo eléctrico renovable total.</li>
+                    <li>Gráfico de Líneas: Seguimiento histórico de la capacidad instalada de las fuentes renovables.</li>
+                    <li>Gráfico de Área: Comparación entre el consumo de energía renovable y convencional a lo largo del tiempo.</li>
+                </ul>
+
+                <h3 class="text-2xl font-semibold mb-4 text-gray-800">4. Componentes Técnicos</h3>
+                <ul class="list-disc list-inside ml-4 mb-6 text-lg leading-relaxed">
+                    <li>Para el desarrollo del aplicativo se utilizaron las siguientes tecnologías:</li>
+                    <li>HTML5, CSS3 y JavaScript para la estructura, el diseño y la lógica de la interfaz.</li>
+                    <li>Manejo de datos desde archivo CSV obtenido del repositorio de Kaggle.</li>
+                    <li>Interacciones dinámicas en JavaScript, que permiten una navegación fluida y una experiencia interactiva al analizar los datos.</li>
+                    <li>Uso de Frameworks: Darle un diseño más llamativo y óptimo para la presentación requerida</li>
+                </ul>
+
+                <h3 class="text-2xl font-semibold mb-4 text-gray-800">5. Criterios de Diseño</h3>
+                <ul class="list-disc list-inside ml-4 mb-6 text-lg leading-relaxed">
+                    <li>Durante el desarrollo, se aplicaron principios de diseño centrados en:</li>
+                    <li>Navegación intuitiva y jerarquizada.</li>
+                    <li>Uso de una paleta de colores armónica, accesible y coherente con la temática.</li>
+                    <li>Presentación equilibrada de los datos y visualizaciones.</li>
+                    <li>Relevancia y coherencia con el enfoque de transición energética justa.</li>
+                    <li>Funcionalidades interactivas fáciles de usar y entender.</li>
+                </ul>
+
+                <h3 class="text-2xl font-semibold mb-4 text-gray-800">6. Recursos Utilizados</h3>
+                <ul class="list-disc list-inside ml-4 mb-6 text-lg leading-relaxed">
+                    <li>Para llevar a cabo este proyecto, se utilizaron los siguientes recursos:</li>
+                    <li>Repositorio de datos: Kaggle – Renewable Energy World Wide 1965-2022</li>
+                    <li>Fuentes de consulta y apoyo técnico</li>
+                    <li>Repositorios de referencia en github.com</li>
+                </ul>
+                <div class="mt-8 flex justify-center">
+                    <img src="http://googleusercontent.com/file_content/1" alt="Imagen del Desarrollo del Proyecto" class="rounded-lg shadow-md max-w-full h-auto md:max-w-xl">
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-12">
+            <h2 class="section-title">Resultados Esperados</h2>
+            <div class="card">
+                <ul class="space-y-4 text-lg leading-relaxed">
+                    <li class="list-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                        Los usuarios podrán informarse sobre fuentes de energía limpia con una interfaz web intuitiva.
+                    </li>
+                    <li class="list-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                        Dispondrán de herramientas para visualizar datos históricos y su evolución, facilitando la comprensión de la importancia de la transición energética.
+                    </li>
+                    <li class="list-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                        Podrán calcular la proporción de energía renovable utilizada en su consumo eléctrico total, sensibilizando sobre el impacto de sus hábitos de consumo.
+                    </li>
+                    <li class="list-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                        Se promueve el uso de energías limpias y la reducción de emisiones, alineándose con los objetivos globales de sostenibilidad y descarbonización.
+                    </li>
+                    <li class="list-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                        El aplicativo servirá como insumo para docentes, estudiantes y comunidades interesadas en promover la justicia energética y la innovación a través de la programación.
+                    </li>
+                </ul>
+                <div class="mt-8 text-center">
+                    <p class="text-xl font-semibold mb-4">Link del Repositorio:</p>
+                    <a href="https://github.com/Sagudelo01/Proyecto-Bootcamp.git" target="_blank" class="inline-block bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-6 rounded-full transition duration-300 ease-in-out transform hover:scale-105 shadow-lg">
+                        Ir al Repositorio en GitHub
+                    </a>
+                </div>
+                
+            </div>
+        </section>
+
+    </main>
+
+    
+    <footer class="bg-gray-800 text-white py-6 text-center rounded-t-xl">
+        <div class="container">
+            <p>&copy; 2025 Universidad Libre de Pereira. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

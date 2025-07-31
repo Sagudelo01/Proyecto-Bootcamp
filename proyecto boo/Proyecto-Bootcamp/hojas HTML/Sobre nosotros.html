@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoDatos</title>
+  <link rel="stylesheet" href="../Estilos CSS/stylesNew.css">
+  <link rel="stylesheet" href="../Estilos CSS/styles_Nosotros.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
+  <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configuración de Tailwind para usar la fuente Inter -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+
+
+    <header class="sticky">
+        <a href="#" class="logo">EcoDatos</a>
+        <div class="menu-toggle" onclick="toggleMenu();">
+            <i class="fas fa-bars"></i> </div>
+        <ul class="navigation">
+            <li><a href="../hojas HTML/Inicio.html">Inicio</a></li>
+            <li><a href="./historia.html">Historia</a></li>
+            <li><a href="../hojas HTML/dashboard.html">Dashboard</a></li>
+            <li><a href="../hojas HTML/calculadora.html">Calculadora</a></li>
+            <li><a href="../hojas HTML/Sobre el proyecto.html">Sobre el Proyecto</a></li>
+            <li><a href="../hojas HTML/Sobre nosotros.html">Nosotros</a></li>
+        </ul>
+    </header>
+
+
+  <main class="main_nosotros">
+    <div class="contenedor_main_nosotros">
+      <h3>Conectando ideas, impulsando energía limpia</h3>
+    <p>
+      Somos un equipo multidisciplinario reunido por una pasión común: el desarrollo web y el deseo de aportar a un futuro energético más sostenible. Nos formamos durante un curso de programación con el objetivo de aplicar los conocimientos adquiridos en HTML, CSS, JavaScript y Python.
+    </p>  
+    <p>
+      Nuestro grupo está conformado por personas con formación en distintas áreas profesionales y estudiantes motivados por aprender sobre desarrollo web. A pesar de nuestras diferencias, compartimos el entusiasmo por crear soluciones tecnológicas con impacto positivo.
+    </p>
+    <p>
+      Este proyecto fue una oportunidad para unir nuestras habilidades y desarrollar de forma colaborativa una aplicación web que promueve la comprensión y el uso de energías renovables. La plataforma permite visualizar datos históricos (1965-2022) sobre producción global de energía limpia, estimar el porcentaje de consumo renovable en hogares o comunidades, y explorar dashboards interactivos con una visión integral de la situación energética actual.
+    </p>
+    <p>
+      Más allá del aprendizaje técnico, esta experiencia nos permitió fortalecer el trabajo en equipo, la creatividad y demostrar que, con propósito y colaboración, es posible construir herramientas que inspiran el cambio hacia un modelo energético más justo, limpio y accesible para todos.
+    </p>
+    <h3>El equipo</h3>
+      
+    
+    </div>
+  </main>
+  <div class="placeholder">
+    <div class="card">
+        <img class="card_img" src="../img/perfil_daniel2.png" alt="daniel quesada">
+        <p class="card_title">DANIEL QUESADA</p>
+        <p class="card_subtitle">ING. MECATRONICO + PROGRAMADOR WEB</p>
+        <p class ="card_content">Soy ingeniero Mecatronico que encontro una pasion en la programacion, he venido en el proceso de aprendizaje como desarrollador web, mi ruta como desarollador es HTML, CSS, JS, TY, REACT, NODE.JS, esa es la base que quiero adquire y estouy adquirendo para la ruta que quiero construir como futuro desarrollador web </p>
+    </div>
+    <div class="card">
+        <img class="card_img" src="../img/santiago.png" alt="daniel quesada">
+        <p class="card_title">SANTIAGO ANDRES AGUDELO LONDOÑO</p>
+        <p class="card_subtitle">TEC.GASTRONOMÍA + PROGAMADOR WEB </p>
+        <p class ="card_content">Egresado de la universidad Unigermana en gastronomía. Amante de la cocina, tecnología y aprender sobre la programación en cualquier aspecto. </p>
+    </div>
+    <div class="card">
+        <img class="card_img" src="../img/emerson.png" alt="daniel quesada">
+        <h1 class="card_title">EMERSON GOMEZ VELASQUEZ</h1>
+        <h2 class="card_subtitle">TEC.SISTEMAS + PROGRAMADOR WEB </h2>
+        <p class ="card_content">Me encanta aprender, investigar, leer, amante de la tecnología y la investigación de los  sistemas operativos. Mi motivo para estudiar y aprender programación es por que me "apasiona". </p>
+    </div>
+    <div class="card">
+        <img class="card_img" src="../img/steven.png" alt="daniel quesada">
+        <h1 class="card_title">JHON STEVEN VELÁSQUEZ</h1>
+        <h2 class="card_subtitle">PROGRAMADOR WEB</h2>
+        <p class ="card_content">Me gusta la cocina, las computadoras, las matemáticas  y el inglés, actualmente soy estudiante, en un futuro  quiero viajar y conocer el mundo, y sus diferentes culturas, aspiro ser un gran programador</p>
+    </div>
+    <div class="card">
+        <img class="card_img" src="../img/linda.png" alt="daniel quesada">
+        <h1 class="card_title">LINDA NIKOL RAMIREZ</h1>
+        <h2 class="card_subtitle">TEC.SISTEMA + PROGRAMADOR WEB</h2>
+        <p class ="card_content">Empecé a estudiar programación porque siempre me llamó la atención cómo funciona la tecnología. Tomé este curso con la esperanza de adquirir una base sólida, y ahora que lo terminé, me siento más preparada para seguir aprendiendo y aplicarlo en proyectos </p>
+    </div>
+  </div>
+  <footer class="bg-black text-white py-10 px-4 sm:px-6 lg:px-8 font-inter ">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+            <!-- Sección de Logo y Descripción -->
+            <div class="footer-section flex flex-col items-center md:items-start text-center md:text-left">
+                <a href="#" class="mb-4">
+                    <!-- Placeholder para el logo. Considera usar un SVG para mejor escalabilidad. -->
+                    <img src="https://placehold.co/120x40/fff/000?text=EcoDatos" alt="Logo de la Empresa" class="h-10 rounded-md">
+                </a>
+                <p class="text-sm text-white-400 leading-relaxed max-w-xs">
+                    Ofrecemos soluciones informacion actualizada y estadisticas en tiempo real.
+                </p>
+            </div>
+
+            <!-- Sección de Enlaces Rápidos -->
+            <div class="footer-section text-center md:text-left">
+                <h3 class="text-lg font-semibold text-yellow-400 mb-4">Enlaces Rápidos</h3>
+                <ul class="space-y-2">
+                    <li><a href="/Proyecto-Bootcamp/hojas HTML/Inicio.html" class="text-white-300 hover:text-blue-300 transition duration-300 ease-in-out rounded-md">Inicio</a></li>
+                    <li><a href="#servicios" class="text-gray-300 hover:text-blue-300 transition duration-300 ease-in-out rounded-md">Historia</a></li>
+                    <li><a href="#portafolio" class="text-gray-300 hover:text-blue-300 transition duration-300 ease-in-out rounded-md">Dashboard</a></li>
+                    <li><a href="#blog" class="text-gray-300 hover:text-blue-300 transition duration-300 ease-in-out rounded-md">Calculadora</a></li>
+                    <li><a href="#sobre el proyecto" class="text-gray-300 hover:text-blue-300 transition duration-300 ease-in-out rounded-md">Sobre el Proyecto</a></li>
+                    <li><a href="#nosotros" class="text-gray-300 hover:text-blue-300 transition duration-300 ease-in-out rounded-md">Nosotros</a></li>
+                </ul>
+            </div>
+
+            <!-- Sección de Contacto -->
+            <div class="footer-section text-center md:text-left">
+                <h3 class="text-lg font-semibold text-yellow-400 mb-4">Contáctanos</h3>
+                <ul class="space-y-2 text-gray-300">
+                    <li class="flex items-center justify-center md:justify-start">
+                        <!-- Icono de ubicación (placeholder) -->
+                        <span class="mr-2">&#x1F4CD;</span>
+                        1600 Amphitheatre Pkwy, Mountain View, CA 94043, Estados Unidos
+                    </li>
+                    <li class="flex items-center justify-center md:justify-start">
+                        <!-- Icono de email (placeholder) -->
+                        <span class="mr-2">&#x2709;&#xFE0F;</span>
+                        <a href="mailto:info@tudominio.com" class="hover:text-blue-300 transition duration-300 ease-in-out rounded-md">info@ecodatos.com</a>
+                    </li>
+                    <li class="flex items-center justify-center md:justify-start">
+                        <!-- Icono de teléfono (placeholder) -->
+                        <span class="mr-2">&#x260E;&#xFE0F;</span>
+                        <a href="tel:+1234567890" class="hover:text-blue-300 transition duration-300 ease-in-out rounded-md">+123 456 7890</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Sección de Redes Sociales -->
+            <div class="footer-section text-center md:text-left">
+                <h3 class="text-lg font-semibold text-yellow-400 mb-4">Síguenos</h3>
+                <div class="flex justify-center md:justify-start space-x-4">
+                    <!-- Iconos de redes sociales (placeholders) -->
+                    <a href="#" target="_blank" aria-label="Facebook" class="text-gray-300 hover:text-blue-300 transition duration-300 ease-in-out transform hover:scale-110">
+                        <img src="../img/facebook.png" alt="Facebook" class="rounded-full">
+                    </a>
+                    <a href="#" target="_blank" aria-label="Twitter" class="text-gray-300 hover:text-blue-300 transition duration-300 ease-in-out transform hover:scale-110">
+                        <img src="../img/logotipo-de-twitter.png" alt="Twitter" >
+                    </a>
+                    <a href="#" target="_blank" aria-label="Instagram" class="text-gray-300 hover:text-blue-300 transition duration-300 ease-in-out transform hover:scale-110">
+                        <img src="../img/instagram.png" alt="Instagram" class="rounded-full">
+                    </a>
+                    <a href="#" target="_blank" aria-label="LinkedIn" class="text-gray-300 hover:text-blue-300 transition duration-300 ease-in-out transform hover:scale-110">
+                        <img src="../img/linkedin.png" alt="LinkedIn" class="rounded-full">
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Sección de Copyright -->
+        <div class="border-t border-gray-700 mt-10 pt-6 text-center text-gray-500 text-sm">
+            <p>&copy; 2025 EcoDatos. Todos los derechos reservados.</p>
+            <p class="mt-2">Diseñado con &#x2764;&#xFE0F; por Los Jimmy Neutron</p>
+        </div>
+    </footer>
+    <script type="text/javascript" src="../Javascript/scriptNew.js"></script>
+</body>
+</html>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>EcoDatos</title>
+    <link rel="stylesheet" href="../Estilos CSS/stylesNew.css">
+    <link rel="stylesheet" href="../Estilos CSS/style_sobreProyecto.css">
+    <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+
+   
+  </head>
+  
+    <header class="sticky">
+        <a href="#" class="logo">EcoDatos</a>
+        <div class="menu-toggle" onclick="toggleMenu();">
+            <i class="fas fa-bars"></i> </div>
+        <ul class="navigation">
+            <li><a href="../hojas HTML/Inicio.html">Inicio</a></li>
+            <li><a href="./historia.html">Historia</a></li>
+            <li><a href="../hojas HTML/dashboard.html">Dashboard</a></li>
+            <li><a href="../hojas HTML/calculadora.html">Calculadora</a></li>
+            <li><a href="#">Sobre el Proyecto</a></li>
+            <li><a href="../hojas HTML/Sobre nosotros.html">Nosotros</a></li>
+        </ul>
+    </header>
+
+  <body>
+    <main class="container py-8">
+
+        <section class="mb-12">
+            <h2 class="section-title">Introducción</h2>
+            <div class="card">
+                <p class="mb-4 text-lg leading-relaxed">
+                    En la actualidad, programar representa una habilidad esencial para el desarrollo personal y el progreso social y económico de cualquier país. En Colombia, la formación en programación básica permite democratizar el conocimiento tecnológico, fortalecer el pensamiento computacional y preparar a nuevas generaciones frente a los desafíos de la cuarta revolución industrial. Este proyecto busca que los campistas adquieran habilidades de programación mientras contribuyen al desarrollo del país, enfocándose en la transición hacia energías más limpias y sostenibles.
+                </p>
+                <p class="mb-4 text-lg leading-relaxed">
+                    En un mundo cada vez más impulsado por la tecnología, la programación se ha consolidado como una competencia clave para el desarrollo personal, profesional y social. Su dominio no solo abre puertas en el ámbito laboral, sino que también empodera a los individuos para enfrentar los retos del siglo XXI con creatividad, lógica y pensamiento crítico. En el contexto colombiano, fomentar la formación en programación básica representa una oportunidad estratégica para democratizar el acceso al conocimiento tecnológico, reducir brechas educativas y sociales, y fortalecer las capacidades necesarias para afrontar la Cuarta Revolución Industrial.
+                </p>
+                <p class="text-lg leading-relaxed">
+                    Este proyecto surge como una iniciativa orientada a potenciar el pensamiento computacional de los jóvenes, brindándoles herramientas prácticas para resolver problemas reales mediante la programación. Además, se enmarca en un propósito aún más amplio: contribuir al desarrollo sostenible del país mediante el enfoque en energías limpias y tecnologías amigables con el medio ambiente. A través de esta experiencia formativa, se busca que los campistas no solo adquieran habilidades técnicas, sino que también se conviertan en agentes de cambio comprometidos con un futuro más equitativo, innovador y sostenible.
+                </p>
+                
+            </div>
+        </section>
+
+        <section class="mb-12">
+            <h2 class="section-title">Desarrollo del Proyecto</h2>
+            <div class="card">
+                <h3 class="text-2xl font-semibold mb-4 text-gray-800">1. Objetivo</h3>
+                <p class="mb-6 text-lg leading-relaxed">
+                    Desarrollar un aplicativo web informativo y funcional que facilite la comprensión y análisis de la transición energética justa. El portal permitirá visualizar y analizar datos históricos sobre energías renovables, promoviendo una cultura de conciencia y acción frente al uso de energías limpias.
+                </p>
+
+                <h3 class="text-2xl font-semibold mb-4 text-gray-800">2. Descripción General</h3>
+                <p class="mb-2 text-lg leading-relaxed">
+                    El proyecto consistió en la creación de una plataforma digital basada en datos globales de producción y consumo de energías renovables comprendidos entre los años 1965 y 2022. Esta herramienta permitió:
+                </p>
+                <ul class="list-disc list-inside ml-4 mb-6 text-lg leading-relaxed">
+                    <li>Informar sobre diversas fuentes de energía limpia.</li>
+                    <li>Visualizar y analizar datos históricos de forma interactiva.</li>
+                    <li>Calcular el porcentaje estimado de energía renovable en el consumo eléctrico de hogares o comunidades.</li>
+                    <li>Ofrecer dashboards comparativos y visuales que facilitaron la comprensión del avance en el uso de energías renovables.</li>
+                </ul>
+
+                <h3 class="text-2xl font-semibold mb-4 text-gray-800">3. Requerimientos Atendidos</h3>
+                <p class="mb-2 text-lg leading-relaxed font-semibold">Nivel 1</p>
+                <p class="mb-4 text-lg leading-relaxed">
+                    Se creó una página descriptiva centrada en una fuente de energía renovable, como la energía geotérmica, el desarrollo de la página fue hecho con Vanilla y utilizando Tailwind para algunos estilos. La estructura visual se desarrolló con HTML y CSS, para la estructura de la página web, CSS para darle estilo, y HTML y JAVASCRIPT para darle funcionalidad. Con usos de Frameworks, lo que garantiza una presentación clara y visualmente atractiva.
+                </p>
+                <p class="mb-2 text-lg leading-relaxed font-semibold">Nivel 2</p>
+                <p class="mb-4 text-lg leading-relaxed">
+                    Se incorporó varias tablas interactivas para la visualización del conjunto completo de datos históricos sobre energías renovables. También se implementó un formulario funcional en el que los usuarios ingresaban su consumo eléctrico total, y el sistema calculará automáticamente el porcentaje estimado correspondiente al uso de energías renovables, con base en el dataset.
+                </p>
+                <p class="mb-2 text-lg leading-relaxed font-semibold">Nivel 3</p>
+                <p class="mb-6 text-lg leading-relaxed">
+                    Se desarrolló un dashboard con gráficos interactivos que incluyen:
+                </p>
+                <ul class="list-disc list-inside ml-4 mb-6 text-lg leading-relaxed">
+                    <li>Gráfico de Barras: Visualización de la producción de energía renovable por tipo (solar, eólica, hidroeléctrica, geotérmica etc.).</li>
+                    <li>Gráfico de Torta: Distribución porcentual de cada fuente en el consumo eléctrico renovable total.</li>
+                    <li>Gráfico de Líneas: Seguimiento histórico de la capacidad instalada de las fuentes renovables.</li>
+                    <li>Gráfico de Área: Comparación entre el consumo de energía renovable y convencional a lo largo del tiempo.</li>
+                </ul>
+
+                <h3 class="text-2xl font-semibold mb-4 text-gray-800">4. Componentes Técnicos</h3>
+                <ul class="list-disc list-inside ml-4 mb-6 text-lg leading-relaxed">
+                    <li>Para el desarrollo del aplicativo se utilizaron las siguientes tecnologías:</li>
+                    <li>HTML5, CSS3 y JavaScript para la estructura, el diseño y la lógica de la interfaz.</li>
+                    <li>Manejo de datos desde archivo CSV obtenido del repositorio de Kaggle.</li>
+                    <li>Interacciones dinámicas en JavaScript, que permiten una navegación fluida y una experiencia interactiva al analizar los datos.</li>
+                    <li>Uso de Frameworks: Darle un diseño más llamativo y óptimo para la presentación requerida</li>
+                </ul>
+
+                <h3 class="text-2xl font-semibold mb-4 text-gray-800">5. Criterios de Diseño</h3>
+                <ul class="list-disc list-inside ml-4 mb-6 text-lg leading-relaxed">
+                    <li>Durante el desarrollo, se aplicaron principios de diseño centrados en:</li>
+                    <li>Navegación intuitiva y jerarquizada.</li>
+                    <li>Uso de una paleta de colores armónica, accesible y coherente con la temática.</li>
+                    <li>Presentación equilibrada de los datos y visualizaciones.</li>
+                    <li>Relevancia y coherencia con el enfoque de transición energética justa.</li>
+                    <li>Funcionalidades interactivas fáciles de usar y entender.</li>
+                </ul>
+
+                <h3 class="text-2xl font-semibold mb-4 text-gray-800">6. Recursos Utilizados</h3>
+                <ul class="list-disc list-inside ml-4 mb-6 text-lg leading-relaxed">
+                    <li>Para llevar a cabo este proyecto, se utilizaron los siguientes recursos:</li>
+                    <li>Repositorio de datos: Kaggle – Renewable Energy World Wide 1965-2022</li>
+                    <li>Fuentes de consulta y apoyo técnico</li>
+                    <li>Repositorios de referencia en github.com</li>
+                </ul>
+                
+            </div>
+        </section>
+
+        <section class="mb-12">
+            <h2 class="section-title">Resultados Esperados</h2>
+            <div class="card">
+                <ul class="space-y-4 text-lg leading-relaxed">
+                    <li class="list-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                        Los usuarios podrán informarse sobre fuentes de energía limpia con una interfaz web intuitiva.
+                    </li>
+                    <li class="list-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                        Dispondrán de herramientas para visualizar datos históricos y su evolución, facilitando la comprensión de la importancia de la transición energética.
+                    </li>
+                    <li class="list-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                        Podrán calcular la proporción de energía renovable utilizada en su consumo eléctrico total, sensibilizando sobre el impacto de sus hábitos de consumo.
+                    </li>
+                    <li class="list-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                        Se promueve el uso de energías limpias y la reducción de emisiones, alineándose con los objetivos globales de sostenibilidad y descarbonización.
+                    </li>
+                    <li class="list-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                        El aplicativo servirá como insumo para docentes, estudiantes y comunidades interesadas en promover la justicia energética y la innovación a través de la programación.
+                    </li>
+                </ul>
+                <div class="mt-8 text-center">
+                    <p class="text-xl font-semibold mb-4">Link del Repositorio:</p>
+                    <a href="https://github.com/Sagudelo01/Proyecto-Bootcamp.git" target="_blank" class="inline-block bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-6 rounded-full transition duration-300 ease-in-out transform hover:scale-105 shadow-lg">
+                        Ir al Repositorio en GitHub
+                    </a>
+                </div>
+                
+            </div>
+        </section>
+
+    </main>
+    <footer class="bg-black text-white py-10 px-4 sm:px-6 lg:px-8 font-inter ">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+            <!-- Sección de Logo y Descripción -->
+            <div class="footer-section flex flex-col items-center md:items-start text-center md:text-left">
+                <a href="#" class="mb-4">
+                    <!-- Placeholder para el logo. Considera usar un SVG para mejor escalabilidad. -->
+                    <img src="https://placehold.co/120x40/fff/000?text=EcoDatos" alt="Logo de la Empresa" class="h-10 rounded-md">
+                </a>
+                <p class="text-sm text-white-400 leading-relaxed max-w-xs">
+                    Ofrecemos soluciones informacion actualizada y estadisticas en tiempo real.
+                </p>
+            </div>
+
+            <!-- Sección de Enlaces Rápidos -->
+            <div class="footer-section text-center md:text-left">
+                <h3 class="text-lg font-semibold text-yellow-400 mb-4">Enlaces Rápidos</h3>
+                <ul class="space-y-2">
+                    <li><a href="/Proyecto-Bootcamp/hojas HTML/Inicio.html" class="text-white-300 hover:text-blue-300 transition duration-300 ease-in-out rounded-md">Inicio</a></li>
+                    <li><a href="#servicios" class="text-gray-300 hover:text-blue-300 transition duration-300 ease-in-out rounded-md">Historia</a></li>
+                    <li><a href="#portafolio" class="text-gray-300 hover:text-blue-300 transition duration-300 ease-in-out rounded-md">Dashboard</a></li>
+                    <li><a href="#blog" class="text-gray-300 hover:text-blue-300 transition duration-300 ease-in-out rounded-md">Calculadora</a></li>
+                    <li><a href="#sobre el proyecto" class="text-gray-300 hover:text-blue-300 transition duration-300 ease-in-out rounded-md">Sobre el Proyecto</a></li>
+                    <li><a href="#nosotros" class="text-gray-300 hover:text-blue-300 transition duration-300 ease-in-out rounded-md">Nosotros</a></li>
+                </ul>
+            </div>
+
+            <!-- Sección de Contacto -->
+            <div class="footer-section text-center md:text-left">
+                <h3 class="text-lg font-semibold text-yellow-400 mb-4">Contáctanos</h3>
+                <ul class="space-y-2 text-gray-300">
+                    <li class="flex items-center justify-center md:justify-start">
+                        <!-- Icono de ubicación (placeholder) -->
+                        <span class="mr-2">&#x1F4CD;</span>
+                        1600 Amphitheatre Pkwy, Mountain View, CA 94043, Estados Unidos
+                    </li>
+                    <li class="flex items-center justify-center md:justify-start">
+                        <!-- Icono de email (placeholder) -->
+                        <span class="mr-2">&#x2709;&#xFE0F;</span>
+                        <a href="mailto:info@tudominio.com" class="hover:text-blue-300 transition duration-300 ease-in-out rounded-md">info@ecodatos.com</a>
+                    </li>
+                    <li class="flex items-center justify-center md:justify-start">
+                        <!-- Icono de teléfono (placeholder) -->
+                        <span class="mr-2">&#x260E;&#xFE0F;</span>
+                        <a href="tel:+1234567890" class="hover:text-blue-300 transition duration-300 ease-in-out rounded-md">+123 456 7890</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Sección de Redes Sociales -->
+            <div class="footer-section text-center md:text-left">
+                <h3 class="text-lg font-semibold text-yellow-400 mb-4">Síguenos</h3>
+                <div class="flex justify-center md:justify-start space-x-4">
+                    <!-- Iconos de redes sociales (placeholders) -->
+                    <a href="#" target="_blank" aria-label="Facebook" class="text-gray-300 hover:text-blue-300 transition duration-300 ease-in-out transform hover:scale-110">
+                        <img src="../img/facebook.png" alt="Facebook" class="rounded-full">
+                    </a>
+                    <a href="#" target="_blank" aria-label="Twitter" class="text-gray-300 hover:text-blue-300 transition duration-300 ease-in-out transform hover:scale-110">
+                        <img src="../img/logotipo-de-twitter.png" alt="Twitter" >
+                    </a>
+                    <a href="#" target="_blank" aria-label="Instagram" class="text-gray-300 hover:text-blue-300 transition duration-300 ease-in-out transform hover:scale-110">
+                        <img src="../img/instagram.png" alt="Instagram" class="rounded-full">
+                    </a>
+                    <a href="#" target="_blank" aria-label="LinkedIn" class="text-gray-300 hover:text-blue-300 transition duration-300 ease-in-out transform hover:scale-110">
+                        <img src="../img/linkedin.png" alt="LinkedIn" class="rounded-full">
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Sección de Copyright -->
+        <div class="border-t border-gray-700 mt-10 pt-6 text-center text-gray-500 text-sm">
+            <p>&copy; 2025 EcoDatos. Todos los derechos reservados.</p>
+            <p class="mt-2">Diseñado con &#x2764;&#xFE0F; por Los Jimmy Neutron</p>
+        </div>
+    </footer>
+    <script type="text/javascript" src="../Javascript/scriptNew.js"></script>
+    <script src="/Proyecto-Bootcamp/Javascript/script.js"></script>
+    <!--Cambio posicion del head al body-->
+  </body>
+</html>

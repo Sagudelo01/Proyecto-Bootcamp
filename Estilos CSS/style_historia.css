@@ -1,0 +1,328 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+
+
+body {
+    background: #fff ;
+    min-height: 100vh;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+footer{
+    width: 100vw;
+}
+
+.main-wrapper {
+    display: flex;
+    width: 100%;
+    justify-content: space-between; /* Para separar el contenido principal de la barra de navegación */
+    flex-grow: 1; /* Permite que el wrapper ocupe el espacio restante */
+}
+
+.container {
+    flex-basis: 75%;
+    max-width: 75%;
+    margin: 20px 7.813vw 20px 40px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-sizing: border-box;
+
+}
+
+.navbar {
+    /* flex-basis: 25%;
+    max-width: 25%; */
+    margin: 20px 0 20px 20px;
+    /* width: 20%; */ /* Ancho de la barra de navegación */
+    margin: 30px 30px; /* Margen a la derecha y sin margen izquierdo */
+    position: sticky; /* Hace la barra de navegación pegajosa */
+    top: 20px; /* Se pega a 20px del top de la ventana */
+    align-self: flex-start; /* Se alinea al inicio de la línea de flex */
+    padding: 40px;
+    background-color: #e8f4f8;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    max-height: calc(100vh - 40px); /* Para que no se salga de la pantalla */
+    overflow-y: auto; /* Scroll si el contenido es muy largo */
+}
+.navbar h3 {
+    color: #2980b9;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.3em;
+    border-bottom: 1px solid #aed6f1;
+    padding-bottom: 10px;
+}
+.navbar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.navbar ul li {
+    margin-bottom: 5px; /* Ajuste para espaciado entre elementos */
+}
+.navbar ul li a {
+    text-decoration: none;
+    color: #34495e;
+    font-weight: bold;
+    display: block;
+    padding: 8px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    font-size: 1em; /* Tamaño de fuente para títulos principales */
+}
+.navbar ul li ul { /* Estilos para subtítulos anidados */
+    padding-left: 15px; /* Indentación para subtítulos */
+    margin-top: 5px;
+}
+.navbar ul li ul li a {
+    font-weight: normal; /* Menos negrita para subtítulos */
+    font-size: 0.9em; /* Tamaño de fuente más pequeño para subtítulos */
+    color: #555; /* Color más suave para subtítulos */
+    padding: 6px 10px; /* Padding ajustado para subtítulos */
+}
+.navbar ul li a:hover,
+.navbar ul li a.active {
+    background-color: #d6eaf8;
+    color: #2c3e50;
+}
+.navbar ul li ul li a:hover,
+.navbar ul li ul li a.active {
+    background-color: #e0f2f7; /* Color de fondo más suave para subtítulos activos */
+    color: #2980b9;
+}
+
+
+/* Estilos de contenido */
+h2 {
+    color: #2980b9;
+    border-bottom: 2px solid #2980b9;
+    padding-bottom: 10px;
+    margin-top: 30px;
+    font-size: 1.8em;
+}
+h3 {
+    color: #34495e;
+    margin-top: 25px;
+    font-size: 1.4em;
+}
+p {
+    margin-bottom: 15px;
+    text-align: justify;
+}
+.container ul {
+    list-style: disc;
+    margin-left: 20px;
+    margin-bottom: 15px;
+}
+.container ul li {
+    margin-bottom: 8px;
+}
+table {
+    width: 48%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+table, th, td {
+    border: 1px solid #ddd;
+}
+th, td {
+    padding: 12px;
+    text-align: left;
+}
+th {
+    background-color: #f2f2f2;
+    color: #555;
+}
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+    background-color: #2c3e50;
+    color: #fff;
+    font-size: 0.9em;
+    width: 100%; /* El footer ocupa todo el ancho */
+}
+.note {
+    font-style: italic;
+    color: #777;
+    margin-top: 10px;
+    font-size: 0.9em;
+}
+
+/* Media Queries para responsividad */
+@media (max-width: 1024px) {
+    .container {
+        width: 70%;
+        margin-left: 3%;
+    }
+    .navbar {
+        width: 25%;
+        margin-right: 2%;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-wrapper {
+        flex-direction: column; /* Apila el contenido y la barra de navegación en pantallas pequeñas */
+    }
+    .container, .navbar {
+        width: 90vw;
+        margin: 20px auto; /* Centra ambos elementos */
+        position: static; /* Desactiva sticky para la barra de navegación en móvil */
+        max-height: none;
+        overflow-y: visible;
+    }
+    .navbar h3 {
+        text-align: center;
+    }
+    .navbar ul li ul { /* Elimina la indentación en móvil */
+        padding-left: 0;
+    }
+    .navbar ul li ul li a { /* Ajusta el padding para que no se vea raro */
+        padding: 8px 10px;
+    }
+}
+
+/* HEADER */
+
+
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.6s;
+    padding: 40px 100px;
+    z-index: 100000;
+    font-family: 'Poppins', sans-serif;
+}
+
+header.sticky {
+    /* padding: 5px 100px; */
+    padding: 5px 40px;
+    background: #000;
+}
+
+header .logo {
+    position: relative;
+    font-weight: 700;
+    color: #000;
+    text-decoration: none;
+    font-size: 2rem;
+    letter-spacing: 2px;
+    transition: 0.6s;
+}
+
+header .navigation { /* Cambiado de 'header ul' a 'header .navigation' */
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header .navigation li{ /* Cambiado de 'header ul li' a 'header .navigation li' */
+    position: relative;
+    list-style: none;
+}
+
+header .navigation li a{ /* Cambiado de 'header ul li a' a 'header .navigation li a' */
+    position: relative;
+    margin: 0 15px;
+    text-decoration: none;
+    color: #fff;
+    letter-spacing: 2px;
+    font-weight: 500; /* Corregido: removido 'px' */
+    transition: 0.6s;
+    font-size: 1rem;
+}
+
+
+
+header.sticky .logo{
+    color: #fff;
+}
+
+header.sticky .navigation li a{ /* Cambiado de 'header.sticky ul li a' */
+    color: #fff;
+}
+
+header .navigation li a:hover{ /* Cambiado de 'header ul li a:hover' */
+    text-decoration:underline;
+    text-underline-offset:6px;
+}
+
+/* --- Nuevos estilos para Responsiveness --- */
+
+/* Ocultar el botón de hamburguesa por defecto */
+.menu-toggle {
+    display: none;
+    color: #fff; /* Color inicial del ícono */
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+header.sticky .menu-toggle {
+    color: #fff; /* Color del ícono cuando el header es sticky */
+}
+
+/* Media Queries para pantallas pequeñas (móviles y tabletas) */
+@media (max-width: 912px) { /* Puedes ajustar este breakpoint (768px) según necesites */
+    header {
+        padding: 20px 40px; /* Ajusta el padding del header en móviles */
+    }
+
+    header .navigation {
+        display: none; /* Ocultar la navegación por defecto en móviles */
+        position: absolute;
+        top: 100%; /* Debajo del header */
+        left: 0;
+        width: 100%;
+        background: transparent; /* Fondo oscuro semitransparente para el menú desplegado */
+        flex-direction: column; /* Apilar los ítems del menú verticalmente */
+        align-items: center;
+        padding: 20px 0;
+        transition: 0.3s ease-in-out;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    header.sticky .navigation {
+        background: #fff; /* Fondo blanco cuando es sticky */
+    }
+
+    header .navigation.active {
+        display: flex; /* Mostrar la navegación cuando tenga la clase 'active' */
+    }
+
+    header .navigation li {
+        margin: 10px 0; /* Espaciado vertical entre los ítems del menú */
+    }
+
+    header .navigation li a {
+        color: #fff; /* Color de texto del menú en modo móvil */
+        font-size: 1.2em;
+    }
+
+    header.sticky .navigation li a {
+        color: #000; /* Color de texto del menú en modo móvil cuando es sticky */
+    }
+
+    .menu-toggle {
+        display: block; /* Mostrar el botón de hamburguesa en móviles */
+    }
+
+    /* Estilo para el ícono de hamburguesa cuando el menú está activo (opcional) */
+    .menu-toggle.active .fas.fa-bars:before {
+        content: "\f00d"; /* Cambiar el ícono de hamburguesa a una 'x' de cerrar */
+    }
+}

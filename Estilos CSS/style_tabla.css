@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body {
+    margin-top: 100px;
+    font-family: 'Poppins', sans-serif;
+    
+}
+
+.contenedorPadre{
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 100px;
+}
+.h1_tabla {
+    margin-top: 50px;
+    color: #000;
+    margin-bottom: 20px; /* Space below title */
+    font-size: 1.3em;
+    text-align: left; /* Align title to left */
+    /* margin-left: 38px; */
+}
+
+
+/* Nuevo contenedor para la tabla y las opciones de archivo */
+.main-content-container {
+    display: flex;
+    margin-top: 20px;
+    gap: 20px; /* Espacio entre la tabla y las opciones */
+    align-items: flex-start; /* Alinea los elementos en la parte superior */
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.file-selection {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+    font-size: 0.9em;
+    flex-shrink: 0; /* Evita que este contenedor se encoja */
+    min-width: 220px; /* Ancho mínimo para las opciones */
+}
+.file-selection p {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #555;
+}
+/* Estilos para las opciones de archivo (ahora sin el input de radio) */
+.file-option {
+    display: block; /* Para que cada opción ocupe su propia línea */
+    padding: 8px 10px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+.file-option:hover {
+    background-color: #e2e6ea; /* Un gris claro al pasar el mouse */
+}
+/* Estilo para la opción seleccionada */
+.file-option.selected-file {
+    /* background-color: #007bff; */ /* Azul */
+    color: blue;
+    font-weight: bold;
+}
+.table-container {
+    flex-grow: 1; /* Permite que la tabla ocupe el espacio restante */
+    max-height: 450px; /* Ajusta esta altura a tu preferencia */
+    overflow-y: auto; /* Habilita el scroll vertical */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+    background-color: #ffffff;
+}
+
+.file-selection a{
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    background-color: blue;
+    color: white;
+    border-radius: 4px;
+    padding: 8px 10px;
+    
+}
+
+.file-selection a:visited {
+    color: white    ; /* Mismo color que a:link para que no cambie */
+}
+
+.file-selection a:hover {
+    background-color: rgb(0, 0, 189);
+    color: white;
+}
+
+table {
+    width: 100vw;
+    border-collapse: collapse;
+    min-width: 31.25vw ; /* Ensure table doesn't collapse too much horizontally */
+}
+th, td {
+    border: 1px solid #eee;
+    padding: 10px;
+    text-align: left;
+    white-space: nowrap; /* Prevent text wrapping in cells */
+}
+th {
+    background-color: #e9ecef;
+    position: sticky;
+    top: 0;
+    z-index: 2; /* Ensure header stays above content and filters */
+    color: #333;
+    font-weight: bold;
+}
+td {
+    background-color: #ffffff;
+}
+tr:nth-child(even) td {
+    background-color: #f8f9fa; /* Zebra striping */
+}
+/* Estilos para los desplegables de filtro */
+.filter-select {
+    width: calc(100% - 2px); /* Adjust for padding/border */
+    padding: 6px;
+    margin-top: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 0.85em;
+    background-color: #fff;
+    cursor: pointer;
+}
+.filter-select:focus {
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+th div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px; /* Space between header text and dropdown */
+}
+
+/* Media Queries para pantallas más pequeñas */
+@media (max-width: 990px) {
+    .main-content-container {
+        flex-direction: column; /* Apila los elementos en pantallas pequeñas */
+    }
+    .file-selection {
+        min-width: unset; /* Elimina el ancho mínimo */
+        width: 100%; /* Ocupa todo el ancho */
+    }
+    
+    .table-container{
+        width: 100%;
+    }
+
+    .contenedorPadre{
+        width: 95%;
+    }
+}

@@ -1,0 +1,416 @@
+/* Tus estilos existentes */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #fff;
+    min-height: 200vh;
+}
+
+
+/* Stilos del header */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.6s;
+    padding: 40px 100px;
+    z-index: 100000;
+}
+
+header.sticky {
+    /* padding: 5px 100px; */
+    padding: 5px 40px;
+    background: #000;
+}
+
+header .logo {
+    position: relative;
+    font-weight: 700;
+    color: #fff;
+    text-decoration: none;
+    font-size: 2rem;
+    letter-spacing: 2px;
+    transition: 0.6s;
+}
+
+header .navigation { /* Cambiado de 'header ul' a 'header .navigation' */
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header .navigation li{ /* Cambiado de 'header ul li' a 'header .navigation li' */
+    position: relative;
+    list-style: none;
+}
+
+header .navigation li a{ /* Cambiado de 'header ul li a' a 'header .navigation li a' */
+    position: relative;
+    margin: 0 15px;
+    text-decoration: none;
+    color: #fff;
+    letter-spacing: 2px;
+    font-weight: 500; /* Corregido: removido 'px' */
+    transition: 0.6s;
+}
+
+.banner {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: url(../img/geotermica2.jpg);
+    background-size: cover;
+    text-align: center;
+    display: flex;
+    justify-content: center;   /* Centra horizontalmente */
+    align-items: center;  
+}
+
+.banner h1{
+    color:#fff;
+    font-size: clamp(2rem, 8vw, 5rem);
+    /* text-transform: uppercase; */
+}
+
+header.sticky .logo{
+    color: #fff;
+}
+
+header.sticky .navigation li a{ /* Cambiado de 'header.sticky ul li a' */
+    color: #fff;
+}
+
+header .navigation li a:hover{ /* Cambiado de 'header ul li a:hover' */
+    text-decoration:underline;
+    text-underline-offset:6px;
+}
+
+/* --- Nuevos estilos para Responsiveness --- */
+
+/* Ocultar el botón de hamburguesa por defecto */
+.menu-toggle {
+    display: none;
+    color: #fff; /* Color inicial del ícono */
+    font-size: 2em;
+    cursor: pointer;
+}
+
+header.sticky .menu-toggle {
+    color: #fff; /* Color del ícono cuando el header es sticky */
+}
+
+/* Contenido */
+
+.content{
+    display: flex;
+    /* grid-template-columns: 3fr 1fr; */ /* 3 partes para div_p, 1 parte para content_noticias */
+    gap: 2rem; /* Espacio opcional entre columnas */
+    width: 100%;
+}
+
+.div_p {
+    /* grid-column: 1 / 2; */ /* Ocupa la primera columna (3fr) */
+    width: calc(100% - 20.833vw) ;
+    padding-top: 3.125vw;
+    margin-left: 7.813vw;
+    padding-right: 7.813vw;
+}
+
+.content_noticias {
+    /* grid-column: 2 / 3; */ /* Ocupa la segunda columna (1fr) */
+    padding-top: 3.125vw;
+    width: 30%;
+    margin-right: 7.813vw;
+}
+
+.card_noticias{
+    background: #fff;
+}
+
+div.content_noticias .p_noticias, div.content_noticias .p_noticias a{
+    font-size: 0.9rem;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+
+.content p{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.3rem;
+    line-height: 1.7;
+    padding-bottom: 30px;
+}
+
+.content h2{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.5rem;
+    line-height: 1.7;
+    padding-bottom: 30px;
+}
+
+.content h3{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.3rem;
+    line-height: 1.7;
+    padding-bottom: 10px;
+}
+
+
+.content img {
+    width: 100%;
+    padding-bottom: 20px;
+}
+
+
+/* Media Queries para pantallas pequeñas (móviles y tabletas) */
+@media (max-width: 960px) { /* Puedes ajustar este breakpoint (768px) según necesites */
+    header {
+        padding: 20px 40px; /* Ajusta el padding del header en móviles */
+        background-color: #000000d8;
+    }
+
+    header .navigation {
+        display: none; /* Ocultar la navegación por defecto en móviles */
+        position: absolute;
+        top: 100%; /* Debajo del header */
+        left: 0;
+        width: 100%;
+        background: transparent; /* Fondo oscuro semitransparente para el menú desplegado */
+        flex-direction: column; /* Apilar los ítems del menú verticalmente */
+        align-items: center;
+        padding: 20px 0;
+        transition: 0.3s ease-in-out;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    header.sticky .navigation {
+        background: #fff; /* Fondo blanco cuando es sticky */
+    }
+
+    header .navigation.active {
+        display: flex; /* Mostrar la navegación cuando tenga la clase 'active' */
+        background-color: #000000d8;
+    }
+
+
+    header .navigation li {
+        margin: 10px 0; /* Espaciado vertical entre los ítems del menú */
+    }
+
+    header .navigation li a {
+        color: #fff; /* Color de texto del menú en modo móvil */
+        font-size: 1.2em;
+    }
+
+    header.sticky .navigation li a {
+        color: #fff; /* Color de texto del menú en modo móvil cuando es sticky */
+    }
+
+    .banner{
+        height: 100vw;
+    }
+
+    .content{
+        margin: 0;
+        width: 100%;
+        flex-wrap: wrap;
+    }
+    .content_noticias {
+    /* grid-column: 2 / 3; */ /* Ocupa la segunda columna (1fr) */
+    padding-top: 3.125vw;
+    width: 100%
+    }
+
+    .div_p{
+        width: 100%;
+    }
+
+    .menu-toggle {
+        display: block; /* Mostrar el botón de hamburguesa en móviles */
+    }
+
+    /* Estilo para el ícono de hamburguesa cuando el menú está activo (opcional) */
+    .menu-toggle.active .fas.fa-bars:before {
+        content: "\f00d"; /* Cambiar el ícono de hamburguesa a una 'x' de cerrar */
+    }
+}
+
+.site-footer
+{
+    background-color:#26272b;
+    padding:45px 0 20px;
+    font-size:15px;
+    line-height:24px;
+    color:#737373;
+}
+.site-footer hr
+{
+    border-top-color:#bbb;
+    opacity:0.5;
+}
+.site-footer hr.small
+{
+    margin:20px 0;
+}
+.site-footer h6
+{
+    color:#fff;
+    font-size:16px;
+    text-transform:uppercase;
+    margin-top:5px;
+    letter-spacing:2px;
+}
+.site-footer a
+{
+    color:#737373;
+}
+.site-footer a:hover
+{
+    color:#3366cc;
+    text-decoration:none;
+}
+.footer-links
+{
+    padding-left:0;
+    list-style:none;
+}
+.footer-links li
+{
+    display:block;
+}
+.footer-links a
+{
+    color:#737373;
+}
+.footer-links a:active,.footer-links a:focus,.footer-links a:hover
+{
+    color:#3366cc;
+    text-decoration:none;
+}
+.footer-links.inline li
+{
+    display:inline-block;
+}
+.site-footer .social-icons
+{
+    text-align:right;
+}
+.site-footer .social-icons a
+{
+    width:40px;
+    height:40px;
+    line-height:40px;
+    margin-left:6px;
+    margin-right:0;
+    border-radius:100%;
+    background-color:#33353d;
+}
+.copyright-text
+{
+    margin:0;
+}
+@media (max-width:991px)
+{
+.site-footer [class^=col-]
+    {
+        margin-bottom:30px;
+    }
+
+   /*  header{
+        background-color: ;
+    } */
+
+}
+@media (max-width:960px)
+{
+.site-footer
+    {
+        padding-bottom:0;
+    }
+    .site-footer .copyright-text,.site-footer .social-icons
+    {
+        text-align:center;
+    }
+}
+.social-icons
+{
+    padding-left:0;
+    margin-bottom:0;
+    list-style:none;
+}
+.social-icons li
+{
+    display:inline-block;
+    margin-bottom:4px;
+}
+.social-icons li.title
+{
+    margin-right:15px;
+    text-transform:uppercase;
+    color:#96a2b2;
+    font-weight:700;
+    font-size:13px;
+}
+.social-icons a{
+    background-color:#eceeef;
+    color:#818a91;
+    font-size:16px;
+    display:inline-block;
+    line-height:44px;
+    width:44px;
+    height:44px;
+    text-align:center;
+    margin-right:8px;
+    border-radius:100%;
+    -webkit-transition:all .2s linear;
+    -o-transition:all .2s linear;
+    transition:all .2s linear;
+}
+.social-icons a:active,.social-icons a:focus,.social-icons a:hover
+{
+    color:#fff;
+    background-color:#29aafe;
+}
+.social-icons.size-sm a
+{
+    line-height:34px;
+    height:34px;
+    width:34px;
+    font-size:14px;
+}
+.social-icons a.facebook:hover
+{
+    background-color:#3b5998;
+}
+.social-icons a.twitter:hover
+{
+    background-color:#00aced;
+}
+.social-icons a.linkedin:hover
+{
+    background-color:#007bb6;
+}
+.social-icons a.dribbble:hover
+{
+    background-color:#ea4c89;
+}
+@media (max-width:767px)
+{
+.social-icons li.title
+    {
+    display:block;
+    margin-right:0;
+    font-weight:600;
+    }
+}

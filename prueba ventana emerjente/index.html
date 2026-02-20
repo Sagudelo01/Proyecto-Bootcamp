@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ventana Emergente con Calculadora</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <button id="abrirModalBtn">Calculadora de Energía Renovable</button>
+
+    <div id="miModal" class="modal">
+
+        <div class="modal-contenido">
+            <span class="cerrar">&times;</span>
+            <div class="contenedor_calculadora">
+                <div class="container">
+                    <h1 id="link_calculadora">Estimación de Energía Renovable en tu Consumo Eléctrico</h1>
+                    <p>Esta herramienta estima la proporción de tu consumo eléctrico que, en teoría, proviene de fuentes renovables, basándose en la mezcla energética de la entidad y año seleccionados.</p>
+                    <p class="warning"><strong>Nota:</strong> Este cálculo asume que tu consumo eléctrico es representativo de la mezcla energética general de la entidad seleccionada para ese año. No considera la fuente específica de tu electricidad o si tienes instalaciones de energía renovable en tu propio hogar.</p>
+
+                    <form id="estimationForm">
+                        <div class="form-group">
+                            <label for="consumption">Tu Consumo Eléctrico Total (kWh/año):</label>
+                            <input type="number" id="consumption" name="consumption" min="0" step="any" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="entitySelect">Selecciona una Entidad/País:</label>
+                            <select id="entitySelect" required>
+                                <option value="">Cargando entidades...</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="yearSelect">Selecciona un Año:</label>
+                            <select id="yearSelect" required>
+                                <option value="">Selecciona una entidad primero...</option>
+                            </select>
+                        </div>
+
+                        <button type="submit">Calcular Proporción</button>
+                    </form>
+
+                    <div id="results" class="results-container">
+                        <h2>Resultados de la Estimación</h2>
+                        <p id="selectedConsumption">Consumo Ingresado: </p>
+                        <p id="selectedEntityYear">Entidad y Año Seleccionados: </p>
+                        <p id="renewableSharePercentage">Porcentaje de Energía Renovable en la Entidad: </p>
+                        <p id="userRenewableConsumption">Tu Consumo Estimado de Energía Renovable: </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

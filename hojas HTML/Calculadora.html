@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../Estilos CSS/style_tabla.css ">
+    <link rel="stylesheet" href="../Estilos CSS/stylesNew.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/Proyecto-Bootcamp/prueba ventana emerjente/style.css">
+    <!-- <link rel="stylesheet" href="../prueba calculadora/style.css"> -->
+    <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configuración de Tailwind para usar la fuente Inter -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <title>EcoDatos</title>
+</head>
+<body>
+    <header class="sticky">
+        <a href="#" class="logo">EcoDatos</a>
+        <div class="menu-toggle" onclick="toggleMenu();">
+            <i class="fas fa-bars"></i> </div>
+        <ul class="navigation"> <li><a href="../hojas HTML/Inicio.html">Inicio</a></li>
+            <li><a href="../hojas HTML/historia.html">Historia</a></li>
+            <li><a href="../hojas HTML/dashboard.html">Dashboard</a></li>
+            <li><a href="../hojas HTML/calculadora.html">Calculadora</a></li>
+            <li><a href="../hojas HTML/Sobre el proyecto.html">Sobre el Proyecto</a></li>
+            <li><a href="../hojas HTML/Sobre nosotros.html">Nosotros</a></li>
+        </ul>
+    </header>
+    <div class="contenedorPadre">
+        <h1 class="h1_tabla">Conjunto de datos históricos globales sobre energía renovable</h1>
+        <p class="p_tabla">Este conjunto de datos es una recopilación de datos globales sobre energía renovable desde 1965 hasta 2022. El conjunto de datos incluye información sobre la producción de energía hidroeléctrica, eólica, solar, de biocombustibles y geotérmica de todo el mundo.
+        Desde la Revolución Industrial, la combinación energética de la mayoría de los países del mundo se ha basado predominantemente en combustibles fósiles. Esto tiene importantes implicaciones para el clima global, así como para la salud humana.
+        Para reducir las emisiones de CO2 y la contaminación atmosférica local, el mundo necesita una transición rápida hacia fuentes de energía bajas en carbono: la nuclear y las tecnologías renovables.
+
+        </p>
+        <div class="main-content-container">
+            <div class="table-container">
+                <table id="dataTable">
+                    <thead>
+                        </thead>
+                    <tbody>
+                        </tbody>
+                </table>
+            </div>
+
+            <div class="file-selection">
+                <button id="abrirModalBtn">Calculadora de Energía Renovable</button>
+                <!-- <a class="link_calculadora" href="#link_calculadora">Calculadora consumo Elétrico</a> -->
+                <p>Select Data File:</p>
+                <div class="file-option" data-file="../prueba 1 tabla/wind-generation.csv">Wind Generation</div>
+                <div class="file-option" data-file="../prueba 1 tabla/modern-renewable-prod.csv">Modern Renewable Production</div>
+                <div class="file-option" data-file="../prueba 1 tabla/biofuel-production.csv">Biofuel Production</div>
+                <div class="file-option" data-file="../prueba 1 tabla/hydropower-consumption.csv">Hydropower Consumption</div>
+                <div class="file-option" data-file="../prueba 1 tabla/installed-geothermal-capacity.csv">Geothermal Capacity</div>
+                <div class="file-option" data-file="../prueba 1 tabla/solar-energy-consumption.csv">Solar Energy Consumption</div>
+            </div>
+        </div>
+
+        <!-- Seccion calculadora -->
+        <div id="miModal" class="modal">
+
+        <div class="modal-contenido">
+            <span class="cerrar">&times;</span>
+            <div class="contenedor_calculadora">
+                <div class="container">
+                    <h1 id="link_calculadora">Estimación de Energía Renovable en tu Consumo Eléctrico</h1>
+                    <p>Esta herramienta estima la proporción de tu consumo eléctrico que, en teoría, proviene de fuentes renovables, basándose en la mezcla energética de la entidad y año seleccionados.</p>
+                    <p class="warning"><strong>Nota:</strong> Este cálculo asume que tu consumo eléctrico es representativo de la mezcla energética general de la entidad seleccionada para ese año. No considera la fuente específica de tu electricidad o si tienes instalaciones de energía renovable en tu propio hogar.</p>
+
+                    <form id="estimationForm">
+                        <div class="form-group">
+                            <label for="consumption">Tu Consumo Eléctrico Total (kWh/año):</label>
+                            <input type="number" id="consumption" name="consumption" min="0" step="any" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="entitySelect">Selecciona una Entidad/País:</label>
+                            <select id="entitySelect" required>
+                                <option value="">Cargando entidades...</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="yearSelect">Selecciona un Año:</label>
+                            <select id="yearSelect" required>
+                                <option value="">Selecciona una entidad primero...</option>
+                            </select>
+                        </div>
+
+                        <button type="submit">Calcular Proporción</button>
+                    </form>
+
+                    <div id="results" class="results-container">
+                        <h2>Resultados de la Estimación</h2>
+                        <p id="selectedConsumption">Consumo Ingresado: </p>
+                        <p id="selectedEntityYear">Entidad y Año Seleccionados: </p>
+                        <p id="renewableSharePercentage">Porcentaje de Energía Renovable en la Entidad: </p>
+                        <p id="userRenewableConsumption">Tu Consumo Estimado de Energía Renovable: </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    </div>
+    </div>
+
+    <footer class="bg-black text-white py-10 px-4 sm:px-6 lg:px-8 font-inter">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Sección de Logo y Descripción -->
+            <div class="footer-section flex flex-col items-center md:items-start text-center md:text-left">
+                <a href="#" class="mb-4">
+                    <!-- Placeholder para el logo. Considera usar un SVG para mejor escalabilidad. -->
+                    <img src="https://placehold.co/120x40/fff/000?text=EcoDatos" alt="Logo de la Empresa" class="h-10 rounded-md">
+                </a>
+                <p class="text-sm text-white-400 leading-relaxed max-w-xs">
+                    Ofrecemos soluciones informacion actualizada y estadisticas en tiempo real.
+                </p>
+            </div>
+
+            <!-- Sección de Enlaces Rápidos -->
+            <div class="footer-section text-center md:text-left">
+                <h3 class="text-lg font-semibold text-yellow-400 mb-4">Enlaces Rápidos</h3>
+                <ul class="space-y-2">
+                    <li><a href="#inicio" class="text-white-300 hover:text-blue-300 transition duration-300 ease-in-out rounded-md">Inicio</a></li>
+                    <li><a href="#servicios" class="text-gray-300 hover:text-blue-300 transition duration-300 ease-in-out rounded-md">Historia</a></li>
+                    <li><a href="#portafolio" class="text-gray-300 hover:text-blue-300 transition duration-300 ease-in-out rounded-md">Dashboard</a></li>
+                    <li><a href="#blog" class="text-gray-300 hover:text-blue-300 transition duration-300 ease-in-out rounded-md">Calculadora</a></li>
+                    <li><a href="#sobre el proyecto" class="text-gray-300 hover:text-blue-300 transition duration-300 ease-in-out rounded-md">Sobre el Proyecto</a></li>
+                    <li><a href="/Proyecto-Bootcamp/hojas HTML/Sobre nosotros.html" class="text-gray-300 hover:text-blue-300 transition duration-300 ease-in-out rounded-md">Nosotros</a></li>
+                </ul>
+            </div>
+
+            <!-- Sección de Contacto -->
+            <div class="footer-section text-center md:text-left">
+                <h3 class="text-lg font-semibold text-yellow-400 mb-4">Contáctanos</h3>
+                <ul class="space-y-2 text-gray-300">
+                    <li class="flex items-center justify-center md:justify-start">
+                        <!-- Icono de ubicación (placeholder) -->
+                        <span class="mr-2">&#x1F4CD;</span>
+                        1600 Amphitheatre Pkwy, Mountain View, CA 94043, Estados Unidos
+                    </li>
+                    <li class="flex items-center justify-center md:justify-start">
+                        <!-- Icono de email (placeholder) -->
+                        <span class="mr-2">&#x2709;&#xFE0F;</span>
+                        <a href="mailto:info@tudominio.com" class="hover:text-blue-300 transition duration-300 ease-in-out rounded-md">info@ecodatos.com</a>
+                    </li>
+                    <li class="flex items-center justify-center md:justify-start">
+                        <!-- Icono de teléfono (placeholder) -->
+                        <span class="mr-2">&#x260E;&#xFE0F;</span>
+                        <a href="tel:+1234567890" class="hover:text-blue-300 transition duration-300 ease-in-out rounded-md">+123 456 7890</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Sección de Redes Sociales -->
+            <div class="footer-section text-center md:text-left">
+                <h3 class="text-lg font-semibold text-yellow-400 mb-4">Síguenos</h3>
+                <div class="flex justify-center md:justify-start space-x-4">
+                    <!-- Iconos de redes sociales (placeholders) -->
+                    <a href="#" target="_blank" aria-label="Facebook" class="text-gray-300 hover:text-blue-300 transition duration-300 ease-in-out transform hover:scale-110">
+                        <img src="../img/facebook.png" alt="Facebook" class="rounded-full">
+                    </a>
+                    <a href="#" target="_blank" aria-label="Twitter" class="text-gray-300 hover:text-blue-300 transition duration-300 ease-in-out transform hover:scale-110">
+                        <img src="../img/logotipo-de-twitter.png" alt="Twitter" >
+                    </a>
+                    <a href="#" target="_blank" aria-label="Instagram" class="text-gray-300 hover:text-blue-300 transition duration-300 ease-in-out transform hover:scale-110">
+                        <img src="../img/instagram.png" alt="Instagram" class="rounded-full">
+                    </a>
+                    <a href="#" target="_blank" aria-label="LinkedIn" class="text-gray-300 hover:text-blue-300 transition duration-300 ease-in-out transform hover:scale-110">
+                        <img src="../img/linkedin.png" alt="LinkedIn" class="rounded-full">
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Sección de Copyright -->
+        <div class="border-t border-gray-700 mt-10 pt-6 text-center text-gray-500 text-sm">
+            <p>&copy; 2025 EcoDatos. Todos los derechos reservados.</p>
+            <p class="mt-2">Diseñado con &#x2764;&#xFE0F; por Los Jimmy Neutron</p>
+        </div>
+    </footer>
+
+
+    <script type="text/javascript" src="../Javascript/scriptNew.js"></script>
+    <script src="../Javascript/tablas.js"></script>
+    <script src="../prueba calculadora/script.js"></script>
+    <script src="/Proyecto-Bootcamp/prueba ventana emerjente/script_ventana.js"></script>
+</body>
+</html>

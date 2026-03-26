@@ -6,6 +6,10 @@ Plataforma de visualización de datos de energía geotérmica con enfoque en usa
 
 <img width="1865" height="917" alt="image" src="https://github.com/user-attachments/assets/895dcf2c-9aa7-4bcc-8236-220c3c7c5786" />
 
+<img width="1849" height="938" alt="image" src="https://github.com/user-attachments/assets/5c0717f5-8de4-4ecc-a64a-566337a309d2" />
+
+<img width="1863" height="934" alt="image" src="https://github.com/user-attachments/assets/470477ab-f5c8-4cb6-9aa4-ffe88d3a25b4" />
+
 
 ## 📋 Descripción
 

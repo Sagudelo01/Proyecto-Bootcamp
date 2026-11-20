@@ -1,33 +1,46 @@
-# EcoDatos — Geothermal Energy Data Platform 🌍
+# EcoDatos
 
-Plataforma de visualización de datos de energía geotérmica con enfoque en usabilidad y diseño responsivo.
+A renewable-energy data dashboard. Pick a region and explore its electricity mix, how the hydro/solar/wind share has changed over time, its solar capacity trend, and a global ranking of geothermal leaders — all rendered with Chart.js from open datasets.
 
-## 🖥️ Vista previa
+**Live demo:** [sagudelo01.github.io/Proyecto-Bootcamp](https://sagudelo01.github.io/Proyecto-Bootcamp/)
 
-<img width="1865" height="917" alt="image" src="https://github.com/user-attachments/assets/895dcf2c-9aa7-4bcc-8236-220c3c7c5786" />
+![EcoDatos dashboard](docs/hero.png)
 
-<img width="1849" height="938" alt="image" src="https://github.com/user-attachments/assets/5c0717f5-8de4-4ecc-a64a-566337a309d2" />
+## Features
 
-<img width="1863" height="934" alt="image" src="https://github.com/user-attachments/assets/470477ab-f5c8-4cb6-9aa4-ffe88d3a25b4" />
+- Region selector that updates the charts for 26 countries and regions
+- Four interactive charts: electricity mix (doughnut), renewable share over time (stacked area), solar capacity trend (line) and geothermal leaders (bar)
+- Key figures summarising the datasets
+- Responsive layout and accessibility basics: skip link, labelled controls, focus styles
+- Data is pre-processed into a small JS bundle, so the dashboard loads instantly with no backend
 
+## Stack
 
-## 📋 Descripción
+- HTML, CSS and vanilla JavaScript
+- Tailwind CSS (CDN) and Chart.js
+- Data from [Our World in Data](https://ourworldindata.org/energy)
 
-Interfaz front-end desarrollada con enfoque mobile-first, permitiendo a los usuarios explorar y navegar datos de energía geotérmica de forma intuitiva. Proyecto entregado en tiempo y forma.
+## Running locally
 
-## 🛠️ Stack
+The site is fully static. Clone it and serve the folder:
 
-![HTML](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)
-![CSS](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
-![Tailwind](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat&logo=tailwind-css&logoColor=white)
+```bash
+git clone https://github.com/Sagudelo01/Proyecto-Bootcamp.git
+cd Proyecto-Bootcamp
+python3 -m http.server 8000
+```
 
-## ✅ Mi rol
+Then open `http://localhost:8000`.
 
-- Desarrollo front-end completo
-- Diseño responsivo mobile-first
-- Integración de datos desde Kaggle
+## Data
 
-## 📅 Publicado
+The original project shipped several raw CSV datasets. They are filtered to a
+set of key regions and converted into `js/data.js` (electricity mix, solar PV
+capacity and installed geothermal capacity), which keeps the payload small and
+avoids runtime CSV parsing.
 
-Agosto 2025
+## Screenshots
+
+| Dashboard | Charts |
+|---|---|
+| ![Dashboard](docs/dashboard.png) | ![Charts](docs/charts.png) |

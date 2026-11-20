@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page not found — EcoDatos</title>
+    <link rel="icon" type="image/svg+xml" href="/Proyecto-Bootcamp/assets/favicon.svg" />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+    <style>
+      :root { --bg: #f4f6f3; --text: #0d1b17; --muted: #55635b; --accent: #1f9d6b; }
+      @media (prefers-color-scheme: dark) { :root { --bg: #0b1512; --text: #e7efe9; --muted: #93a79c; --accent: #35c489; } }
+      * { box-sizing: border-box; }
+      body { margin: 0; min-height: 100svh; display: grid; place-items: center; text-align: center;
+        background: var(--bg); color: var(--text); font-family: Inter, system-ui, sans-serif; padding: 2rem; }
+      h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(3rem, 12vw, 6rem); margin: 0; color: var(--accent); }
+      p { color: var(--muted); max-width: 40ch; margin: 0.5rem auto 1.75rem; }
+      a { display: inline-block; background: var(--accent); color: #fff; text-decoration: none;
+        padding: 0.75rem 1.5rem; border-radius: 999px; font-weight: 600; }
+    </style>
+    <script>
+      try { var t = localStorage.getItem('ecodatos:theme'); if (t) document.documentElement.style.colorScheme = t; } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <main>
+      <h1>404</h1>
+      <p>This page doesn't exist. Let's get you back to the data.</p>
+      <a href="/Proyecto-Bootcamp/">Back to the dashboard</a>
+    </main>
+  </body>
+</html>

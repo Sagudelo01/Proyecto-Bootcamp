@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="EcoDatos is a renewable-energy data dashboard: explore the electricity mix, solar capacity trends and geothermal leaders by region, with interactive charts in English or Spanish, light or dark."
+      content="EcoDatos is a renewable-energy data dashboard: explore the electricity mix, solar capacity trends and geothermal leaders by region, with interactive charts, data tables and CSV/PNG export, in English or Spanish, light or dark."
     />
     <meta name="author" content="Sagudelo01" />
     <meta name="theme-color" content="#0b3b2e" />
@@ -21,26 +21,26 @@
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://sagudelo01.github.io/Proyecto-Bootcamp/" />
     <meta property="og:title" content="EcoDatos — Renewable Energy Dashboard" />
-    <meta property="og:description" content="Explore the electricity mix, solar capacity trends and geothermal leaders by region with interactive charts." />
+    <meta property="og:description" content="Explore the electricity mix, solar capacity trends and geothermal leaders by region with interactive charts, tables and CSV/PNG export." />
     <meta property="og:image" content="https://sagudelo01.github.io/Proyecto-Bootcamp/assets/og-image.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="EcoDatos — Renewable Energy Dashboard" />
-    <meta name="twitter:description" content="Explore the electricity mix, solar capacity trends and geothermal leaders by region with interactive charts." />
+    <meta name="twitter:description" content="Explore the electricity mix, solar capacity trends and geothermal leaders by region with interactive charts, tables and CSV/PNG export." />
     <meta name="twitter:image" content="https://sagudelo01.github.io/Proyecto-Bootcamp/assets/og-image.png" />
 
     <link rel="stylesheet" href="assets/tailwind.css" />
     <style>
       :root {
-        --bg: #f4f6f3; --surface: #ffffff; --text: #0d1b17; --muted: #55635b;
+        --bg: #f4f6f3; --surface: #ffffff; --surface-2: #eef2ee; --text: #0d1b17; --muted: #55635b;
         --line: #e4e9e4; --accent: #1f9d6b; --accent-strong: #1a855b;
         --hero-bg: #0d1b17; --hero-text: #ffffff; --hero-sub: #c3d1ca;
         --blob: rgba(31, 157, 107, 0.35);
         --blob-a: #27b981; --blob-b: #12b2a0; --blob-c: #5fd49a;
       }
       :root[data-theme='dark'] {
-        --bg: #0b1512; --surface: #10211b; --text: #e7efe9; --muted: #93a79c;
+        --bg: #0b1512; --surface: #10211b; --surface-2: #142821; --text: #e7efe9; --muted: #93a79c;
         --line: #1d3329; --accent: #35c489; --accent-strong: #2bb079;
         --hero-bg: #0a1712; --hero-text: #f1f7f3; --hero-sub: #a9bcb2;
         --blob: rgba(53, 196, 137, 0.22);
@@ -51,44 +51,76 @@
         transition: background 0.35s, border-color 0.35s, transform 0.2s ease, box-shadow 0.2s ease; }
       .card:hover { transform: translateY(-3px); box-shadow: 0 16px 36px -22px rgba(0, 0, 0, 0.35); }
       .chart-box { position: relative; height: 300px; }
-      .btn-ghost { border: 1px solid var(--line); color: var(--text); transition: border-color 0.2s, background 0.2s, transform 0.15s; }
+      .btn-ghost { border: 1px solid var(--line); color: var(--text);
+        transition: border-color 0.2s, background 0.2s, transform 0.15s; }
       .btn-ghost:hover { border-color: var(--accent); transform: translateY(-1px); }
+      .tool-btn { display: inline-grid; place-items: center; height: 30px; min-width: 30px; padding: 0 0.5rem;
+        border: 1px solid var(--line); border-radius: 8px; color: var(--muted); font-size: 0.75rem; font-weight: 600;
+        background: var(--surface); cursor: pointer; transition: border-color 0.2s, color 0.2s, background 0.2s; }
+      .tool-btn:hover { border-color: var(--accent); color: var(--text); }
+      .tool-btn[aria-pressed='true'] { background: var(--accent); color: #fff; border-color: var(--accent); }
       a:focus-visible, button:focus-visible, select:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 6px; }
+
+      .nav-link { color: var(--muted); transition: color 0.2s; }
+      .nav-link:hover { color: var(--text); }
+      .nav-link.active { color: var(--accent-strong); }
+
+      /* Data tables */
+      .table-wrap { height: 300px; overflow: auto; }
+      table.data { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+      table.data caption { text-align: left; color: var(--muted); font-size: 0.78rem; padding-bottom: 0.4rem; }
+      table.data th, table.data td { padding: 0.45rem 0.6rem; border-bottom: 1px solid var(--line); text-align: right; }
+      table.data th:first-child, table.data td:first-child { text-align: left; }
+      table.data thead th { position: sticky; top: 0; background: var(--surface); color: var(--muted); font-weight: 600; }
+
+      /* Loading skeleton */
+      .skeleton { position: absolute; inset: 0; border-radius: 10px;
+        background: linear-gradient(90deg, var(--surface-2) 25%, var(--line) 37%, var(--surface-2) 63%);
+        background-size: 400% 100%; animation: shimmer 1.2s ease-in-out infinite; }
+      @keyframes shimmer { 0% { background-position: 100% 0; } 100% { background-position: -100% 0; } }
 
       /* Animated backdrop — transform/opacity only */
       .bg-anim { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
-      .bg-anim span { position: absolute; border-radius: 50%; filter: blur(38px); will-change: transform, opacity; }
-      .blob-a { width: 30vw; height: 30vw; max-width: 420px; max-height: 420px; left: -6vw; top: -6vw;
-        background: var(--blob-a); animation: driftA 16s ease-in-out infinite; }
-      .blob-b { width: 26vw; height: 26vw; max-width: 380px; max-height: 380px; right: -4vw; top: 22vh;
-        background: var(--blob-b); animation: driftB 19s ease-in-out infinite; }
-      .blob-c { width: 24vw; height: 24vw; max-width: 340px; max-height: 340px; left: 32vw; bottom: -8vh;
-        background: var(--blob-c); animation: driftC 13s ease-in-out infinite; }
+      .bg-anim span { position: absolute; border-radius: 50%; filter: blur(34px); will-change: transform, opacity; }
+      .blob-a { width: 30vw; height: 30vw; max-width: 440px; max-height: 440px; left: -6vw; top: -6vw;
+        background: var(--blob-a); animation: driftA 13s ease-in-out infinite; }
+      .blob-b { width: 26vw; height: 26vw; max-width: 400px; max-height: 400px; right: -4vw; top: 22vh;
+        background: var(--blob-b); animation: driftB 16s ease-in-out infinite; }
+      .blob-c { width: 24vw; height: 24vw; max-width: 360px; max-height: 360px; left: 32vw; bottom: -8vh;
+        background: var(--blob-c); animation: driftC 11s ease-in-out infinite; }
       @keyframes driftA {
-        0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.5; }
-        50% { transform: translate3d(150px, 110px, 0) scale(1.12); opacity: 0.62; }
+        0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.55; }
+        50% { transform: translate3d(220px, 160px, 0) scale(1.14); opacity: 0.68; }
       }
       @keyframes driftB {
-        0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.45; }
-        50% { transform: translate3d(-150px, 150px, 0) scale(1.14); opacity: 0.58; }
+        0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.5; }
+        50% { transform: translate3d(-220px, 210px, 0) scale(1.16); opacity: 0.64; }
       }
       @keyframes driftC {
-        0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.48; }
-        50% { transform: translate3d(130px, -140px, 0) scale(1.1); opacity: 0.6; }
+        0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.52; }
+        50% { transform: translate3d(200px, -200px, 0) scale(1.12); opacity: 0.66; }
       }
       .bg-paused .bg-anim span { animation-play-state: paused; }
 
-      /* Entrance reveal */
       .reveal { opacity: 0; transform: translateY(10px); transition: opacity 0.5s ease, transform 0.5s ease; }
       body.ready .reveal { opacity: 1; transform: none; }
       @media (prefers-reduced-motion: reduce) {
         .bg-anim span { animation: none; }
         .reveal { opacity: 1; transform: none; transition: none; }
+        .skeleton { animation: none; }
         * { scroll-behavior: auto; }
       }
       .icon-sun { display: none; }
       :root[data-theme='dark'] .icon-sun { display: block; }
       :root[data-theme='dark'] .icon-moon { display: none; }
+
+      @media print {
+        .bg-anim, header, #themeToggle, #langToggle, .chart-tools, .no-print, footer a { display: none !important; }
+        body { background: #fff; color: #000; }
+        .card { border: 1px solid #ccc; box-shadow: none; break-inside: avoid; }
+        .chart-box { display: none; }
+        .table-view { display: block !important; }
+      }
     </style>
   </head>
   <body class="font-sans">
@@ -98,12 +130,15 @@
 
     <header class="sticky top-0 z-30 border-b border-[var(--line)] bg-[var(--bg)]/85 backdrop-blur">
       <div class="mx-auto flex h-16 max-w-6xl items-center gap-3 px-4">
-        <span class="grid h-9 w-9 place-items-center rounded-lg bg-[var(--accent)] font-display font-bold text-white">E</span>
-        <span class="font-display text-lg font-bold">EcoDatos</span>
-        <nav class="ml-auto hidden gap-6 text-sm font-medium text-[var(--muted)] sm:flex" aria-label="Primary">
-          <a href="#dashboard" class="transition hover:text-[var(--text)]" data-i18n="nav.dashboard">Dashboard</a>
-          <a href="#sources" class="transition hover:text-[var(--text)]" data-i18n="nav.data">Data</a>
-          <a href="https://github.com/Sagudelo01/Proyecto-Bootcamp" class="transition hover:text-[var(--text)]">GitHub</a>
+        <a href="#top" class="flex items-center gap-2">
+          <span class="grid h-9 w-9 place-items-center rounded-lg bg-[var(--accent)] font-display font-bold text-white">E</span>
+          <span class="font-display text-lg font-bold">EcoDatos</span>
+        </a>
+        <nav class="ml-auto hidden items-center gap-6 text-sm font-medium sm:flex" aria-label="Primary">
+          <a href="#overview" class="nav-link" data-nav="overview" data-i18n="nav.overview">Overview</a>
+          <a href="#dashboard" class="nav-link" data-nav="dashboard" data-i18n="nav.dashboard">Dashboard</a>
+          <a href="#methodology" class="nav-link" data-nav="methodology" data-i18n="nav.method">Methodology</a>
+          <a href="https://github.com/Sagudelo01/Proyecto-Bootcamp" class="nav-link">GitHub</a>
         </nav>
         <div class="ml-auto flex items-center gap-2 sm:ml-4">
           <button id="langToggle" class="btn-ghost h-9 min-w-9 rounded-lg px-2 text-sm font-semibold">EN</button>
@@ -115,72 +150,62 @@
       </div>
     </header>
 
-    <main class="mx-auto max-w-6xl px-4">
+    <main class="mx-auto max-w-6xl px-4" id="top">
       <section class="reveal relative overflow-hidden rounded-3xl my-8 px-6 py-14 sm:px-12" style="background: var(--hero-bg); color: var(--hero-text);">
         <div class="absolute inset-0" aria-hidden="true" style="background: radial-gradient(60% 80% at 82% 0%, var(--blob), transparent 70%);"></div>
         <div class="relative max-w-2xl">
           <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--accent)]" data-i18n="hero.eyebrow">Renewable energy · data platform</p>
           <h1 class="font-display text-4xl font-bold leading-tight sm:text-5xl" data-i18n="hero.title" data-i18n-html>The world's shift to clean energy, in charts.</h1>
           <p class="mt-5 max-w-xl" style="color: var(--hero-sub);" data-i18n="hero.sub">Explore how the electricity mix, solar capacity and geothermal power have evolved across regions, built from open datasets.</p>
-          <a href="#dashboard" class="mt-7 inline-flex items-center gap-2 rounded-full bg-[var(--accent)] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[var(--accent-strong)]" data-i18n="hero.cta">Explore the data</a>
+          <a href="#overview" class="mt-7 inline-flex items-center gap-2 rounded-full bg-[var(--accent)] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[var(--accent-strong)]" data-i18n="hero.cta">Explore the data</a>
         </div>
       </section>
 
-      <section class="grid grid-cols-2 gap-4 md:grid-cols-4" aria-label="Key figures">
-        <div class="card reveal p-5"><p class="font-display text-3xl font-bold" id="kpiEntities">—</p><p class="text-sm text-[var(--muted)]" data-i18n="kpi.entities">Regions &amp; countries</p></div>
-        <div class="card reveal p-5"><p class="font-display text-3xl font-bold">4</p><p class="text-sm text-[var(--muted)]" data-i18n="kpi.datasets">Live datasets</p></div>
-        <div class="card reveal p-5"><p class="font-display text-3xl font-bold" id="kpiYears">—</p><p class="text-sm text-[var(--muted)]" data-i18n="kpi.years">Years covered</p></div>
-        <div class="card reveal p-5"><p class="font-display text-3xl font-bold" id="kpiGeo">—</p><p class="text-sm text-[var(--muted)]" data-i18n="kpi.geo">Top geothermal (MW)</p></div>
-      </section>
-
-      <section id="dashboard" class="mt-10 scroll-mt-20">
+      <section id="overview" class="scroll-mt-20">
         <div class="flex flex-wrap items-end justify-between gap-4">
           <div>
-            <h2 class="font-display text-2xl font-bold" data-i18n="dash.title">Dashboard</h2>
-            <p class="text-sm text-[var(--muted)]" data-i18n="dash.hint">Pick a region to update the charts.</p>
+            <h2 class="font-display text-2xl font-bold"><span data-i18n="overview.title">Overview</span> · <span id="ovRegion" class="text-[var(--accent-strong)]">World</span></h2>
+            <p class="text-sm text-[var(--muted)]" data-i18n="overview.hint">Summary for the selected region.</p>
           </div>
           <label class="flex items-center gap-2 text-sm font-medium">
             <span data-i18n="dash.region">Region</span>
             <select id="entitySelect" class="rounded-lg border border-[var(--line)] bg-[var(--surface)] px-3 py-2 font-sans text-sm text-[var(--text)]"></select>
           </label>
         </div>
-
-        <div class="mt-6 grid gap-5 lg:grid-cols-2">
-          <article class="card reveal p-5">
-            <h3 class="font-semibold" id="t-mix"><span data-i18n="chart.mix.title">Electricity mix</span> <span class="font-normal text-[var(--muted)]" id="mixYear"></span></h3>
-            <p class="mb-3 text-sm text-[var(--muted)]" data-i18n="chart.mix.desc">Share of electricity from renewable sources.</p>
-            <div class="chart-box"><canvas id="mixChart" aria-labelledby="t-mix"></canvas></div>
-          </article>
-          <article class="card reveal p-5">
-            <h3 class="font-semibold" data-i18n="chart.area.title">Renewable share over time</h3>
-            <p class="mb-3 text-sm text-[var(--muted)]" data-i18n="chart.area.desc">Hydro, solar and wind as a share of electricity (%).</p>
-            <div class="chart-box"><canvas id="areaChart" aria-label="Renewable share over time"></canvas></div>
-          </article>
-          <article class="card reveal p-5">
-            <h3 class="font-semibold" data-i18n="chart.solar.title">Solar capacity trend</h3>
-            <p class="mb-3 text-sm text-[var(--muted)]" data-i18n="chart.solar.desc">Installed solar PV capacity (MW) by year.</p>
-            <div class="chart-box"><canvas id="solarChart" aria-label="Solar capacity trend"></canvas></div>
-          </article>
-          <article class="card reveal p-5">
-            <h3 class="font-semibold" data-i18n="chart.geo.title">Geothermal leaders</h3>
-            <p class="mb-3 text-sm text-[var(--muted)]" data-i18n="chart.geo.desc">Top countries by installed geothermal capacity (MW).</p>
-            <div class="chart-box"><canvas id="geoChart" aria-label="Geothermal leaders"></canvas></div>
-          </article>
+        <div class="mt-5 grid grid-cols-2 gap-4 md:grid-cols-4">
+          <div class="card reveal p-5"><p class="font-display text-3xl font-bold" id="kpiShare" data-countup>—</p><p class="text-sm text-[var(--muted)]" data-i18n="kpi.share">Renewable share</p><p class="text-xs text-[var(--muted)]" id="kpiShareYear"></p></div>
+          <div class="card reveal p-5"><p class="font-display text-3xl font-bold" id="kpiTop">—</p><p class="text-sm text-[var(--muted)]" data-i18n="kpi.top">Top source</p><p class="text-xs text-[var(--muted)]" id="kpiTopVal"></p></div>
+          <div class="card reveal p-5"><p class="font-display text-3xl font-bold" id="kpiGrowth" data-countup>—</p><p class="text-sm text-[var(--muted)]" data-i18n="kpi.growth">Growth since 2000</p><p class="text-xs text-[var(--muted)]" data-i18n="kpi.growthHint">percentage points</p></div>
+          <div class="card reveal p-5"><p class="font-display text-3xl font-bold" id="kpiPeak" data-countup>—</p><p class="text-sm text-[var(--muted)]" data-i18n="kpi.peak">Peak share</p><p class="text-xs text-[var(--muted)]" id="kpiPeakYear"></p></div>
         </div>
+      </section>
+
+      <section id="dashboard" class="mt-12 scroll-mt-20">
+        <h2 class="font-display text-2xl font-bold" data-i18n="dash.title">Dashboard</h2>
+        <p class="text-sm text-[var(--muted)]" data-i18n="dash.hint">Switch any chart to a table, or download the data.</p>
+        <div class="mt-6 grid gap-5 lg:grid-cols-2" id="chartGrid"></div>
         <p class="mt-4 text-xs text-[var(--muted)]" data-i18n="chart.source">Source: Our World in Data</p>
       </section>
 
-      <section id="sources" class="card reveal my-14 p-6 scroll-mt-20">
-        <h2 class="font-display text-xl font-bold" data-i18n="sources.title">About the data</h2>
-        <p class="mt-2 max-w-3xl text-[var(--muted)]"><span data-i18n="sources.body">Figures come from open datasets published by Our World in Data (electricity mix, solar PV capacity and installed geothermal capacity). The data is pre-processed and trimmed to a set of key regions so the dashboard loads instantly, with no backend.</span> <a class="text-[var(--accent-strong)] underline" href="https://ourworldindata.org/energy" data-i18n="sources.link">Our World in Data</a>.</p>
+      <section id="methodology" class="card reveal my-14 p-6 scroll-mt-20">
+        <h2 class="font-display text-xl font-bold" data-i18n="method.title">Methodology &amp; sources</h2>
+        <p class="mt-2 max-w-3xl text-[var(--muted)]"><span data-i18n="method.body">Figures come from open datasets published by Our World in Data: the share of electricity from renewables, installed solar PV capacity and installed geothermal capacity. The raw CSVs are filtered to a set of key regions and pre-processed into a small JavaScript bundle, so the dashboard loads instantly with no backend.</span> <a class="text-[var(--accent-strong)] underline" href="https://ourworldindata.org/energy" data-i18n="method.link">Our World in Data</a>.</p>
+        <h3 class="mt-4 font-semibold" data-i18n="method.limitsTitle">Limitations</h3>
+        <ul class="mt-2 list-disc space-y-1 pl-5 text-[var(--muted)]">
+          <li data-i18n="method.limit1">The dataset is trimmed to 26 regions and countries, not the full world.</li>
+          <li data-i18n="method.limit2">Values end around 2021 and some regions miss certain series.</li>
+          <li data-i18n="method.limit3">Shares are of electricity generation, not total final energy.</li>
+        </ul>
       </section>
     </main>
 
     <footer class="border-t border-[var(--line)]">
-      <div class="mx-auto flex max-w-6xl flex-wrap items-center gap-3 px-4 py-6 text-sm text-[var(--muted)]">
+      <div class="mx-auto flex max-w-6xl flex-wrap items-center gap-x-4 gap-y-2 px-4 py-6 text-sm text-[var(--muted)]">
         <span class="font-display font-bold text-[var(--text)]">EcoDatos</span>
         <span data-i18n="footer.tagline">A front-end data project · bootcamp build</span>
-        <a class="ml-auto transition hover:text-[var(--text)]" href="https://github.com/Sagudelo01/Proyecto-Bootcamp" data-i18n="footer.source">View source</a>
+        <span class="hidden sm:inline">·</span>
+        <span data-i18n="footer.credit">Data: Our World in Data</span>
+        <a class="ml-auto transition hover:text-[var(--text)]" href="https://github.com/Sagudelo01/Proyecto-Bootcamp" data-i18n="footer.source">View source on GitHub</a>
       </div>
     </footer>
 

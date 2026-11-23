@@ -4,22 +4,25 @@ A renewable-energy data dashboard. Pick a region and explore its electricity mix
 
 **Live demo:** [sagudelo01.github.io/Proyecto-Bootcamp](https://sagudelo01.github.io/Proyecto-Bootcamp/)
 
-![EcoDatos dashboard](docs/hero.png)
+![EcoDatos dashboard](docs/overview.png)
 
 ## Features
 
-- Region selector that updates the charts for 26 countries and regions
+- Region selector that drives the whole dashboard for 26 countries and regions
+- Summary KPI cards that recompute per region (renewable share, top source, growth since 2000, peak share) with a count-up animation
 - Four interactive charts: electricity mix (doughnut), renewable share over time (stacked area), solar capacity trend (line) and geothermal leaders (bar)
-- English / Spanish toggle that translates the whole interface, including chart labels and region names; the choice is remembered and defaults to the browser language
-- Light / dark theme that the charts adapt to; it respects `prefers-color-scheme` and is remembered
+- Each chart can switch to an accessible data table, or export its data as CSV and the chart as PNG
+- English / Spanish toggle that translates the whole interface, including chart labels, table headers and region names; remembered and defaulting to the browser language
+- Light / dark theme that the charts adapt to; respects `prefers-color-scheme` and is remembered
 - Subtle CSS-only animated background that pauses when the tab is hidden and respects `prefers-reduced-motion`
-- Accessibility basics: skip link, labelled controls, focus styles, and a styled 404 page
+- Sticky navigation with active-section highlighting, a styled 404 page, print styles, and keyboard shortcuts (`t` theme, `l` language)
+- "Methodology & sources" section citing the data and its limitations
 - Data is pre-processed into a small JS bundle, so the dashboard loads instantly with no backend
 
 ## Stack
 
 - HTML, CSS and vanilla JavaScript
-- Tailwind CSS (CDN) and Chart.js
+- Tailwind CSS (compiled to a static stylesheet) and Chart.js
 - Data from [Our World in Data](https://ourworldindata.org/energy)
 
 ## Running locally
@@ -34,6 +37,13 @@ python3 -m http.server 8000
 
 Then open `http://localhost:8000`.
 
+To rebuild the Tailwind stylesheet after changing classes:
+
+```bash
+npm install
+npm run build:css
+```
+
 ## Data
 
 The original project shipped several raw CSV datasets. They are filtered to a
@@ -43,6 +53,4 @@ avoids runtime CSV parsing.
 
 ## Screenshots
 
-| Charts (light) | Charts (dark, Spanish) |
-|---|---|
-| ![Charts in light mode](docs/charts.png) | ![Charts in dark mode](docs/dark.png) |
+![Charts with table and export tools](docs/charts.png)

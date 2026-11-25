@@ -138,9 +138,11 @@
           <span class="grid h-9 w-9 place-items-center rounded-lg bg-[var(--accent)] font-display font-bold text-white">E</span>
           <span class="font-display text-lg font-bold">EcoDatos</span>
         </a>
-        <nav class="ml-auto hidden items-center gap-6 text-sm font-medium sm:flex" aria-label="Primary">
+        <nav class="ml-auto hidden items-center gap-4 text-sm font-medium md:flex" aria-label="Primary">
           <a href="#overview" class="nav-link" data-nav="overview" data-i18n="nav.overview">Overview</a>
           <a href="#dashboard" class="nav-link" data-nav="dashboard" data-i18n="nav.dashboard">Dashboard</a>
+          <a href="#ranking" class="nav-link" data-nav="ranking" data-i18n="nav.ranking">Ranking</a>
+          <a href="#compare" class="nav-link" data-nav="compare" data-i18n="nav.compare">Compare</a>
           <a href="#methodology" class="nav-link" data-nav="methodology" data-i18n="nav.method">Methodology</a>
           <a href="https://github.com/Sagudelo01/Proyecto-Bootcamp" class="nav-link">GitHub</a>
         </nav>
@@ -182,6 +184,21 @@
           <div class="card reveal p-5"><p class="font-display text-3xl font-bold" id="kpiGrowth" data-countup>—</p><p class="text-sm text-[var(--muted)]" data-i18n="kpi.growth">Growth since 2000</p><p class="text-xs text-[var(--muted)]" data-i18n="kpi.growthHint">percentage points</p></div>
           <div class="card reveal p-5"><p class="font-display text-3xl font-bold" id="kpiPeak" data-countup>—</p><p class="text-sm text-[var(--muted)]" data-i18n="kpi.peak">Peak share</p><p class="text-xs text-[var(--muted)]" id="kpiPeakYear"></p></div>
         </div>
+
+        <div class="mt-5 grid gap-5 lg:grid-cols-2">
+          <div class="card reveal p-6">
+            <h3 class="font-display text-lg font-bold" data-i18n="insights.title">Key insights</h3>
+            <ul id="insights" class="mt-3 space-y-2 text-sm text-[var(--muted)]"></ul>
+          </div>
+          <div class="card reveal p-6">
+            <div class="flex items-center justify-between gap-3">
+              <h3 class="font-display text-lg font-bold" data-i18n="breakdown.title">Source breakdown</h3>
+              <span class="text-xs text-[var(--muted)]" id="breakdownYear"></span>
+            </div>
+            <p class="mt-1 text-xs text-[var(--muted)]" data-i18n="breakdown.hint">Latest electricity share and change since 2000.</p>
+            <div class="mt-4 grid grid-cols-3 gap-3" id="breakdown"></div>
+          </div>
+        </div>
       </section>
 
       <section id="dashboard" class="mt-12 scroll-mt-20">
@@ -189,6 +206,48 @@
         <p class="text-sm text-[var(--muted)]" data-i18n="dash.hint">Switch any chart to a table, or download the data.</p>
         <div class="mt-6 grid gap-5 lg:grid-cols-2" id="chartGrid"></div>
         <p class="mt-4 text-xs text-[var(--muted)]" data-i18n="chart.source">Source: Our World in Data</p>
+      </section>
+
+      <section id="ranking" class="mt-12 scroll-mt-20">
+        <div class="flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <h2 class="font-display text-2xl font-bold" data-i18n="ranking.title">Renewable leaders</h2>
+            <p class="text-sm text-[var(--muted)]" data-i18n="ranking.hint">Countries ranked by their latest renewable electricity share. The selected region is highlighted.</p>
+          </div>
+          <div class="chart-tools flex shrink-0 gap-1">
+            <button class="tool-btn" data-toggle="rank" aria-pressed="false"><span data-i18n="tools.table">Table</span></button>
+            <button class="tool-btn" data-csv="rank" data-i18n-aria="tools.csvLabel">CSV</button>
+          </div>
+        </div>
+        <div class="card reveal mt-5 p-5">
+          <div class="chart-box" data-box="rank" style="height: 440px;"><canvas id="rankChart" aria-labelledby="t-rank"></canvas></div>
+          <div class="table-view hidden" data-table="rank"><div class="table-wrap" style="height: 440px;"><table class="data" id="rankTable"></table></div></div>
+          <span id="t-rank" class="sr-only" data-i18n="ranking.title">Renewable leaders</span>
+        </div>
+      </section>
+
+      <section id="compare" class="mt-12 scroll-mt-20">
+        <div class="flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <h2 id="compare-title" class="font-display text-2xl font-bold" data-i18n="compare.title">Compare two regions</h2>
+            <p class="text-sm text-[var(--muted)]" data-i18n="compare.hint">Renewable electricity share over time, side by side.</p>
+          </div>
+          <div class="flex flex-wrap items-center gap-3 text-sm font-medium">
+            <label class="flex items-center gap-2"><span data-i18n="compare.a">Region A</span>
+              <select id="cmpA" class="rounded-lg border border-[var(--line)] bg-[var(--surface)] px-3 py-2 font-sans text-sm text-[var(--text)]"></select>
+            </label>
+            <label class="flex items-center gap-2"><span data-i18n="compare.b">Region B</span>
+              <select id="cmpB" class="rounded-lg border border-[var(--line)] bg-[var(--surface)] px-3 py-2 font-sans text-sm text-[var(--text)]"></select>
+            </label>
+          </div>
+        </div>
+        <div class="mt-5 grid gap-5 lg:grid-cols-3">
+          <div class="card reveal p-5 lg:col-span-2"><div class="chart-box" data-box="cmp" style="height: 320px;"><canvas id="cmpChart" aria-labelledby="compare-title"></canvas></div></div>
+          <div class="card reveal p-6">
+            <h3 class="font-display text-lg font-bold" data-i18n="compare.summaryTitle">At a glance</h3>
+            <dl id="cmpSummary" class="mt-3 space-y-3 text-sm"></dl>
+          </div>
+        </div>
       </section>
 
       <section id="methodology" class="card reveal my-14 p-6 scroll-mt-20">
@@ -200,6 +259,23 @@
           <li data-i18n="method.limit2">Values end around 2021 and some regions miss certain series.</li>
           <li data-i18n="method.limit3">Shares are of electricity generation, not total final energy.</li>
         </ul>
+        <p class="mt-4 rounded-lg bg-[var(--surface-2)] px-4 py-3 text-sm text-[var(--muted)]">
+          <span class="font-semibold text-[var(--text)]" data-i18n="method.updatedLabel">Data update:</span>
+          <span data-i18n="method.updated">electricity mix and solar capacity cover 2000–2022; geothermal capacity is the 2020 snapshot. Processed from Our World in Data CSV exports.</span>
+        </p>
+      </section>
+
+      <section id="glossary" class="my-14 scroll-mt-20">
+        <h2 class="font-display text-2xl font-bold" data-i18n="glossary.title">Glossary</h2>
+        <p class="text-sm text-[var(--muted)]" data-i18n="glossary.hint">Terms used across the dashboard.</p>
+        <dl class="mt-5 grid gap-4 sm:grid-cols-2">
+          <div class="card reveal p-5"><dt class="font-semibold" data-i18n="glossary.t1">Renewable share</dt><dd class="mt-1 text-sm text-[var(--muted)]" data-i18n="glossary.d1">The percentage of a region's electricity generated from renewable sources (hydro, solar, wind and others).</dd></div>
+          <div class="card reveal p-5"><dt class="font-semibold" data-i18n="glossary.t2">Electricity mix</dt><dd class="mt-1 text-sm text-[var(--muted)]" data-i18n="glossary.d2">The split of electricity generation across sources in a given year.</dd></div>
+          <div class="card reveal p-5"><dt class="font-semibold" data-i18n="glossary.t3">Installed capacity (MW)</dt><dd class="mt-1 text-sm text-[var(--muted)]" data-i18n="glossary.d3">The maximum power a fleet of plants can produce, in megawatts — a measure of build-out, not of actual output.</dd></div>
+          <div class="card reveal p-5"><dt class="font-semibold" data-i18n="glossary.t4">Solar PV</dt><dd class="mt-1 text-sm text-[var(--muted)]" data-i18n="glossary.d4">Photovoltaic panels that convert sunlight directly into electricity.</dd></div>
+          <div class="card reveal p-5"><dt class="font-semibold" data-i18n="glossary.t5">Geothermal</dt><dd class="mt-1 text-sm text-[var(--muted)]" data-i18n="glossary.d5">Electricity generated from heat stored in the Earth, concentrated in volcanic regions.</dd></div>
+          <div class="card reveal p-5"><dt class="font-semibold" data-i18n="glossary.t6">Percentage points (pp)</dt><dd class="mt-1 text-sm text-[var(--muted)]" data-i18n="glossary.d6">The arithmetic difference between two percentages — a share rising from 20% to 28% grew 8 pp.</dd></div>
+        </dl>
       </section>
     </main>
 

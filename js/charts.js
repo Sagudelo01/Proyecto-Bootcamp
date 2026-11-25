@@ -22,7 +22,62 @@ function lastIndexWithData(arr) {
 
 const Charts = {
   entity: 'World',
+  cmpA: 'Colombia',
+  cmpB: 'Germany',
   instances: {},
+
+  // Countries (no aggregates) ranked by their latest renewable share.
+  rankingData() {
+    return DATA.entities
+      .filter((e) => !AGGREGATES.includes(e))
+      .map((e) => {
+        const d = DATA.shareByEntity[e];
+        const i = lastIndexWithData(d.renewables);
+        return { entity: e, share: d.renewables[i] ?? 0, year: d.years[i] };
+      })
+      .sort((a, b) => b.share - a.share);
+  },
+
+  renderRank() {
+    const c = THEME_COLORS[theme()];
+    const accent = cssVar('--accent') || '#1f9d6b';
+    const strong = cssVar('--accent-strong') || '#1a855b';
+    const text = cssVar('--text') || '#0d1b17';
+    const rows = this.rankingData();
+    this.instances.rank?.destroy();
+    this.instances.rank = new Chart(el('rankChart'), {
+      type: 'bar',
+      data: { labels: rows.map((r) => i18n.region(r.entity)),
+        datasets: [{ label: i18n.t('kpi.share'), data: rows.map((r) => +r.share.toFixed(1)),
+          backgroundColor: rows.map((r) => (r.entity === this.entity ? strong : accent)),
+          borderColor: rows.map((r) => (r.entity === this.entity ? text : 'transparent')),
+          borderWidth: rows.map((r) => (r.entity === this.entity ? 1.5 : 0)), borderRadius: 5 }] },
+      options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { display: false }, tooltip: { callbacks: { label: (ctx) => `${ctx.parsed.x}%` } } },
+        scales: { x: { grid: { color: c.grid }, beginAtZero: true, ticks: { callback: (v) => v + '%' } }, y: { grid: { display: false } } } },
+    });
+  },
+
+  renderCompare() {
+    const c = THEME_COLORS[theme()];
+    const colorA = cssVar('--accent-strong') || '#1a855b';
+    const colorB = '#f59e0b';
+    const da = DATA.shareByEntity[this.cmpA];
+    const db = DATA.shareByEntity[this.cmpB];
+    const labels = da.years.length >= db.years.length ? da.years : db.years;
+    const align = (d) => labels.map((y) => { const k = d.years.indexOf(y); return k >= 0 ? d.renewables[k] : null; });
+    this.instances.cmp?.destroy();
+    this.instances.cmp = new Chart(el('cmpChart'), {
+      type: 'line',
+      data: { labels, datasets: [
+        { label: i18n.region(this.cmpA), data: align(da), borderColor: colorA, backgroundColor: colorA + '22', tension: 0.3, pointRadius: 0, borderWidth: 2 },
+        { label: i18n.region(this.cmpB), data: align(db), borderColor: colorB, backgroundColor: colorB + '22', tension: 0.3, pointRadius: 0, borderWidth: 2 },
+      ] },
+      options: { responsive: true, maintainAspectRatio: false, interaction: { mode: 'index', intersect: false },
+        plugins: { legend: { position: 'bottom' }, tooltip: { callbacks: { label: (ctx) => `${ctx.dataset.label}: ${ctx.parsed.y?.toFixed(1)}%` } } },
+        scales: { y: { grid: { color: c.grid }, beginAtZero: true, ticks: { callback: (v) => v + '%' } }, x: { grid: { display: false } } } },
+    });
+  },
 
   renderMix() {
     const c = THEME_COLORS[theme()];
@@ -116,6 +171,8 @@ const Charts = {
     this.renderArea();
     this.renderSolar();
     this.renderGeo();
+    this.renderRank();
+    this.renderCompare();
   },
 
   setEntity(entity) {
@@ -156,6 +213,14 @@ const Charts = {
         caption: `${i18n.t('chart.solar.title')} — ${region}`,
         headers: [i18n.t('tbl.year'), i18n.t('tbl.capacity')],
         rows: d ? d.years.map((y, k) => [y, d.values[k]]) : [],
+      };
+    }
+    if (id === 'rank') {
+      const rows = this.rankingData();
+      return {
+        caption: i18n.t('ranking.title'),
+        headers: [i18n.t('tbl.rank'), i18n.t('tbl.region'), i18n.t('tbl.share')],
+        rows: rows.map((r, k) => [k + 1, i18n.region(r.entity), r.share.toFixed(1)]),
       };
     }
     const g = DATA.geoRanking;

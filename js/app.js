@@ -31,7 +31,11 @@ function buildCards() {
       <div class="table-view hidden" data-table="${d.id}"><div class="table-wrap"><table class="data" id="${d.id}Table"></table></div></div>
     </article>`).join('');
 
-  el('chartGrid').addEventListener('click', (e) => {
+  wireTools(el('chartGrid'));
+}
+
+function wireTools(root) {
+  root.addEventListener('click', (e) => {
     const t = e.target.closest('button');
     if (!t) return;
     if (t.dataset.toggle) toggleTable(t.dataset.toggle, t);
@@ -94,6 +98,8 @@ function downloadPng(id) {
 }
 
 /* ---- KPIs with count-up ---- */
+const reduceMotion = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 function countUp(node, target, { decimals = 1, suffix = '', sign = false } = {}) {
   const start = performance.now();
   const dur = 700;
@@ -125,7 +131,7 @@ function updateKpis(e, animate) {
   el('kpiTop').textContent = i18n.t(sources[0][0]);
   el('kpiTopVal').textContent = `${sources[0][1].toFixed(1)}%`;
 
-  if (animate) {
+  if (animate && !reduceMotion()) {
     countUp(el('kpiShare'), share, { suffix: '%' });
     countUp(el('kpiGrowth'), growth, { sign: true });
     countUp(el('kpiPeak'), peak, { suffix: '%' });
@@ -135,6 +141,87 @@ function updateKpis(e, animate) {
     el('kpiGrowth').textContent = (g > 0 ? '+' : '') + g.toFixed(1);
     el('kpiPeak').textContent = peak.toFixed(1) + '%';
   }
+}
+
+/* ---- Automatic text insights ---- */
+function renderInsights(e) {
+  const d = DATA.shareByEntity[e];
+  const i = lastIndexWithData(d.renewables);
+  const share = d.renewables[i] ?? 0;
+  const first = d.renewables.find((v) => v != null) ?? share;
+  const growth = share - first;
+  const region = i18n.region(e);
+  const year = d.years[i];
+  const list = [];
+
+  const gAbs = Math.abs(growth).toFixed(1);
+  if (growth >= 1) list.push(i18n.fmt('ins.grew', { region, v: gAbs, share: share.toFixed(1), year }));
+  else if (growth <= -1) list.push(i18n.fmt('ins.fell', { region, v: gAbs, share: share.toFixed(1), year }));
+  else list.push(i18n.fmt('ins.flat', { region, share: share.toFixed(1), year }));
+
+  const srcs = [['series.hydro', 'hydro'], ['series.solar', 'solar'], ['series.wind', 'wind']].map(([key, f]) => {
+    const now = d[f][i] ?? 0;
+    const base = d[f].find((v) => v != null) ?? 0;
+    return { key, now, delta: now - base };
+  });
+  const fastest = srcs.slice().sort((a, b) => b.delta - a.delta)[0];
+  if (fastest.delta >= 1) list.push(i18n.fmt('ins.fastest', { source: i18n.t(fastest.key), v: fastest.delta.toFixed(1) }));
+  const leader = srcs.slice().sort((a, b) => b.now - a.now)[0];
+  list.push(i18n.fmt('ins.leader', { source: i18n.t(leader.key), share: leader.now.toFixed(1) }));
+
+  const valid = d.renewables.filter((v) => v != null);
+  const peak = valid.length ? Math.max(...valid) : 0;
+  const peakYear = d.years[d.renewables.indexOf(peak)];
+  list.push(i18n.fmt('ins.peak', { share: peak.toFixed(1), year: peakYear }));
+
+  el('insights').innerHTML = list
+    .map((s) => `<li class="flex gap-2"><span class="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--accent)]"></span><span>${s}</span></li>`)
+    .join('');
+}
+
+/* ---- Source breakdown tiles ---- */
+const BREAKDOWN_SRC = [['series.hydro', 'hydro', '#3b82f6'], ['series.solar', 'solar', '#f59e0b'], ['series.wind', 'wind', '#14b8a6']];
+function renderBreakdown(e) {
+  const d = DATA.shareByEntity[e];
+  const i = lastIndexWithData(d.renewables);
+  el('breakdownYear').textContent = d.years[i] || '';
+  el('breakdown').innerHTML = BREAKDOWN_SRC.map(([key, f, color]) => {
+    const now = d[f][i] ?? 0;
+    const base = d[f].find((v) => v != null) ?? 0;
+    const delta = now - base;
+    const up = delta > 0.05;
+    const down = delta < -0.05;
+    const deltaStr = (up ? '+' : '') + (up || down ? delta.toFixed(1) : '0');
+    const cls = up ? 'text-[var(--accent-strong)]' : down ? 'text-[#c0392b]' : 'text-[var(--muted)]';
+    return `<div class="rounded-xl border border-[var(--line)] p-3">
+      <div class="flex items-center gap-1.5"><span class="h-2 w-2 rounded-full" style="background:${color}"></span><span class="text-xs font-medium text-[var(--muted)]">${i18n.t(key)}</span></div>
+      <p class="mt-1 font-display text-xl font-bold">${now.toFixed(1)}%</p>
+      <p class="text-xs ${cls}">${deltaStr} pp</p></div>`;
+  }).join('');
+}
+
+/* ---- Region comparison summary ---- */
+function renderCompareSummary() {
+  const build = (e) => {
+    const d = DATA.shareByEntity[e];
+    const i = lastIndexWithData(d.renewables);
+    const share = d.renewables[i] ?? 0;
+    const first = d.renewables.find((v) => v != null) ?? share;
+    return { share, growth: share - first };
+  };
+  const a = build(Charts.cmpA);
+  const b = build(Charts.cmpB);
+  const pp = (v) => (v > 0 ? '+' : '') + v.toFixed(1);
+  const gap = a.share - b.share;
+  const verdict = Math.abs(gap) < 1
+    ? i18n.t('compare.tie')
+    : i18n.fmt('compare.lead', { region: i18n.region(gap > 0 ? Charts.cmpA : Charts.cmpB), v: Math.abs(gap).toFixed(1) });
+  const block = (name, color, s) => `<div><dt class="font-semibold" style="color:${color}">${name}</dt>
+    <dd class="mt-0.5 text-[var(--muted)]">${i18n.t('compare.latest')}: <span class="font-semibold text-[var(--text)]">${s.share.toFixed(1)}%</span> · ${i18n.t('compare.growth')}: <span class="font-semibold text-[var(--text)]">${pp(s.growth)} pp</span></dd></div>`;
+  el('cmpSummary').innerHTML =
+    block(i18n.region(Charts.cmpA), 'var(--accent-strong)', a) +
+    block(i18n.region(Charts.cmpB), '#f59e0b', b) +
+    `<p class="border-t border-[var(--line)] pt-3 text-[var(--text)]">${verdict}</p>`;
 }
 
 /* ---- Loading skeletons ---- */
@@ -164,6 +251,11 @@ function applyI18n() {
   sel.innerHTML = DATA.entities
     .map((e) => `<option value="${e}"${e === Charts.entity ? ' selected' : ''}>${i18n.region(e)}</option>`)
     .join('');
+  [['cmpA', Charts.cmpA], ['cmpB', Charts.cmpB]].forEach(([id, cur]) => {
+    el(id).innerHTML = DATA.entities
+      .map((e) => `<option value="${e}"${e === cur ? ' selected' : ''}>${i18n.region(e)}</option>`)
+      .join('');
+  });
   el('ovRegion').textContent = i18n.region(Charts.entity);
   el('langToggle').textContent = i18n.lang.toUpperCase();
   el('langToggle').setAttribute('aria-label', i18n.t('toggle.lang'));
@@ -176,6 +268,9 @@ function setLang(lang) {
   applyI18n();
   Charts.renderAll();
   updateKpis(Charts.entity, false);
+  renderInsights(Charts.entity);
+  renderBreakdown(Charts.entity);
+  renderCompareSummary();
   refreshOpenTables();
 }
 
@@ -189,6 +284,8 @@ function setEntity(e) {
   Charts.entity = e;
   el('ovRegion').textContent = i18n.region(e);
   updateKpis(e, true);
+  renderInsights(e);
+  renderBreakdown(e);
   showSkeletons();
   setTimeout(() => {
     Charts.renderAll();
@@ -208,7 +305,7 @@ function initScrollspy() {
     },
     { rootMargin: '-45% 0px -50% 0px' },
   );
-  ['overview', 'dashboard', 'methodology'].forEach((id) => { const s = el(id); if (s) obs.observe(s); });
+  ['overview', 'dashboard', 'ranking', 'compare', 'methodology'].forEach((id) => { const s = el(id); if (s) obs.observe(s); });
 }
 
 function init() {
@@ -216,11 +313,17 @@ function init() {
   initLang();
   buildCards();
   applyI18n();
-  updateKpis('World', true);
+  updateKpis(Charts.entity, true);
+  renderInsights(Charts.entity);
+  renderBreakdown(Charts.entity);
+  renderCompareSummary();
   Charts.renderAll();
   initScrollspy();
+  wireTools(el('ranking'));
 
   el('entitySelect').addEventListener('change', (e) => setEntity(e.target.value));
+  el('cmpA').addEventListener('change', (e) => { Charts.cmpA = e.target.value; Charts.renderCompare(); renderCompareSummary(); });
+  el('cmpB').addEventListener('change', (e) => { Charts.cmpB = e.target.value; Charts.renderCompare(); renderCompareSummary(); });
   el('langToggle').addEventListener('click', () => setLang(i18n.lang === 'en' ? 'es' : 'en'));
   el('themeToggle').addEventListener('click', () =>
     setTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'));

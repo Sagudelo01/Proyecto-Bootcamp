@@ -36,15 +36,17 @@
         --bg: #f4f6f3; --surface: #ffffff; --surface-2: #eef2ee; --text: #0d1b17; --muted: #55635b;
         --line: #e4e9e4; --accent: #1f9d6b; --accent-strong: #1a855b;
         --hero-bg: #0d1b17; --hero-text: #ffffff; --hero-sub: #c3d1ca;
-        --blob: rgba(31, 157, 107, 0.35);
-        --blob-a: #27b981; --blob-b: #12b2a0; --blob-c: #5fd49a;
+        --blob: rgba(31, 157, 107, 0.30);
+        --mesh-1: rgba(31, 157, 107, 0.07); --mesh-2: rgba(18, 178, 160, 0.06); --mesh-3: rgba(95, 212, 154, 0.05);
+        --field-a: rgba(31, 157, 107, 0.10); --field-b: rgba(18, 178, 160, 0.09); --field-c: rgba(95, 212, 154, 0.08);
       }
       :root[data-theme='dark'] {
         --bg: #0b1512; --surface: #10211b; --surface-2: #142821; --text: #e7efe9; --muted: #93a79c;
         --line: #1d3329; --accent: #35c489; --accent-strong: #2bb079;
         --hero-bg: #0a1712; --hero-text: #f1f7f3; --hero-sub: #a9bcb2;
-        --blob: rgba(53, 196, 137, 0.22);
-        --blob-a: #2f9f72; --blob-b: #1a8f80; --blob-c: #3fae7f;
+        --blob: rgba(53, 196, 137, 0.20);
+        --mesh-1: rgba(53, 196, 137, 0.11); --mesh-2: rgba(26, 143, 128, 0.10); --mesh-3: rgba(63, 174, 127, 0.08);
+        --field-a: rgba(47, 159, 114, 0.16); --field-b: rgba(26, 143, 128, 0.13); --field-c: rgba(63, 174, 127, 0.12);
       }
       body { background: var(--bg); color: var(--text); transition: background 0.35s, color 0.35s; }
       .card { background: var(--surface); border: 1px solid var(--line); border-radius: 16px;
@@ -79,26 +81,28 @@
         background-size: 400% 100%; animation: shimmer 1.2s ease-in-out infinite; }
       @keyframes shimmer { 0% { background-position: 100% 0; } 100% { background-position: -100% 0; } }
 
-      /* Animated backdrop — transform/opacity only */
-      .bg-anim { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
-      .bg-anim span { position: absolute; border-radius: 50%; filter: blur(34px); will-change: transform, opacity; }
-      .blob-a { width: 30vw; height: 30vw; max-width: 440px; max-height: 440px; left: -6vw; top: -6vw;
-        background: var(--blob-a); animation: driftA 13s ease-in-out infinite; }
-      .blob-b { width: 26vw; height: 26vw; max-width: 400px; max-height: 400px; right: -4vw; top: 22vh;
-        background: var(--blob-b); animation: driftB 16s ease-in-out infinite; }
-      .blob-c { width: 24vw; height: 24vw; max-width: 360px; max-height: 360px; left: 32vw; bottom: -8vh;
-        background: var(--blob-c); animation: driftC 11s ease-in-out infinite; }
-      @keyframes driftA {
-        0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.55; }
-        50% { transform: translate3d(220px, 160px, 0) scale(1.14); opacity: 0.68; }
+      /* Soft mesh backdrop — fine static gradients plus slow drift, transform/opacity only */
+      .bg-anim { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none;
+        background:
+          radial-gradient(38% 50% at 12% 8%, var(--mesh-1), transparent 70%),
+          radial-gradient(42% 52% at 88% 18%, var(--mesh-2), transparent 70%),
+          radial-gradient(48% 58% at 78% 96%, var(--mesh-3), transparent 72%),
+          radial-gradient(46% 56% at 8% 92%, var(--mesh-1), transparent 72%); }
+      .bg-anim span { position: absolute; border-radius: 50%; filter: blur(72px); will-change: transform; }
+      .field-a { width: 48vw; height: 48vw; max-width: 680px; max-height: 680px; left: -10vw; top: -12vh;
+        background: radial-gradient(circle at 50% 50%, var(--field-a), transparent 68%); animation: floatA 30s ease-in-out infinite; }
+      .field-b { width: 42vw; height: 42vw; max-width: 600px; max-height: 600px; right: -8vw; top: 24vh;
+        background: radial-gradient(circle at 50% 50%, var(--field-b), transparent 68%); animation: floatB 36s ease-in-out infinite; }
+      .field-c { width: 40vw; height: 40vw; max-width: 560px; max-height: 560px; left: 34vw; bottom: -14vh;
+        background: radial-gradient(circle at 50% 50%, var(--field-c), transparent 68%); animation: floatC 26s ease-in-out infinite; }
+      @keyframes floatA {
+        0%, 100% { transform: translate3d(0, 0, 0); } 50% { transform: translate3d(42px, 34px, 0); }
       }
-      @keyframes driftB {
-        0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.5; }
-        50% { transform: translate3d(-220px, 210px, 0) scale(1.16); opacity: 0.64; }
+      @keyframes floatB {
+        0%, 100% { transform: translate3d(0, 0, 0); } 50% { transform: translate3d(-38px, 30px, 0); }
       }
-      @keyframes driftC {
-        0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.52; }
-        50% { transform: translate3d(200px, -200px, 0) scale(1.12); opacity: 0.66; }
+      @keyframes floatC {
+        0%, 100% { transform: translate3d(0, 0, 0); } 50% { transform: translate3d(34px, -36px, 0); }
       }
       .bg-paused .bg-anim span { animation-play-state: paused; }
 
@@ -124,7 +128,7 @@
     </style>
   </head>
   <body class="font-sans">
-    <div class="bg-anim" aria-hidden="true"><span class="blob-a"></span><span class="blob-b"></span><span class="blob-c"></span></div>
+    <div class="bg-anim" aria-hidden="true"><span class="field-a"></span><span class="field-b"></span><span class="field-c"></span></div>
 
     <a href="#dashboard" class="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-50 focus:bg-[var(--text)] focus:text-[var(--bg)] focus:px-4 focus:py-2 focus:rounded-lg">Skip to dashboard</a>
 

@@ -9,14 +9,18 @@ A renewable-energy data dashboard. Pick a region and explore its electricity mix
 ## Features
 
 - Region selector that drives the whole dashboard for 26 countries and regions
-- Summary KPI cards that recompute per region (renewable share, top source, growth since 2000, peak share) with a count-up animation
+- Summary KPI cards that recompute per region (renewable share, top source, growth since 2000, peak share) with a count-up that respects reduced-motion
+- Automatic text insights per region: growth since 2000, the fastest-growing source, the current leading source and the all-time peak
+- Source breakdown tiles showing the latest hydro, solar and wind share and each one's change since 2000
+- A country ranking by latest renewable share, with the selected region highlighted
+- A two-region comparator: renewable share over time side by side, with an at-a-glance summary of each region and the gap between them
 - Four interactive charts: electricity mix (doughnut), renewable share over time (stacked area), solar capacity trend (line) and geothermal leaders (bar)
-- Each chart can switch to an accessible data table, or export its data as CSV and the chart as PNG
+- Charts and the ranking can switch to an accessible data table, or export their data as CSV; charts also export as PNG
 - English / Spanish toggle that translates the whole interface, including chart labels, table headers and region names; remembered and defaulting to the browser language
 - Light / dark theme that the charts adapt to; respects `prefers-color-scheme` and is remembered
-- Subtle CSS-only animated background that pauses when the tab is hidden and respects `prefers-reduced-motion`
+- Subtle CSS-only mesh background that drifts slowly, pauses when the tab is hidden and respects `prefers-reduced-motion`
 - Sticky navigation with active-section highlighting, a styled 404 page, print styles, and keyboard shortcuts (`t` theme, `l` language)
-- "Methodology & sources" section citing the data and its limitations
+- Methodology section citing the data, its limitations and an update note, plus a glossary of terms
 - Data is pre-processed into a small JS bundle, so the dashboard loads instantly with no backend
 
 ## Stack
@@ -53,4 +57,6 @@ avoids runtime CSV parsing.
 
 ## Screenshots
 
-![Charts with table and export tools](docs/charts.png)
+![Dashboard charts with table and export tools](docs/charts.png)
+
+![Country ranking and two-region comparator](docs/compare.png)

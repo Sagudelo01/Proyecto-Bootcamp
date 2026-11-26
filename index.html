@@ -38,7 +38,7 @@
         --hero-bg: #0d1b17; --hero-text: #ffffff; --hero-sub: #c3d1ca;
         --blob: rgba(31, 157, 107, 0.30);
         --mesh-1: rgba(31, 157, 107, 0.09); --mesh-2: rgba(18, 178, 160, 0.08); --mesh-3: rgba(95, 212, 154, 0.07);
-        --field-a: rgba(31, 157, 107, 0.20); --field-b: rgba(18, 178, 160, 0.18); --field-c: rgba(95, 212, 154, 0.17);
+        --field-a: rgba(31, 157, 107, 0.40); --field-b: rgba(18, 178, 160, 0.36); --field-c: rgba(95, 212, 154, 0.32); --field-d: rgba(45, 190, 200, 0.30);
       }
       :root[data-theme='dark'] {
         --bg: #0b1512; --surface: #10211b; --surface-2: #142821; --text: #e7efe9; --muted: #93a79c;
@@ -46,7 +46,7 @@
         --hero-bg: #0a1712; --hero-text: #f1f7f3; --hero-sub: #a9bcb2;
         --blob: rgba(53, 196, 137, 0.20);
         --mesh-1: rgba(53, 196, 137, 0.13); --mesh-2: rgba(26, 143, 128, 0.12); --mesh-3: rgba(63, 174, 127, 0.10);
-        --field-a: rgba(53, 196, 137, 0.28); --field-b: rgba(26, 159, 142, 0.24); --field-c: rgba(63, 190, 140, 0.22);
+        --field-a: rgba(53, 196, 137, 0.52); --field-b: rgba(26, 173, 156, 0.46); --field-c: rgba(63, 200, 150, 0.42); --field-d: rgba(40, 200, 205, 0.40);
       }
       body { background: var(--bg); color: var(--text); transition: background 0.35s, color 0.35s; }
       .card { background: var(--surface); border: 1px solid var(--line); border-radius: 16px;
@@ -88,25 +88,32 @@
           radial-gradient(42% 52% at 88% 18%, var(--mesh-2), transparent 70%),
           radial-gradient(48% 58% at 78% 96%, var(--mesh-3), transparent 72%),
           radial-gradient(46% 56% at 8% 92%, var(--mesh-1), transparent 72%); }
-      .bg-anim span { position: absolute; border-radius: 50%; filter: blur(60px); will-change: transform, opacity; }
-      .field-a { width: 48vw; height: 48vw; max-width: 680px; max-height: 680px; left: -10vw; top: -12vh;
-        background: radial-gradient(circle at 50% 50%, var(--field-a), transparent 68%); animation: floatA 22s ease-in-out infinite; }
-      .field-b { width: 42vw; height: 42vw; max-width: 600px; max-height: 600px; right: -8vw; top: 24vh;
-        background: radial-gradient(circle at 50% 50%, var(--field-b), transparent 68%); animation: floatB 26s ease-in-out infinite; }
-      .field-c { width: 40vw; height: 40vw; max-width: 560px; max-height: 560px; left: 34vw; bottom: -14vh;
-        background: radial-gradient(circle at 50% 50%, var(--field-c), transparent 68%); animation: floatC 19s ease-in-out infinite; }
+      .bg-anim span { position: absolute; border-radius: 50%; filter: blur(52px); will-change: transform, opacity; }
+      .field-a { width: 46vw; height: 46vw; max-width: 640px; max-height: 640px; left: -8vw; top: -10vh;
+        background: radial-gradient(circle at 50% 50%, var(--field-a), transparent 66%); animation: floatA 15s ease-in-out infinite; }
+      .field-b { width: 40vw; height: 40vw; max-width: 580px; max-height: 580px; right: -6vw; top: 18vh;
+        background: radial-gradient(circle at 50% 50%, var(--field-b), transparent 66%); animation: floatB 18s ease-in-out infinite; }
+      .field-c { width: 38vw; height: 38vw; max-width: 540px; max-height: 540px; left: 30vw; bottom: -12vh;
+        background: radial-gradient(circle at 50% 50%, var(--field-c), transparent 66%); animation: floatC 13s ease-in-out infinite; }
+      .field-d { width: 36vw; height: 36vw; max-width: 500px; max-height: 500px; right: 20vw; top: 40vh;
+        background: radial-gradient(circle at 50% 50%, var(--field-d), transparent 66%); animation: floatD 21s ease-in-out infinite; }
       @keyframes floatA {
-        0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.85; }
-        33% { transform: translate3d(140px, 90px, 0) scale(1.09); opacity: 1; }
-        66% { transform: translate3d(70px, 150px, 0) scale(1.04); opacity: 0.9; }
+        0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.75; }
+        33% { transform: translate3d(260px, 150px, 0) scale(1.16); opacity: 1; }
+        66% { transform: translate3d(120px, 280px, 0) scale(1.06); opacity: 0.85; }
       }
       @keyframes floatB {
-        0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.85; }
-        50% { transform: translate3d(-150px, 110px, 0) scale(1.1); opacity: 1; }
+        0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.8; }
+        50% { transform: translate3d(-280px, 200px, 0) scale(1.18); opacity: 1; }
       }
       @keyframes floatC {
-        0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.9; }
-        50% { transform: translate3d(120px, -120px, 0) scale(1.08); opacity: 1; }
+        0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.85; }
+        50% { transform: translate3d(240px, -220px, 0) scale(1.14); opacity: 1; }
+      }
+      @keyframes floatD {
+        0%, 100% { transform: translate3d(0, 0, 0) scale(1.05); opacity: 0.7; }
+        40% { transform: translate3d(-200px, -140px, 0) scale(1); opacity: 0.95; }
+        75% { transform: translate3d(-120px, 180px, 0) scale(1.2); opacity: 0.85; }
       }
       .bg-paused .bg-anim span { animation-play-state: paused; }
 
@@ -132,7 +139,7 @@
     </style>
   </head>
   <body class="font-sans">
-    <div class="bg-anim" aria-hidden="true"><span class="field-a"></span><span class="field-b"></span><span class="field-c"></span></div>
+    <div class="bg-anim" aria-hidden="true"><span class="field-a"></span><span class="field-b"></span><span class="field-c"></span><span class="field-d"></span></div>
 
     <a href="#dashboard" class="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-50 focus:bg-[var(--text)] focus:text-[var(--bg)] focus:px-4 focus:py-2 focus:rounded-lg">Skip to dashboard</a>
 

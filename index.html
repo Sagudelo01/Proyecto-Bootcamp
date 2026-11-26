@@ -115,12 +115,27 @@
         40% { transform: translate3d(-200px, -140px, 0) scale(1); opacity: 0.95; }
         75% { transform: translate3d(-120px, 180px, 0) scale(1.2); opacity: 0.85; }
       }
-      .bg-paused .bg-anim span { animation-play-state: paused; }
+      .bg-paused .bg-anim span, .bg-paused .hero-orb { animation-play-state: paused; }
+
+      /* Animated glow inside the hero panel — clearly visible against the dark backdrop */
+      .hero-orb { position: absolute; border-radius: 50%; filter: blur(48px); pointer-events: none; will-change: transform, opacity; }
+      .hero-orb-1 { width: 46%; aspect-ratio: 1; right: -6%; top: -26%;
+        background: radial-gradient(circle at 50% 50%, rgba(53, 196, 137, 0.60), transparent 64%); animation: heroA 14s ease-in-out infinite; }
+      .hero-orb-2 { width: 40%; aspect-ratio: 1; left: 26%; bottom: -34%;
+        background: radial-gradient(circle at 50% 50%, rgba(33, 178, 185, 0.50), transparent 64%); animation: heroB 18s ease-in-out infinite; }
+      @keyframes heroA {
+        0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.7; }
+        50% { transform: translate3d(-150px, 90px, 0) scale(1.25); opacity: 1; }
+      }
+      @keyframes heroB {
+        0%, 100% { transform: translate3d(0, 0, 0) scale(1.1); opacity: 0.55; }
+        50% { transform: translate3d(170px, -70px, 0) scale(1); opacity: 0.95; }
+      }
 
       .reveal { opacity: 0; transform: translateY(10px); transition: opacity 0.5s ease, transform 0.5s ease; }
       body.ready .reveal { opacity: 1; transform: none; }
       @media (prefers-reduced-motion: reduce) {
-        .bg-anim span { animation: none; }
+        .bg-anim span, .hero-orb { animation: none; }
         .reveal { opacity: 1; transform: none; transition: none; }
         .skeleton { animation: none; }
         * { scroll-behavior: auto; }
@@ -170,6 +185,8 @@
     <main class="mx-auto max-w-6xl px-4" id="top">
       <section class="reveal relative overflow-hidden rounded-3xl my-8 px-6 py-14 sm:px-12" style="background: var(--hero-bg); color: var(--hero-text);">
         <div class="absolute inset-0" aria-hidden="true" style="background: radial-gradient(60% 80% at 82% 0%, var(--blob), transparent 70%);"></div>
+        <span class="hero-orb hero-orb-1" aria-hidden="true"></span>
+        <span class="hero-orb hero-orb-2" aria-hidden="true"></span>
         <div class="relative max-w-2xl">
           <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--accent)]" data-i18n="hero.eyebrow">Renewable energy · data platform</p>
           <h1 class="font-display text-4xl font-bold leading-tight sm:text-5xl" data-i18n="hero.title" data-i18n-html>The world's shift to clean energy, in charts.</h1>
